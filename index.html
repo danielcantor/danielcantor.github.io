@@ -35,10 +35,10 @@
             </div>
 
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
                     <li data-menuanchor="home" class=""><a href="#home">Inicio</a></li>
-                    
                     <li data-menuanchor="servicios" class=""><a href="#servicios">Servicios</a></li>
+                    <li data-menuanchor="portafolio" class=""><a href="#portafolio">Portafolio</a></li>
                     <li data-menuanchor="contacto" class=""><a href="#contacto">Contacto</a></li>
                 </ul>
             </div><!--.nav-collapse -->
@@ -46,9 +46,13 @@
     </nav>
 
 <div id="fullpage">
-	<div class="section" data-anchor="home"><img src="2.png" alt="" class="center-block" width="80%">
-	<div style="padding-top:2%;"><p class="text-center" style="font-weight:bold;font-size:3vw;">Diseño Web | Restauraciones | Retoque fotografico</p></div></div>
-	<div class="section" data-anchor="servicios">
+	<div class="section" data-anchor="home">
+	<img src="2.png" alt="" class="center-block" width="80%">
+	<div style="padding-top:2%;">
+	    <p class="text-center" style="font-weight:bold;font-size:3vw;">Diseño Web | Restauraciones | Retoque fotografico</p>
+	</div>
+    </div>
+<div class="section" data-anchor="servicios">
 	<div class="container">
 	    <div class="row">
         <h1 class="text-center">Servicios</h1>
@@ -69,8 +73,66 @@
 	        </div>
 	    </div>
 	</div>
-	
-	</div>
+</div>
+<div class="section" data-anchor="portafolio">
+        <div class="slide" data-anchor="slide1"> 
+            <div class="container">
+                <div class="row">
+                     <h1 class="text-center">VgTronics</h1>
+                      <div class="col-md-6">
+                      <h3>Descripción</h3>
+                      <p>Cliente: VgTronics LLC</p>
+                      <p>Fecha de realizacion: Abril del 2016</p>
+                      <h3>Creditos</h3> 
+                      <p>Diseño de interfaz y planificación: Desarrollo Tricolor</p>
+                      <p>Maquetacion e implementacion: Daniel Cantor</p>
+                      </div>
+                      
+                      <div class="col-md-6">
+                      <a href="http://www.vgtronics.com/" target="_blank"><img src="vgtronics.png" alt="" width="100%"></a>
+                      </div>  
+                </div>
+            </div> 
+        </div>
+        <div class="slide" data-anchor="slide2">
+        <div class="container">
+                <div class="row">
+                     <h1 class="text-center">Tu Quinela</h1>
+                      <div class="col-md-6">
+                      <h3>Descripción</h3>
+                      <p>Proyecto colaborativo</p>
+                      <p>Fecha de realizacion: Mayo del 2016</p>
+                      <h3>Creditos</h3> 
+                      <p>Diseño de interfaz , planificación y implementación: Arthuro Blanco</p>
+                      <p>Maquetacion: Daniel Cantor</p>
+                      </div>
+                      
+                      <div class="col-md-6">
+                      <a href="tuquiniela.com.ve" target="_blank"><img src="tuquinela.png" alt="" width="100%"></a>
+                      </div>  
+                </div>
+            </div> 
+        </div>
+        <div class="slide" data-anchor="slide3">
+            <div class="container">
+                <div class="row">
+                     <h1 class="text-center">La Dulce Tienda</h1>
+                      <div class="col-md-6">
+                      <h3>Descripción</h3>
+                      <p>Cliente: La Dulce Tienda C.A.</p>
+                      <p>Fecha de realizacion: Junio del 2016</p>
+                      <h3>Creditos</h3> 
+                      <p>Diseño de interfaz y planificación: Desarrollo Tricolor</p>
+                      <p>Maquetacion e implementacion: Daniel Cantor</p>
+                      </div>
+                      
+                      <div class="col-md-6">
+                      <a href="#" target="_blank"><img src="ladulccetienda.png" alt="" width="100%"></a>
+                      </div>  
+                </div>
+            </div> 
+        </div>
+</div>
 	<div class="section" data-anchor="contacto">
        <div class="container">
            <h1 class="text-center">Contactame</h1>
@@ -94,8 +156,8 @@
     $('#fullpage').fullpage({
         css3: true,
         menu: '#menu',
-        anchors:['home','servicios', 'contacto'],
-        sectionsColor: ['#E8FBFF', '#E8FBFF', '#E8FBFF'],
+        anchors:['home','servicios','portafolio', 'contacto'],
+        sectionsColor: ['#E8FBFF', '#E8FBFF', '#E8FBFF','#E8FBFF'],
         scrollOverflow: true,
 				scrollOverflowOptions: {
 					scrollbars: true,
