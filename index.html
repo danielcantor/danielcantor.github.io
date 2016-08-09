@@ -86,17 +86,28 @@
 	</div>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="scrolloverflow.js"></script>
     <script type="text/javascript" src="jquery.fullpage.js"></script>
+    
      <script type="text/javascript">
     $(document).ready(function() {
     $('#fullpage').fullpage({
         css3: true,
         menu: '#menu',
-        navigation: true,
+        anchors:['home','servicios', 'contacto'],
         sectionsColor: ['#E8FBFF', '#E8FBFF', '#E8FBFF'],
-        anchors:['home','servicios', 'contacto']
+        scrollOverflow: true,
+				scrollOverflowOptions: {
+					scrollbars: true,
+			        mouseWheel: true,
+			        hideScrollbars: false,
+			        fadeScrollbars: false,
+			        disableMouse: true
+				}
+        
     });
 });</script>
+  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
