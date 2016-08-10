@@ -43,6 +43,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li data-menuanchor="home" class=""><a href="#home">Inicio</a></li>
+                    <li data-menuanchor="aboutme" class=""><a href="#aboutme">Sobre mi</a></li>
                     <li data-menuanchor="servicios" class=""><a href="#servicios">Servicios</a></li>
                     <li data-menuanchor="portafolio" class=""><a href="#portafolio">Portafolio</a></li>
                     <li data-menuanchor="contacto" class=""><a href="#contacto">Contacto</a></li>
@@ -56,6 +57,19 @@
 	<img src="2.png" alt="" class="center-block" width="80%">
 	<div style="padding-top:2%;">
 	    <p class="text-center" style="font-weight:bold;font-size:3vw;">Diseño Web | Restauraciones | Retoque fotografico</p>
+	</div>
+    </div>
+    <div class="section" data-anchor="aboutme">
+	<div class="container">
+	    <div class="row">
+	        <div class="col-sm-6">
+	        <h1>Daniel Cantor</h1>
+	        <p>Soy un estudiante de los ultimos semestres de informatica, cuento con conocimientos en creacion de sitios web adaptables a cualquier tipo de dispositivo desde donde se vean, ademas de contar con conocimientos sobre fotografia y su retoque o restauracion para su presentacion con fidelidad al original entregado.</p>    
+	        </div>
+	        <div class="col-sm-6">
+	        <img src="" alt="" width="100%">    
+	        </div>
+	    </div>
 	</div>
     </div>
 <div class="section" data-anchor="servicios">
@@ -166,7 +180,8 @@
     $('#fullpage').fullpage({
         css3: true,
         menu: '#menu',
-        anchors:['home','servicios','portafolio', 'contacto'],
+        paddingTop: '5%',
+        anchors:['home','aboutme','servicios','portafolio', 'contacto'],
         sectionsColor: ['#E8FBFF', '#ffece8', '#e8fff7','#fbffe8'],
         scrollOverflow: true,
 				scrollOverflowOptions: {
