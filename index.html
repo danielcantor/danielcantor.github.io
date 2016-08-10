@@ -43,6 +43,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li data-menuanchor="home" class=""><a href="#home">Inicio</a></li>
+                    <li data-menuanchor="aboutme" class=""><a href="#aboutme">Sobre Mi</a></li>
                     <li data-menuanchor="servicios" class=""><a href="#servicios">Servicios</a></li>
                     <li data-menuanchor="portafolio" class=""><a href="#portafolio">Portafolio</a></li>
                     <li data-menuanchor="contacto" class=""><a href="#contacto">Contacto</a></li>
@@ -58,6 +59,28 @@
 	    <p class="text-center" style="font-weight:bold;font-size:3vw;">Diseño Web | Restauraciones | Retoque fotografico</p>
 	</div>
     </div>
+<div class="section" data-anchor="aboutme">
+	<div class="container">
+	    <div class="row">
+        <h1 class="text-center">Sobre Mi</h1>
+	        <div class="col-md-4">
+               <img src="windows.png" alt="" class="center-block" width="64" height="64">
+                <h3 class="text-center">Diseño Web</h3>
+	            <p class="text-justify" style="font-size:1,3vh;">Necesitas presencia en la web para tu negocio o empresa? Te construyo una pagina web con un diseño creativo, alta funcionabildiad y con adaptabilidad a dispositivos moviles. Contactame y se el primero en obtener un gran sitio web.</p>
+	        </div>
+	        <div class="col-md-4">
+             <img src="picture.png" alt="" class="center-block" width="64" height="64">
+	             <h3 class="text-center" >Retoque fotografico</h3>
+	            <p class="text-justify" style="font-size:1,3vh;">Tienes una fotografia a la cual  quieres hacerle algun arreglo o mejora? Te entrego tu fotografia en buena calidad para que pueda ser impresa en una calidad exelsa en cualquier estudio fotografico donde la lleves en formato digital.</p>
+	        </div>
+	        <div class="col-md-4">
+           <img src="sponge.png" alt=""  class="center-block" width="64" height="64">
+	           <h3 class="text-center">Restauracion fotografica</h3>
+	            <p class="text-justify" style="font-size:1,3vh;">Te conseguiste esa foto que tomaste hace muchos años y esta dañada por el tiempo? Te ofrezco la restauracion de esa fotografia en cualquiera de sus presentaciones (B/N, SEPIA, COLOR) para que puedas sentir lo mismo que cuando la imprimiste en su entonces.</p>
+	        </div>
+	    </div>
+	</div>
+</div>    
 <div class="section" data-anchor="servicios">
 	<div class="container">
 	    <div class="row">
@@ -166,8 +189,8 @@
     $('#fullpage').fullpage({
         css3: true,
         menu: '#menu',
-        anchors:['home','servicios','portafolio', 'contacto'],
-        sectionsColor: ['#E8FBFF', '#E8FBFF', '#E8FBFF','#E8FBFF'],
+        anchors:['home','aboutme','servicios','portafolio', 'contacto'],
+        sectionsColor: ['#E8FBFF', '#E8FBFF', '#E8FBFF','#E8FBFF','#E8FBFF'],
         scrollOverflow: true,
 				scrollOverflowOptions: {
 					scrollbars: true,
