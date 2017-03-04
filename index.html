@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Portafolio de Daniel Cantor">
+    <meta name="keywords" content="Daniel Cantor, Diseño Web, Bootstrap, Restauracion fotografica, Retoque forografico">
+    <meta name="author" content="Daniel Cantor">
     <title>Daniel Cantor</title>
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
@@ -14,12 +15,15 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   
-    <link rel="stylesheet" type="text/css" href="css/jquery.fullpage.css">
     <style>
 @import 'https://fonts.googleapis.com/css?family=Montserrat';    
     </style> 
-    <style>body{padding-top:50px;font-family: 'Montserrat', sans-serif;}.starter-template{padding:40px 15px;text-align:center;}</style>
+    <style>
+	body{font-family: 'Montserrat', sans-serif;}
+	.starter-template{padding:40px 15px;text-align:center;}
+		nav ul li a{color:black !important; font-weight: bold; font-size: 15px; }
+		nav ul li a:hover{color:white !important;}
+	</style>
 
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -28,51 +32,55 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="menu" style="border:none;background:rgba(0,0,0,0.2);">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#"><img src="img/logo.png" class="navbar-brand" style="padding:0 20px;"></a>
-            </div>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li data-menuanchor="home" class=""><a href="#home">Inicio</a></li>
-                    <li data-menuanchor="aboutme" class=""><a href="#aboutme">Sobre Mi</a></li>
-                    <li data-menuanchor="servicios" class=""><a href="#servicios">Servicios</a></li>
-                    <li data-menuanchor="portafolio" class=""><a href="#portafolio">Portafolio</a></li>
-                    <li data-menuanchor="contacto" class=""><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div><!--.nav-collapse -->
-        </div>
-    </nav>
 
 <div id="fullpage">
-	<div class="section" data-anchor="home">
-	<img src="img/2.png" alt="" class="center-block" width="80%">
+	<div class="section" data-anchor="home" style="background-image: url(img/pexels-photo-210621.jpeg);background-color: rgba(255,255,255,0.45);background-size: cover; background-repeat: no-repeat; height:93vh;">
+	<div style="padding-top:30vh">
+	<img src="img/2.png" alt="" class="center-block" width="70%">
 	<div style="padding-top:2%;">
-	    <p class="text-center" style="font-weight:bold;font-size:3vw;">Diseño Web | Restauraciones | Retoque fotografico</p>
+	    <p class="text-center" style="font-weight:bold;font-size:3vw;color:black;">Diseño Web | Restauraciones | Retoque fotografico</p>
 	</div>
+   </div>
     </div>
-    <div class="section" data-anchor="aboutme">
-	<div class="container">
+    <nav class="navbar navbar-inverse " style="padding: 0.7vh 0;background-color:rgba(26,42,71,0.64);border-color:transparent;" id="menu">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+     <img src="img/logo.png" alt="logo" class="navbar-brand" style="padding: 0 10px;">
+      </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="topFixedNavbar1">
+      <ul class="nav navbar-nav navbar-right">
+		<li class=""><a href="#" >Inicio</a></li>
+        <li class=""><a href="#">Sobre mi</a></li>
+        <li class=""><a href="#">Servicios</a></li>
+        <li class=""><a href="#">Tarifas</a></li>
+        <li class=""><a href="#">Contacto</a></li>
+      </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+    <div class="section" data-anchor="aboutme" style="height: 100vh;back">
+	<div class="container" style="padding-top:15%;">
 	    <div class="row">
 	        <div class="col-sm-6">
-	        <img src="img/yo.png" alt="" width="60%" class="center-block">    
+	        <img src="img/yo.png" alt="" width="60%" class="center-block img-circle">    
 	        </div>
 	         <div class="col-sm-6">
-	        <h1>Daniel Cantor</h1>
-	        <p>Soy un estudiante de los últimos semestres de informática; cuento con conocimientos en creación de sitios web adaptables a cualquier tipo de dispositivo, además de contar con conocimientos sobre fotografía y su retoque o restauración para su presentación con fidelidad al original entregado.</p>    
-	        </div>
+	           <h1>Sobre Mi&nbsp;</h1>
+	           <p class="text-center">Estudiante de ultimo semestre de TSU en Informatica, con conocimientos orientados hacia la programacion web dentro del area. Ademas cuento con habilidades para el retoque de fotografia digital y restauracion de fotografias antiguas.</p>
+	         </div>
+	    </div>
+	    <div class="row">
+	         	
 	    </div>
 	</div>
     </div>
-<div class="section" data-anchor="servicios" style=" background-image:url(img/fondo.jpg);">
+<div class="section" data-anchor="servicios">
 	<div class="container">
 	    <div class="row">
         <h1 class="text-center">Servicios</h1>
@@ -172,29 +180,21 @@
 	</div>
 </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="js/scrolloverflow.js"></script>
-    <script type="text/javascript" src="js/jquery.fullpage.js"></script>
-    
-     <script type="text/javascript">
-    $(document).ready(function() {
-    $('#fullpage').fullpage({
-        css3: true,
-        menu: '#menu',
-        paddingTop: '5%',
-        anchors:['home','aboutme','servicios','portafolio', 'contacto'],
-        sectionsColor: ['#E8FBFF', '#fbffe8', '#ffece8','#e8fff7','#00BEE5'],
-        scrollOverflow: true,
-				scrollOverflowOptions: {
-					scrollbars: true,
-			        mouseWheel: true,
-			        hideScrollbars: false,
-			        fadeScrollbars: false,
-			        disableMouse: true
-				}
-        
-    });
-});</script>
-  
+    <script type="text/javascript">
+	
+	$(document).ready(function(){
+	var altura = $('#menu').offset().top;
+	
+	$(window).on('scroll', function(){
+		if ( $(window).scrollTop() > altura ){
+			$('#menu').addClass('navbar-fixed-top');
+		} else {
+			$('#menu').removeClass('navbar-fixed-top');
+		}
+	});
+ 
+});
+	</script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
