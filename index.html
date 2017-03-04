@@ -19,7 +19,19 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat';    
     </style> 
     <style>
-	body{font-family: 'Montserrat', sans-serif;}
+	body{font-family: 'Montserrat', sans-serif;
+		position: relative;
+		}
+	.navbar-default .navbar-nav > .active{
+    color: #000;
+   background-color: #d65c14;
+ 	}
+ .navbar-default .navbar-nav > .active > a, 
+ .navbar-default .navbar-nav > .active > a:hover, 
+ .navbar-default .navbar-nav > .active > a:focus {
+      color: #000;
+      background-color: #d65c14;
+ }
 	.starter-template{padding:40px 15px;text-align:center;}
 		nav ul li a{color:black !important; font-weight: bold; font-size: 15px; }
 		nav ul li a:hover{color:white !important;}
@@ -31,7 +43,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#menu">
 
 <div id="fullpage">
 	<div class="section" data-anchor="home" style="background-image: url(img/pexels-photo-210621.jpeg);background-color: rgba(255,255,255,0.45);background-size: cover; background-repeat: no-repeat; height:93vh;">
@@ -52,11 +64,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="topFixedNavbar1">
       <ul class="nav navbar-nav navbar-right">
-		<li class=""><a href="#" >Inicio</a></li>
-        <li class=""><a href="#">Sobre mi</a></li>
-        <li class=""><a href="#">Servicios</a></li>
-        <li class=""><a href="#">Tarifas</a></li>
-        <li class=""><a href="#">Contacto</a></li>
+		<li class=""><a href="#inicio" >Inicio</a></li>
+        <li class=""><a href="#sobremi">Sobre mi</a></li>
+        <li class=""><a href="#servicios">Servicios</a></li>
+        <li class=""><a href="#tarifas">Tarifas</a></li>
+        <li class=""><a href="#contacto">Contacto</a></li>
       </ul>
 
     </div>
@@ -64,7 +76,7 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-    <div class="section" data-anchor="aboutme" style="height: 100vh;back">
+    <div id="sobremi" style="height:100vh;">
 	<div class="container" style="padding-top:15%;">
 	    <div class="row">
 	        <div class="col-sm-6">
@@ -183,6 +195,7 @@
     <script type="text/javascript">
 	
 	$(document).ready(function(){
+	$('body').scrollspy({ target: '#menu' });
 	var altura = $('#menu').offset().top;
 	
 	$(window).on('scroll', function(){
