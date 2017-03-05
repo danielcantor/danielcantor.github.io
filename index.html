@@ -49,7 +49,7 @@
 
 <body data-spy="scroll" data-target="#menu">
 
-<div id="inicio" >
+<div id="inicio" style="height: 93vh;">
 	<div style="background-image: url(img/pexels-photo-210621.jpeg);background-color: rgba(255,255,255,0.45);background-size: cover; background-repeat: no-repeat; height:93vh;">
 	<div style="padding-top:30vh">
 	<img src="img/2.png" alt="" class="center-block" width="70%">
@@ -58,6 +58,7 @@
 	</div>
    </div>
     </div>
+</div>
     <nav class="navbar navbar-inverse " style="padding: 0.7vh 0;background-color:rgba(26,42,71,0.64);border-color:transparent;" id="menu">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,7 +72,7 @@
 		<li class=""><a href="#inicio" >Inicio</a></li>
         <li class=""><a href="#sobremi">Sobre mi</a></li>
         <li class=""><a href="#servicios">Servicios</a></li>
-        <li class=""><a href="#tarifas">Tarifas</a></li>
+        <li class=""><a href="#portafolio">Portafolio</a></li>
         <li class=""><a href="#contacto">Contacto</a></li>
       </ul>
 
@@ -115,9 +116,8 @@
 	    </div>
 	</div>
 </div>
-<div class="section" data-anchor="portafolio">
-       
-        <div class="slide" data-anchor="slide1">
+<div id="portafolio" style="height:100vh;">
+        <div>
            <h1 class="text-center">Diseño Web</h1> 
             <div class="container">
                 <div class="row">
@@ -137,7 +137,7 @@
                 </div>
             </div> 
         </div>
-        <div class="slide" data-anchor="slide2">
+        <div>
         <h1 class="text-center">Diseño Web</h1>  
         <div class="container">
                 <div class="row">
@@ -157,7 +157,7 @@
                 </div>
             </div> 
         </div>
-        <div class="slide" data-anchor="slide3">
+        <div >
            <h1 class="text-center">Diseño Web</h1> 
             <div class="container">
                 <div class="row">
@@ -178,7 +178,7 @@
             </div> 
         </div>
 </div>
-	<div class="section" data-anchor="contacto">
+	<div id="contacto" style="height:100vh;">
        <div class="container">
            <h1 class="text-center">Contactame</h1>
             <div class="row">
@@ -191,14 +191,32 @@
             </div>
         </div>
 	</div>
-</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript">
 	
 	$(document).ready(function(){
-	$('body').scrollspy({ target: '#menu' });
+	$('body').scrollspy({ target: '#menu', offset: 10 });
 	var altura = $('#menu').offset().top;
-	
+	$("#menu a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    }  // End if
+  });
 	$(window).on('scroll', function(){
 		if ( $(window).scrollTop() > altura ){
 			$('#menu').addClass('navbar-fixed-top');
