@@ -1,0 +1,246 @@
+// Casos de trabajo. Cada uno genera su página en /trabajos/<slug>/.
+//
+// TODO: todos estos proyectos son de EJEMPLO. Reemplazalos por casos reales.
+// Mientras un proyecto tenga `ejemplo: true`, su página muestra un aviso,
+// lleva noindex y no se incluye en el sitemap.
+//
+// Imágenes: van en public/img/trabajos/ (WebP). Medidas recomendadas:
+// tarjeta 800×600, portada 1600×700, antes/después 1200×900, galería 800×600.
+
+export const trabajos = [
+  {
+    slug: 'almacen-natural',
+    ejemplo: true,
+    titulo: 'Almacén Natural',
+    tipo: 'Optimización de tienda online',
+    resultado: '+42% tasa de conversión',
+    titular: 'Almacén Natural: de vender por Instagram a una tienda que convierte',
+    resumen:
+      'Cómo reorganizamos el catálogo, simplificamos el checkout y mejoramos la velocidad de una tienda de productos naturales de Buenos Aires.',
+    cliente: 'Almacén Natural',
+    rubro: 'Alimentos y dietética',
+    anio: '2025',
+    duracion: '6 semanas',
+    servicios: ['Asesoría e-commerce', 'Optimización SEO'],
+    url: '', // Link al sitio en vivo (opcional).
+    imagen: {
+      src: '/img/trabajos/almacen-natural-card.webp',
+      alt: 'Página de inicio de la tienda online Almacén Natural',
+      width: 800,
+      height: 600,
+    },
+    portada: {
+      src: '/img/trabajos/almacen-natural-portada.webp',
+      alt: 'Tienda online de Almacén Natural en escritorio y celular',
+      width: 1600,
+      height: 700,
+    },
+    metricasTitulo: 'Resultados en los primeros 90 días',
+    metricas: [
+      { to: 42, sign: true, suffix: '%', label: 'tasa de conversión' },
+      { to: -58, sign: true, suffix: '%', label: 'carritos abandonados' },
+      { from: 5.4, to: 1.8, decimals: 1, suffix: ' s', label: 'tiempo de carga en mobile (antes 5,4 s)' },
+      { to: 65, sign: true, suffix: '%', label: 'visitas orgánicas' },
+    ],
+    desafio: {
+      titulo: 'Mucho tráfico desde redes, pocas compras',
+      parrafos: [
+        'Almacén Natural tenía una comunidad grande en Instagram, pero la tienda online no acompañaba: fichas de producto incompletas, un checkout de cinco pasos y fotos pesadas que hacían lenta la carga en el celular.',
+        'La mayoría de los clientes terminaba escribiendo por mensaje directo para comprar, lo que les llevaba horas de atención por día.',
+      ],
+    },
+    pasos: [
+      {
+        titulo: 'Auditoría de la tienda',
+        descripcion: 'Analizamos el embudo de compra en Analytics y detectamos dónde se iban los usuarios.',
+      },
+      {
+        titulo: 'Catálogo y fichas de producto',
+        descripcion: 'Categorías nuevas, descripciones con beneficios y fotos optimizadas en WebP.',
+      },
+      {
+        titulo: 'Checkout simplificado',
+        descripcion: 'De cinco pasos a dos, con Mercado Pago y el costo de envío visible desde el carrito.',
+      },
+      {
+        titulo: 'SEO para la tienda online',
+        descripcion: 'Palabras clave por categoría, datos estructurados de producto y Search Console.',
+      },
+    ],
+    antesDespues: {
+      antes: {
+        src: '/img/trabajos/almacen-natural-antes.webp',
+        alt: 'Ficha de producto antes del rediseño',
+        caption: 'fichas sin precio por kilo ni información nutricional.',
+      },
+      despues: {
+        src: '/img/trabajos/almacen-natural-despues.webp',
+        alt: 'Ficha de producto después del rediseño',
+        caption: 'fichas claras, con beneficios y botón de compra visible.',
+      },
+    },
+    galeria: [
+      { src: '/img/trabajos/almacen-natural-galeria-1.webp', alt: 'Página de categoría de la tienda' },
+      { src: '/img/trabajos/almacen-natural-galeria-2.webp', alt: 'Carrito de compras' },
+      { src: '/img/trabajos/almacen-natural-galeria-3.webp', alt: 'Checkout en el celular' },
+      { src: '/img/trabajos/almacen-natural-galeria-4.webp', alt: 'Confirmación de compra' },
+    ],
+    testimonio: null, // { texto: '…', nombre: '…', cargo: '…' }
+    herramientas: ['Tiendanube', 'Mercado Pago', 'Google Analytics 4', 'Google Search Console', 'Figma'],
+    cta: '¿Tu tienda online tiene visitas pero pocas ventas?',
+  },
+  {
+    slug: 'estudio-contable-rivas',
+    ejemplo: true,
+    titulo: 'Estudio contable Rivas',
+    tipo: 'Sitio web institucional',
+    resultado: '3× consultas mensuales',
+    titular: 'Estudio contable Rivas: un sitio que trae clientes nuevos todos los meses',
+    resumen:
+      'Rediseño completo del sitio institucional de un estudio contable, con foco en sus servicios, SEO local y contacto directo.',
+    cliente: 'Estudio contable Rivas',
+    rubro: 'Servicios profesionales',
+    anio: '2025',
+    duracion: '4 semanas',
+    servicios: ['Creación de sitios web', 'Optimización SEO'],
+    url: '',
+    imagen: {
+      src: '/img/trabajos/estudio-contable-rivas-card.webp',
+      alt: 'Página de inicio del sitio del estudio contable Rivas',
+      width: 800,
+      height: 600,
+    },
+    portada: {
+      src: '/img/trabajos/estudio-contable-rivas-portada.webp',
+      alt: 'Sitio web del estudio contable Rivas',
+      width: 1600,
+      height: 700,
+    },
+    metricasTitulo: 'Resultados en los primeros 6 meses',
+    metricas: [
+      { to: 3, suffix: '×', label: 'consultas mensuales' },
+      { to: 120, sign: true, suffix: '%', label: 'visitas orgánicas' },
+      { from: 6.1, to: 1.6, decimals: 1, suffix: ' s', label: 'tiempo de carga (antes 6,1 s)' },
+    ],
+    desafio: {
+      titulo: 'Un sitio viejo que no aparecía en Google',
+      parrafos: [
+        'El estudio tenía un sitio de hace diez años, lento, sin versión mobile y sin información clara sobre sus servicios. Casi todas las consultas llegaban por recomendación.',
+      ],
+    },
+    pasos: [
+      { titulo: 'Diagnóstico', descripcion: 'Relevamos servicios, clientes ideales y cómo buscaban un contador en la zona.' },
+      { titulo: 'Sitio nuevo', descripcion: 'Una página por servicio, textos claros y formularios específicos.' },
+      { titulo: 'SEO local', descripcion: 'Perfil de empresa en Google, datos estructurados y contenidos por barrio.' },
+    ],
+    antesDespues: null,
+    galeria: [],
+    testimonio: null,
+    herramientas: ['React', 'Vite', 'Google Search Console', 'Google Business Profile'],
+    cta: '¿Tu estudio necesita un sitio que traiga clientes?',
+  },
+  {
+    slug: 'clinica-dental-sur',
+    ejemplo: true,
+    titulo: 'Clínica Dental Sur',
+    tipo: 'SEO y posicionamiento web',
+    resultado: 'Top 3 en búsquedas locales',
+    titular: 'Clínica Dental Sur: primeros puestos en Google para su zona',
+    resumen:
+      'Estrategia de SEO local y contenidos para que una clínica odontológica aparezca cuando la buscan en su barrio.',
+    cliente: 'Clínica Dental Sur',
+    rubro: 'Salud',
+    anio: '2024',
+    duracion: '4 meses',
+    servicios: ['Optimización SEO'],
+    url: '',
+    imagen: {
+      src: '/img/trabajos/clinica-dental-sur-card.webp',
+      alt: 'Sitio web de la Clínica Dental Sur',
+      width: 800,
+      height: 600,
+    },
+    portada: {
+      src: '/img/trabajos/clinica-dental-sur-portada.webp',
+      alt: 'Sitio web de la Clínica Dental Sur en escritorio',
+      width: 1600,
+      height: 700,
+    },
+    metricasTitulo: 'Resultados en 4 meses',
+    metricas: [
+      { to: 3, label: 'puesto en Google Maps para “dentista” en la zona' },
+      { to: 85, sign: true, suffix: '%', label: 'llamadas desde Google' },
+    ],
+    desafio: {
+      titulo: 'Invisibles en Google Maps',
+      parrafos: [
+        'La clínica tenía buenas reseñas de boca en boca, pero no aparecía en Google Maps ni en las búsquedas de la zona.',
+      ],
+    },
+    pasos: [
+      { titulo: 'Perfil de empresa', descripcion: 'Optimizamos el perfil de Google con fotos, horarios y categorías.' },
+      { titulo: 'Páginas por tratamiento', descripcion: 'Contenido específico para cada tratamiento con preguntas frecuentes.' },
+      { titulo: 'Reseñas', descripcion: 'Un circuito simple para pedir reseñas después de cada turno.' },
+    ],
+    antesDespues: null,
+    galeria: [],
+    testimonio: null,
+    herramientas: ['Google Business Profile', 'Google Search Console', 'WordPress'],
+    cta: '¿Querés que tus clientes te encuentren en Google?',
+  },
+  {
+    slug: 'taller-madera-viva',
+    ejemplo: true,
+    titulo: 'Taller Madera Viva',
+    tipo: 'Creación de tienda online',
+    resultado: '120 ventas el primer mes',
+    titular: 'Taller Madera Viva: del mensaje directo a la tienda online',
+    resumen:
+      'Tienda online desde cero para un taller de muebles, con catálogo ordenado, medios de pago locales y envíos.',
+    cliente: 'Taller Madera Viva',
+    rubro: 'Muebles y decoración',
+    anio: '2024',
+    duracion: '5 semanas',
+    servicios: ['Asesoría e-commerce', 'Creación de sitios web'],
+    url: '',
+    imagen: {
+      src: '/img/trabajos/taller-madera-viva-card.webp',
+      alt: 'Tienda online del Taller Madera Viva',
+      width: 800,
+      height: 600,
+    },
+    portada: {
+      src: '/img/trabajos/taller-madera-viva-portada.webp',
+      alt: 'Catálogo de la tienda online del Taller Madera Viva',
+      width: 1600,
+      height: 700,
+    },
+    metricasTitulo: 'Resultados del primer mes',
+    metricas: [
+      { to: 120, label: 'ventas online' },
+      { to: 70, sign: false, suffix: '%', label: 'menos consultas repetidas por mensaje' },
+    ],
+    desafio: {
+      titulo: 'Vender sin catálogo',
+      parrafos: [
+        'El taller vendía solo por mensaje directo: cada venta implicaba mandar fotos, precios y calcular el envío a mano.',
+      ],
+    },
+    pasos: [
+      { titulo: 'Plataforma', descripcion: 'Elegimos la plataforma y los medios de pago según su volumen de ventas.' },
+      { titulo: 'Catálogo', descripcion: 'Fotos, medidas y variantes ordenadas por ambiente.' },
+      { titulo: 'Envíos', descripcion: 'Cálculo automático de envío y retiro por el taller.' },
+    ],
+    antesDespues: null,
+    galeria: [],
+    testimonio: null,
+    herramientas: ['Tiendanube', 'Mercado Pago', 'Figma'],
+    cta: '¿Vendés por redes y querés tu propia tienda?',
+  },
+]
+
+export function getTrabajo(slug) {
+  return trabajos.find((t) => t.slug === slug)
+}
+
+export const trabajoPath = (slug) => `/trabajos/${slug}/`
