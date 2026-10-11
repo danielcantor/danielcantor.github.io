@@ -20,7 +20,8 @@ const app = (
 const root = document.getElementById('root')
 
 // En producción el HTML viene prerenderizado: se hidrata en lugar de renderizar de cero.
-if (root.hasChildNodes()) {
+// (En desarrollo #root solo trae el comentario <!--app-html-->, sin elementos.)
+if (root.firstElementChild) {
   hydrateRoot(root, app)
 } else {
   createRoot(root).render(app)
