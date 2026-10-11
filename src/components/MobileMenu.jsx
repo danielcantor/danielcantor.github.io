@@ -10,6 +10,8 @@ export default function MobileMenu({ open, onClose }) {
 
   if (!open) return null
 
+  // En modo oscuro el panel usa el azul de las tarjetas en lugar del azul de marca,
+  // que resalta demasiado sobre el fondo oscuro.
   // Se renderiza en <body>: el header tiene backdrop-filter, que haría que un
   // `position: fixed` adentro suyo se ubique respecto del header y no de la pantalla.
   return createPortal(
@@ -21,7 +23,7 @@ export default function MobileMenu({ open, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label="Menú"
-        className="relative flex h-full w-[86%] max-w-[340px] flex-col overflow-y-auto bg-brand px-6 pt-4 pb-7 text-on-night motion-safe:animate-[slide-in_280ms_ease-out]"
+        className="relative flex h-full w-[86%] max-w-[340px] flex-col overflow-y-auto bg-brand px-6 pt-4 pb-7 dark:border-l dark:border-line dark:bg-card text-on-night motion-safe:animate-[slide-in_280ms_ease-out]"
       >
         <div className="mb-4 flex h-13 items-center justify-between">
           <img src={logoClaro} alt="Daniel Cantor" width="791" height="104" className="h-6 w-auto" />
