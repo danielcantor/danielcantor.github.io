@@ -8,3 +8,6 @@ dist-ssr
 
 # Originales de imágenes (se convierten con npm run images)
 assets-src
+
+# Grafo de Graphify (se regenera localmente con /graphify . o graphify update .)
+graphify-out
