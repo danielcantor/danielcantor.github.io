@@ -25,4 +25,19 @@ for (const route of prerenderRoutes) {
   console.log(`  prerender  ${route.path}  →  dist/${route.file}`)
 }
 
+// sitemap.xml con las rutas indexables (los proyectos de ejemplo quedan afuera).
+const { site } = await import(pathToFileURL(path.join(root, 'src', 'config', 'site.js')).href)
+const lastmod = new Date().toISOString().slice(0, 10)
+const urls = prerenderRoutes
+  .filter((route) => route.sitemap)
+  .map(
+    (route) =>
+      `  <url>\n    <loc>${new URL(route.path, site.url)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${route.priority}</priority>\n  </url>`,
+  )
+await fs.writeFile(
+  path.join(distDir, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`,
+)
+console.log(`  sitemap    ${urls.length} URL(s)  →  dist/sitemap.xml`)
+
 await fs.rm(ssrDir, { recursive: true, force: true })

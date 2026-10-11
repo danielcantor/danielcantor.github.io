@@ -5,3 +5,6 @@ dist-ssr
 .env.local
 *.log
 .DS_Store
+
+# Originales de imágenes (se convierten con npm run images)
+assets-src
