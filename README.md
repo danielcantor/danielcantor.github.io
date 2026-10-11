@@ -50,7 +50,7 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 
 **Formulario (Web3Forms)**
 - [x] Access key de Web3Forms cargada en `.env.production` (y en `.env` para desarrollo).
-- [ ] Mandar un mensaje de prueba desde el sitio publicado.
+- [x] Mensaje de prueba enviado desde el sitio publicado.
 
 **Contenido**
 - [ ] Reemplazar los 4 trabajos de ejemplo por casos reales (y sacar `ejemplo: true`).
@@ -66,3 +66,12 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 - [ ] Enviar `https://danielcantor.com.ar/sitemap.xml` en Search Console.
 - [ ] Revisar los datos estructurados con la Prueba de resultados enriquecidos de Google.
 - [ ] (Opcional) Perfil de empresa en Google para aparecer en Maps.
+
+**Google Analytics 4**
+- [x] ID de medición cargado en `.env.production` (`VITE_GA_ID`).
+- [ ] En GA4 → Administrar → Eventos clave: marcar `generate_lead` (aparece después de la primera consulta).
+- [ ] (Opcional) Vincular GA4 con Search Console.
+
+Eventos propios: `generate_lead`, `contact_form_error`, `click_whatsapp`, `click_email`,
+`cta_click`, `select_content` (trabajos) y `faq_open`. Las vistas de página se mandan a mano
+desde `src/components/Seo.jsx`. En desarrollo los eventos se muestran en la consola.
