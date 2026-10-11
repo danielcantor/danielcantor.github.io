@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router'
 import Navbar from './Navbar.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
+import Footer from './Footer.jsx'
 
 export default function Layout() {
   return (
@@ -16,6 +17,7 @@ export default function Layout() {
       <main id="contenido">
         <Outlet />
       </main>
+      <Footer />
     </>
   )
 }
