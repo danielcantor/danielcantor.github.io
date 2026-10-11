@@ -18,7 +18,7 @@ export default function Trabajos() {
           intro="Algunos casos de pymes y emprendimientos con los que trabajé. Entrá a cada uno para ver qué se hizo y qué resultados tuvo."
         />
       </Reveal>
-      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {trabajos.map((trabajo, i) => (
           <Reveal as="li" key={trabajo.slug} delay={i * 80}>
             <TrabajoCard trabajo={trabajo} />
