@@ -1,5 +1,6 @@
 import { site, whatsappUrl } from '../config/site.js'
 import { navLinks } from '../data/navegacion.js'
+import { trackEvent } from '../lib/analytics.js'
 import logo from '../assets/img/logo-apilado-claro.webp'
 
 const redes = [
@@ -34,10 +35,20 @@ export default function Footer() {
 
           <div className="flex flex-col gap-2 text-[15px]">
             <h2 className="mb-1 font-semibold text-on-night">Contacto</h2>
-            <a href={`mailto:${site.email}`} className={`${linkClass} break-all`}>
+            <a
+              href={`mailto:${site.email}`}
+              onClick={() => trackEvent('click_email', { ubicacion: 'footer' })}
+              className={`${linkClass} break-all`}
+            >
               {site.email}
             </a>
-            <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className={linkClass}>
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('click_whatsapp', { ubicacion: 'footer' })}
+              className={linkClass}
+            >
               WhatsApp {site.phoneDisplay}
               <span className="sr-only"> (se abre en una pestaña nueva)</span>
             </a>

@@ -3,6 +3,7 @@ import ContactForm from './ContactForm.jsx'
 import WhatsAppButton from './WhatsAppButton.jsx'
 import Reveal from './Reveal.jsx'
 import { site } from '../config/site.js'
+import { trackEvent } from '../lib/analytics.js'
 
 export default function Contacto() {
   return (
@@ -18,10 +19,14 @@ export default function Contacto() {
           title="Contame de tu proyecto"
           intro="Respondo en menos de 24 horas hábiles. Si preferís algo más rápido, escribime por WhatsApp y lo charlamos."
         />
-        <WhatsAppButton className="self-start" />
+        <WhatsAppButton ubicacion="contacto" className="self-start" />
         <p className="text-[15px] text-muted">
           También podés escribirme a{' '}
-          <a href={`mailto:${site.email}`} className="font-semibold break-all">
+          <a
+            href={`mailto:${site.email}`}
+            onClick={() => trackEvent('click_email', { ubicacion: 'contacto' })}
+            className="font-semibold break-all"
+          >
             {site.email}
           </a>
         </p>

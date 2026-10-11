@@ -6,6 +6,7 @@ import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import { ArrowUpRightIcon } from '../components/icons.jsx'
 import { trabajos, getTrabajo, trabajoPath } from '../data/trabajos.js'
 import { site, absoluteUrl } from '../config/site.js'
+import { trackEvent } from '../lib/analytics.js'
 import NotFound from './NotFound.jsx'
 
 function jsonLd(trabajo) {
@@ -290,11 +291,12 @@ export default function Proyecto() {
           <div className="flex flex-wrap gap-3">
             <a
               href="/#contacto"
+              onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'proyecto', proyecto: trabajo.slug })}
               className="inline-flex h-13.5 items-center rounded-full bg-accent px-6.5 font-semibold text-on-accent no-underline hover:bg-[#d9722a]"
             >
               Pedí tu diagnóstico
             </a>
-            <WhatsAppButton message={`Hola Daniel, vi el caso de ${trabajo.titulo} y quiero consultarte por`}>
+            <WhatsAppButton ubicacion="proyecto" message={`Hola Daniel, vi el caso de ${trabajo.titulo} y quiero consultarte por`}>
               WhatsApp
             </WhatsAppButton>
           </div>

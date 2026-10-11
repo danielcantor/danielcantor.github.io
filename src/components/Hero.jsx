@@ -1,4 +1,5 @@
 import CountUp from './CountUp.jsx'
+import { trackEvent } from '../lib/analytics.js'
 
 export default function Hero() {
   return (
@@ -20,12 +21,14 @@ export default function Hero() {
         <div className="flex flex-wrap gap-3.5">
           <a
             href="#contacto"
+            onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'hero' })}
             className="inline-flex h-13.5 items-center rounded-full bg-accent px-6.5 font-semibold text-on-accent no-underline transition-colors hover:bg-[#d9722a]"
           >
             Pedí tu diagnóstico gratis
           </a>
           <a
             href="#trabajos"
+            onClick={() => trackEvent('cta_click', { cta: 'ver_trabajos', ubicacion: 'hero' })}
             className="inline-flex h-13.5 items-center rounded-full border-2 border-ink px-6.5 font-semibold text-ink no-underline transition-colors hover:bg-ink hover:text-surface"
           >
             Ver trabajos

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { faq } from '../data/faq.js'
+import { trackEvent } from '../lib/analytics.js'
 import SectionHeading from './SectionHeading.jsx'
 import AccordionItem from './AccordionItem.jsx'
 import Reveal from './Reveal.jsx'
@@ -8,6 +9,7 @@ export default function FAQ() {
   const [abiertos, setAbiertos] = useState(() => new Set([0]))
 
   function toggle(i) {
+    if (!abiertos.has(i)) trackEvent('faq_open', { pregunta: faq[i].pregunta })
     setAbiertos((prev) => {
       const next = new Set(prev)
       next.has(i) ? next.delete(i) : next.add(i)

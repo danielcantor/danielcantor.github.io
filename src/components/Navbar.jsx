@@ -42,7 +42,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <div className="hidden lg:block">
-            <WhatsAppButton size="sm">WhatsApp</WhatsAppButton>
+            <WhatsAppButton ubicacion="header" size="sm">WhatsApp</WhatsAppButton>
           </div>
           <button
             type="button"

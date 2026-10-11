@@ -1,4 +1,5 @@
 import { whatsappUrl } from '../config/site.js'
+import { trackEvent } from '../lib/analytics.js'
 import { WhatsAppIcon } from './icons.jsx'
 
 const sizes = {
@@ -11,14 +12,20 @@ export default function WhatsAppButton({
   message,
   size = 'md',
   className = '',
+  ubicacion,
   onClick,
 }) {
+  function handleClick(event) {
+    trackEvent('click_whatsapp', { ubicacion })
+    onClick?.(event)
+  }
+
   return (
     <a
       href={whatsappUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={onClick}
+      onClick={handleClick}
       className={`inline-flex items-center justify-center rounded-full bg-wa font-semibold text-white no-underline transition-colors hover:bg-[#186540] ${sizes[size]} ${className}`}
     >
       <WhatsAppIcon size={size === 'sm' ? 18 : 20} />

@@ -49,7 +49,7 @@ export default function MobileMenu({ open, onClose }) {
             ))}
           </ul>
         </nav>
-        <WhatsAppButton onClick={onClose} className="mt-auto w-full" />
+        <WhatsAppButton ubicacion="menu_mobile" onClick={onClose} className="mt-auto w-full" />
       </div>
     </div>,
     document.body,

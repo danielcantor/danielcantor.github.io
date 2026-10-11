@@ -1,11 +1,13 @@
 import { Link } from 'react-router'
 import { trabajoPath } from '../data/trabajos.js'
+import { trackEvent } from '../lib/analytics.js'
 
 // En mobile van de a dos por fila: tipografía y espaciados más chicos hasta `sm`.
 export default function TrabajoCard({ trabajo }) {
   return (
     <Link
       to={trabajoPath(trabajo.slug)}
+      onClick={() => trackEvent('select_content', { content_type: 'trabajo', content_id: trabajo.slug })}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card text-ink no-underline transition-shadow hover:shadow-lg sm:rounded-[20px]"
     >
       <div className="relative overflow-hidden">

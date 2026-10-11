@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { servicios } from '../data/servicios.js'
 import { site } from '../config/site.js'
+import { trackEvent } from '../lib/analytics.js'
 
 const ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT
 const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
@@ -87,10 +88,12 @@ export default function ContactForm() {
       const data = await respuesta.json().catch(() => ({}))
       if (!respuesta.ok || data.success === false) throw new Error(data.message || respuesta.statusText)
       setEstado('enviado')
+      trackEvent('generate_lead', { form: 'contacto', servicio: valores.servicio })
       setValores(VACIO)
     } catch (error) {
       console.error('No se pudo enviar el formulario:', error)
       setEstado('error')
+      trackEvent('contact_form_error', { form: 'contacto' })
     }
   }
 

@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { site, absoluteUrl } from '../config/site.js'
+import { trackPageView } from '../lib/analytics.js'
 
 export default function Seo({
   title,
@@ -15,7 +16,7 @@ export default function Seo({
   const imageUrl = absoluteUrl(image)
 
   return (
-    <Helmet>
+    <Helmet onChangeClientState={(state) => trackPageView(state.title)}>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={url} />}

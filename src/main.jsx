@@ -6,6 +6,9 @@ import '@fontsource-variable/montserrat'
 import '@fontsource-variable/instrument-sans'
 import './index.css'
 import App from './App.jsx'
+import { initAnalytics } from './lib/analytics.js'
+
+initAnalytics()
 
 const app = (
   <StrictMode>
