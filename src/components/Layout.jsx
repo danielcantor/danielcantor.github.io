@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router'
+import Navbar from './Navbar.jsx'
 
 export default function Layout() {
   return (
@@ -9,6 +10,7 @@ export default function Layout() {
       >
         Saltar al contenido
       </a>
+      <Navbar />
       <main id="contenido">
         <Outlet />
       </main>

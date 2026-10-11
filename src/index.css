@@ -22,6 +22,18 @@
   --color-night-text: #c3cce6;
 }
 
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
