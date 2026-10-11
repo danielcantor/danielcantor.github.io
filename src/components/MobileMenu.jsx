@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom'
 import useDialog from '../hooks/useDialog.js'
 import { navLinks } from '../data/navegacion.js'
 import WhatsAppButton from './WhatsAppButton.jsx'
@@ -9,7 +10,9 @@ export default function MobileMenu({ open, onClose }) {
 
   if (!open) return null
 
-  return (
+  // Se renderiza en <body>: el header tiene backdrop-filter, que haría que un
+  // `position: fixed` adentro suyo se ubique respecto del header y no de la pantalla.
+  return createPortal(
     <div className="fixed inset-0 z-50 flex justify-end lg:hidden">
       <div className="absolute inset-0 bg-ink/60 motion-safe:animate-[fade-in_200ms_ease-out]" onClick={onClose} />
       <div
@@ -48,6 +51,7 @@ export default function MobileMenu({ open, onClose }) {
         </nav>
         <WhatsAppButton onClick={onClose} className="mt-auto w-full" />
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
