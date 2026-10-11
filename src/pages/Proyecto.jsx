@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router'
 import Seo from '../components/Seo.jsx'
 import CountUp from '../components/CountUp.jsx'
 import Reveal from '../components/Reveal.jsx'
+import ProcesoPaso from '../components/ProcesoPaso.jsx'
 import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import { ArrowUpRightIcon } from '../components/icons.jsx'
 import { trabajos, getTrabajo, trabajoPath } from '../data/trabajos.js'
@@ -167,7 +168,7 @@ export default function Proyecto() {
         </section>
 
         <div className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2">
-          <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4">
+          <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4 lg:sticky lg:top-28">
             <p className="text-[15px] font-semibold text-brand-text">El desafío</p>
             <h2 id="desafio" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
               {trabajo.desafio.titulo}
@@ -176,22 +177,23 @@ export default function Proyecto() {
               <p key={p} className="text-muted">{p}</p>
             ))}
           </Reveal>
-          <Reveal as="section" aria-labelledby="que-hicimos" delay={100} className="flex flex-col gap-4">
+          <section aria-labelledby="que-hicimos" className="flex flex-col gap-4">
             <h2 id="que-hicimos" className="text-[15px] font-semibold text-brand-text">Qué hicimos</h2>
-            <ol className="flex flex-col gap-3.5">
+            <ol>
               {trabajo.pasos.map((paso, i) => (
-                <li key={paso.titulo} className="flex gap-4 rounded-2xl border border-line bg-card p-5">
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-extrabold text-on-accent">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-[17px] font-semibold">{paso.titulo}</h3>
-                    <p className="mt-0.5 text-[15px] text-muted">{paso.descripcion}</p>
-                  </div>
-                </li>
+                <Reveal as="li" key={paso.titulo} delay={100 + i * 150}>
+                  <ProcesoPaso
+                    numero={i + 1}
+                    titulo={paso.titulo}
+                    descripcion={paso.descripcion}
+                    ultimo={i === trabajo.pasos.length - 1}
+                    tono="claro"
+                    horizontal={false}
+                  />
+                </Reveal>
               ))}
             </ol>
-          </Reveal>
+          </section>
         </div>
 
         {(trabajo.antesDespues || trabajo.galeria.length > 0) && (
