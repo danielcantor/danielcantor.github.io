@@ -41,8 +41,7 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 ## Checklist para publicar
 
 **GitHub y dominio**
-- [ ] Subir el repo: `git push -u origin main` (y, si querés, `git push origin legacy-2016` para guardar el sitio viejo en GitHub).
-- [ ] En GitHub → Settings → Branches: cambiar la rama por defecto de `master` a `main` y borrar `master`.
+- [x] Sitio nuevo en la rama `master` (cada push a `master` publica el sitio). El portfolio de 2016 quedó en la rama `legacy`.
 - [ ] Settings → Pages → Source: **GitHub Actions**.
 - [ ] Settings → Pages → Custom domain: `danielcantor.com.ar` y activar **Enforce HTTPS** cuando esté disponible.
 - [ ] En NIC Argentina / tu proveedor de DNS: registros `A` del dominio raíz a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`, y un `CNAME` de `www` a `danielcantor.github.io`. (Confirmá las IPs vigentes en la documentación de GitHub Pages.)
