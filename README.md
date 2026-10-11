@@ -54,8 +54,8 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 
 **Contenido**
 - [ ] Reemplazar los 4 trabajos de ejemplo por casos reales (y sacar `ejemplo: true`).
-- [ ] Imágenes reales: `hero.webp`, `perfil.webp` y las de `public/img/trabajos/`.
-- [ ] Resultado destacado del hero (`src/components/Hero.jsx`).
+- [ ] Imágenes reales: `perfil.webp` y las de `public/img/trabajos/`.
+- [ ] Resultados de la animación del hero (`src/components/HeroAnimation.jsx`).
 - [ ] Años de experiencia, texto y herramientas en `src/data/sobreMi.js`.
 - [ ] Links de LinkedIn e Instagram en `src/config/site.js`.
 - [ ] Revisar precios, tiempos y respuestas en `src/data/faq.js` y alcance en `src/data/servicios.js`.

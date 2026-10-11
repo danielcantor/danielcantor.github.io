@@ -1,4 +1,4 @@
-import CountUp from './CountUp.jsx'
+import HeroAnimation from './HeroAnimation.jsx'
 import { trackEvent } from '../lib/analytics.js'
 
 export default function Hero() {
@@ -36,31 +36,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative flex aspect-[5/4] items-end overflow-hidden rounded-[28px] bg-brand p-5 sm:p-7">
-        <div className="absolute inset-x-5 top-5 overflow-hidden rounded-[14px] bg-surface shadow-lg sm:inset-x-7 sm:top-7">
-          <div aria-hidden="true" className="flex h-7 items-center gap-1.5 bg-line px-3">
-            <span className="size-2.5 rounded-full bg-line-strong" />
-            <span className="size-2.5 rounded-full bg-line-strong" />
-            <span className="size-2.5 rounded-full bg-line-strong" />
-          </div>
-          {/* TODO: reemplazar por una captura real de un proyecto (1200×960). */}
-          <img
-            src="/img/hero.webp"
-            alt="Captura de un sitio web diseñado por Daniel Cantor"
-            width="1200"
-            height="960"
-            fetchpriority="high"
-            className="block aspect-[16/10] w-full object-cover"
-          />
-        </div>
-        <div className="relative z-10 flex flex-col gap-0.5 rounded-2xl bg-card px-5 py-4 shadow-md">
-          <span className="text-[13px] text-muted">Resultado destacado</span>
-          <span className="font-display text-[22px] font-bold sm:text-[26px]">
-            {/* TODO: usar un resultado real de un cliente. */}
-            <CountUp to={180} sign suffix="%" delay={300} /> visitas orgánicas
-          </span>
-        </div>
-      </div>
+      <HeroAnimation />
     </section>
   )
 }

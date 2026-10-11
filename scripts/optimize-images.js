@@ -1,7 +1,7 @@
 // Convierte las imágenes de assets-src/ a WebP optimizado en public/img/,
 // respetando las subcarpetas. Uso: npm run images
 //
-//   assets-src/hero.jpg                     →  public/img/hero.webp
+//   assets-src/perfil.jpg                   →  public/img/perfil.webp
 //   assets-src/trabajos/mi-cliente-card.png →  public/img/trabajos/mi-cliente-card.webp
 import fs from 'node:fs/promises'
 import path from 'node:path'

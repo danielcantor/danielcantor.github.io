@@ -83,6 +83,70 @@
   }
 }
 
+/*
+ * Animación del hero (HeroAnimation.jsx). Cada elemento define su arranque con --d.
+ * Con "reducir movimiento" activado, todo queda directamente en su estado final.
+ */
+@keyframes hero-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+@keyframes hero-scene {
+  0%,
+  93% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-gauge {
+  from {
+    stroke-dashoffset: 94.25;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-scene {
+    animation: hero-scene 10s linear both;
+  }
+
+  .hero-grow {
+    transform-origin: left center;
+    animation: hero-grow 450ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  }
+
+  .hero-in {
+    animation: hero-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  }
+
+  .hero-caret {
+    animation:
+      hero-in 200ms ease-out var(--d, 0ms) both,
+      hero-caret 1s steps(1) calc(var(--d, 0ms) + 200ms) infinite;
+  }
+
+  .hero-gauge {
+    animation: hero-gauge 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  }
+}
+
 /* Animación de entrada: solo se oculta si hay JavaScript y el usuario no pidió reducir movimiento. */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
