@@ -34,6 +34,20 @@
   }
 }
 
+/* Animación de entrada: solo se oculta si hay JavaScript y el usuario no pidió reducir movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    transition:
+      opacity 600ms ease-out,
+      transform 600ms ease-out;
+  }
+
+  .js [data-reveal]:not([data-visible]) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

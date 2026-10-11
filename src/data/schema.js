@@ -8,7 +8,7 @@ export const professionalService = {
   name: site.name,
   description: site.defaultDescription,
   url: site.url,
-  logo: absoluteUrl('/img/logo-cuadrado.png'),
+  logo: absoluteUrl('/favicon.png'),
   image: absoluteUrl(site.defaultImage),
   email: site.email,
   telephone: site.phoneDisplay,

@@ -12,8 +12,7 @@ export const site = {
   whatsappMessage: 'Hola Daniel, vi tu web y quiero consultarte por',
   defaultDescription:
     'Diseño web en Buenos Aires: creación de sitios web para pymes, asesoría e-commerce y consultoría SEO para mejorar tu posicionamiento web.',
-  // TODO: imagen de 1200×630 para compartir en redes (og:image).
-  defaultImage: '/img/logo-cuadrado.png',
+  defaultImage: '/img/og-image.jpg',
   social: {
     // TODO: completar con los perfiles reales.
     linkedin: '',
