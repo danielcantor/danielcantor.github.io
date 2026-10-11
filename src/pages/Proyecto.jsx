@@ -42,7 +42,7 @@ function Ficha({ trabajo }) {
     ['Duración', trabajo.duracion],
   ]
   return (
-    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 rounded-[20px] border border-line bg-white p-6 text-[15px]">
+    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 rounded-[20px] border border-line bg-card p-6 text-[15px]">
       {datos.map(([dt, dd]) => (
         <div key={dt}>
           <dt className="text-[13px] text-subtle">{dt}</dt>
@@ -121,7 +121,7 @@ export default function Proyecto() {
 
           <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_1fr]">
             <div className="flex flex-col gap-4.5">
-              <span className="self-start rounded-full bg-brand-soft px-3.5 py-1.5 text-sm font-semibold text-brand">
+              <span className="self-start rounded-full bg-brand-soft px-3.5 py-1.5 text-sm font-semibold text-brand-text">
                 {trabajo.tipo}
               </span>
               <h1 className="font-display text-[clamp(2.1rem,4.6vw,3.6rem)] leading-[1.08] font-extrabold tracking-[-0.025em]">
@@ -142,7 +142,7 @@ export default function Proyecto() {
           />
         </header>
 
-        <section aria-labelledby="resultados" className="border-y border-line-soft bg-white">
+        <section aria-labelledby="resultados" className="border-y border-line-soft bg-card">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-14">
             <h2 id="resultados" className="font-display text-[22px] font-bold">
               {trabajo.metricasTitulo}
@@ -156,7 +156,7 @@ export default function Proyecto() {
                     decimals={m.decimals}
                     suffix={m.suffix}
                     sign={m.sign}
-                    className="font-display text-[44px] leading-tight font-extrabold text-brand"
+                    className="font-display text-[44px] leading-tight font-extrabold text-brand-text"
                   />
                   <span className="text-[15px] text-muted">{m.label}</span>
                 </li>
@@ -167,7 +167,7 @@ export default function Proyecto() {
 
         <div className="mx-auto grid max-w-6xl items-start gap-14 px-6 py-20 lg:grid-cols-2">
           <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4">
-            <p className="text-[15px] font-semibold text-brand">El desafío</p>
+            <p className="text-[15px] font-semibold text-brand-text">El desafío</p>
             <h2 id="desafio" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
               {trabajo.desafio.titulo}
             </h2>
@@ -176,11 +176,11 @@ export default function Proyecto() {
             ))}
           </Reveal>
           <Reveal as="section" aria-labelledby="que-hicimos" delay={100} className="flex flex-col gap-4">
-            <h2 id="que-hicimos" className="text-[15px] font-semibold text-brand">Qué hicimos</h2>
+            <h2 id="que-hicimos" className="text-[15px] font-semibold text-brand-text">Qué hicimos</h2>
             <ol className="flex flex-col gap-3.5">
               {trabajo.pasos.map((paso, i) => (
-                <li key={paso.titulo} className="flex gap-4 rounded-2xl border border-line bg-white p-5">
-                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-extrabold text-ink">
+                <li key={paso.titulo} className="flex gap-4 rounded-2xl border border-line bg-card p-5">
+                  <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[15px] font-extrabold text-on-accent">
                     {i + 1}
                   </span>
                   <div>
@@ -194,7 +194,7 @@ export default function Proyecto() {
         </div>
 
         {(trabajo.antesDespues || trabajo.galeria.length > 0) && (
-          <section aria-labelledby="antes-despues" className="bg-ink text-surface">
+          <section aria-labelledby="antes-despues" className="bg-night text-on-night">
             <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20">
               <div className="flex flex-col gap-2.5">
                 <p className="text-[15px] font-semibold text-[#f2a774]">
@@ -220,7 +220,7 @@ export default function Proyecto() {
                           className="aspect-[4/3] w-full rounded-[18px] object-cover"
                         />
                         <figcaption className="text-sm text-night-text">
-                          <strong className="text-surface">{k === 'antes' ? 'Antes:' : 'Después:'}</strong> {img.caption}
+                          <strong className="text-on-night">{k === 'antes' ? 'Antes:' : 'Después:'}</strong> {img.caption}
                         </figcaption>
                       </figure>
                     )
@@ -250,7 +250,7 @@ export default function Proyecto() {
 
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
           {trabajo.testimonio && (
-            <figure className="flex flex-col gap-5 rounded-3xl border border-line bg-white p-8 sm:p-10">
+            <figure className="flex flex-col gap-5 rounded-3xl border border-line bg-card p-8 sm:p-10">
               <blockquote className="font-display text-[22px] leading-snug font-semibold">
                 “{trabajo.testimonio.texto}”
               </blockquote>
@@ -266,7 +266,7 @@ export default function Proyecto() {
             <h2 id="herramientas" className="font-display text-2xl font-bold">Herramientas usadas</h2>
             <ul className="flex flex-wrap gap-2.5">
               {trabajo.herramientas.map((h) => (
-                <li key={h} className="rounded-[10px] border border-line-strong bg-white px-3.5 py-2 text-sm font-medium">
+                <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3.5 py-2 text-sm font-medium">
                   {h}
                 </li>
               ))}
@@ -280,7 +280,7 @@ export default function Proyecto() {
       </article>
 
       <section aria-labelledby="cta" className="mx-auto max-w-6xl px-6 pb-20">
-        <div className="flex flex-wrap items-center justify-between gap-7 rounded-[28px] bg-brand px-8 py-12 text-surface sm:px-12 sm:py-14">
+        <div className="flex flex-wrap items-center justify-between gap-7 rounded-[28px] bg-brand px-8 py-12 text-on-night sm:px-12 sm:py-14">
           <div className="flex max-w-xl flex-col gap-2.5">
             <h2 id="cta" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
               {trabajo.cta}
@@ -290,7 +290,7 @@ export default function Proyecto() {
           <div className="flex flex-wrap gap-3">
             <a
               href="/#contacto"
-              className="inline-flex h-13.5 items-center rounded-full bg-accent px-6.5 font-semibold text-ink no-underline hover:bg-[#d9722a]"
+              className="inline-flex h-13.5 items-center rounded-full bg-accent px-6.5 font-semibold text-on-accent no-underline hover:bg-[#d9722a]"
             >
               Pedí tu diagnóstico
             </a>
@@ -309,11 +309,11 @@ export default function Proyecto() {
           <Link
             key={label}
             to={trabajoPath(t.slug)}
-            className={`flex flex-col gap-1 rounded-[18px] border border-line bg-white p-6 text-ink no-underline hover:border-brand ${align}`}
+            className={`flex flex-col gap-1 rounded-[18px] border border-line bg-card p-6 text-ink no-underline hover:border-brand ${align}`}
           >
             <span className="text-sm text-subtle">{label}</span>
             <span className="font-display text-xl font-bold">{t.titulo}</span>
-            <span className="text-sm font-semibold text-brand">{t.tipo}</span>
+            <span className="text-sm font-semibold text-brand-text">{t.tipo}</span>
           </Link>
         ))}
       </nav>

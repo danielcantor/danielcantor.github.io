@@ -5,7 +5,7 @@ export default function TrabajoCard({ trabajo }) {
   return (
     <Link
       to={trabajoPath(trabajo.slug)}
-      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-white text-ink no-underline transition-shadow hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-line bg-card text-ink no-underline transition-shadow hover:shadow-lg"
     >
       <div className="overflow-hidden">
         <img
@@ -19,7 +19,7 @@ export default function TrabajoCard({ trabajo }) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-1.5 px-5.5 pt-5 pb-6">
-        <span className="text-[13px] font-semibold text-brand">
+        <span className="text-[13px] font-semibold text-brand-text">
           {trabajo.tipo}
           {trabajo.ejemplo && <span className="ml-2 rounded bg-line px-1.5 py-0.5 text-[11px] text-muted">Ejemplo</span>}
         </span>
@@ -27,7 +27,7 @@ export default function TrabajoCard({ trabajo }) {
         <span className="mt-1.5 self-start rounded-full bg-accent-soft px-3 py-1 text-[13px] font-semibold text-accent-ink">
           {trabajo.resultado}
         </span>
-        <span className="mt-auto pt-4 text-sm font-semibold text-brand group-hover:underline">
+        <span className="mt-auto pt-4 text-sm font-semibold text-brand-text group-hover:underline">
           Ver caso completo <span aria-hidden="true">→</span>
         </span>
       </div>

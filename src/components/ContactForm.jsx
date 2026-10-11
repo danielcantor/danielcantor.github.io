@@ -20,7 +20,7 @@ function validar(valores) {
 }
 
 const campoBase =
-  'w-full rounded-xl border-[1.5px] bg-white px-3.5 text-ink placeholder:text-subtle focus-visible:border-brand'
+  'w-full rounded-xl border-[1.5px] bg-field px-3.5 text-ink placeholder:text-subtle focus-visible:border-brand'
 
 function Campo({ id, label, error, children }) {
   return (
@@ -30,7 +30,7 @@ function Campo({ id, label, error, children }) {
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} className="text-sm font-medium text-[#b3261e]">
+        <p id={`${id}-error`} className="text-sm font-medium text-danger">
           {error}
         </p>
       )}
@@ -102,7 +102,7 @@ export default function ContactForm() {
     'aria-invalid': errores[name] ? true : undefined,
     'aria-describedby': errores[name] ? `contacto-${name}-error` : undefined,
     'aria-required': true,
-    className: `${campoBase} ${errores[name] ? 'border-[#b3261e]' : 'border-line-strong'}`,
+    className: `${campoBase} ${errores[name] ? 'border-danger' : 'border-line-strong'}`,
   })
 
   return (
@@ -111,7 +111,7 @@ export default function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label="Formulario de contacto"
-      className="flex flex-col gap-5 rounded-3xl border border-line bg-white p-6 sm:p-8"
+      className="flex flex-col gap-5 rounded-3xl border border-line bg-card p-6 sm:p-8"
     >
       <Campo id="contacto-nombre" label="Nombre" error={errores.nombre}>
         <input type="text" autoComplete="name" placeholder="Tu nombre" {...props('nombre')} className={`${props('nombre').className} h-12.5`} />
@@ -143,19 +143,19 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={estado === 'enviando'}
-        className="h-13.5 rounded-full bg-ink font-semibold text-white transition-colors hover:bg-brand disabled:cursor-wait disabled:opacity-70"
+        className="h-13.5 rounded-full bg-brand font-semibold text-on-night transition-colors hover:bg-brand-dark disabled:cursor-wait disabled:opacity-70"
       >
         {estado === 'enviando' ? 'Enviando…' : 'Enviar consulta'}
       </button>
 
       <div role="status" aria-live="polite">
         {estado === 'enviado' && (
-          <p className="rounded-xl bg-[#e3f3ea] px-4 py-3 text-[15px] font-medium text-[#14532d]">
+          <p className="rounded-xl bg-success-bg px-4 py-3 text-[15px] font-medium text-success-text">
             ¡Gracias! Recibí tu mensaje y te respondo en menos de 24 horas hábiles.
           </p>
         )}
         {estado === 'error' && (
-          <p className="rounded-xl bg-[#fdecea] px-4 py-3 text-[15px] font-medium text-[#8c1d18]">
+          <p className="rounded-xl bg-error-bg px-4 py-3 text-[15px] font-medium text-error-text">
             No se pudo enviar el mensaje. Probá de nuevo en unos minutos o escribime por WhatsApp.
           </p>
         )}

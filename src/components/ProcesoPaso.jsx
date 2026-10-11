@@ -4,12 +4,12 @@ export default function ProcesoPaso({ numero, titulo, descripcion, tono = 'oscur
   return (
     <div
       className={`flex h-full flex-col gap-3 rounded-[20px] border p-7 ${
-        oscuro ? 'border-night-line' : 'border-line bg-white'
+        oscuro ? 'border-night-line' : 'border-line bg-card'
       }`}
     >
       <span
         aria-hidden="true"
-        className="inline-flex size-11 items-center justify-center rounded-full bg-accent font-display font-extrabold text-ink"
+        className="inline-flex size-11 items-center justify-center rounded-full bg-accent font-display font-extrabold text-on-accent"
       >
         {numero}
       </span>

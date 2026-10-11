@@ -34,7 +34,7 @@ export default function SobreMi() {
           <h3 className="text-base font-semibold">Herramientas con las que trabajo</h3>
           <ul className="flex flex-wrap gap-2.5">
             {sobreMi.herramientas.map((h) => (
-              <li key={h} className="rounded-[10px] border border-line-strong bg-white px-3.5 py-2 text-sm font-medium">
+              <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3.5 py-2 text-sm font-medium">
                 {h}
               </li>
             ))}
