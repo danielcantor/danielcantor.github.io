@@ -28,12 +28,9 @@ jobs:
 
       - run: npm ci
 
+      # La configuración del formulario se toma de .env.production.
       - name: Build y prerender
         run: npm run build
-        env:
-          # Se configuran en Settings → Secrets and variables → Actions → Variables.
-          VITE_FORM_ENDPOINT: ${{ vars.VITE_FORM_ENDPOINT }}
-          VITE_WEB3FORMS_KEY: ${{ vars.VITE_WEB3FORMS_KEY }}
 
       - uses: actions/configure-pages@v6
 

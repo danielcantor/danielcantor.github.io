@@ -42,14 +42,14 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 
 **GitHub y dominio**
 - [x] Sitio nuevo en la rama `master` (cada push a `master` publica el sitio). El portfolio de 2016 quedó en la rama `legacy`.
-- [ ] Settings → Pages → Source: **GitHub Actions**.
+- [x] Settings → Pages → Source: **GitHub Actions**.
+- [ ] Registrar o renovar `danielcantor.com.ar` a tu nombre en NIC Argentina.
+- [ ] DNS (por ejemplo en Cloudflare, plan gratis): registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`, y un `CNAME` de `www` a `danielcantor.github.io`, en modo "DNS only". (Confirmá las IPs vigentes en la documentación de GitHub Pages.)
+- [ ] En NIC Argentina, delegar el dominio a los nameservers del proveedor de DNS.
 - [ ] Settings → Pages → Custom domain: `danielcantor.com.ar` y activar **Enforce HTTPS** cuando esté disponible.
-- [ ] En NIC Argentina / tu proveedor de DNS: registros `A` del dominio raíz a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`, y un `CNAME` de `www` a `danielcantor.github.io`. (Confirmá las IPs vigentes en la documentación de GitHub Pages.)
 
 **Formulario (Web3Forms)**
-- [ ] Crear la access key en https://web3forms.com con tu email.
-- [ ] Copiar `.env.example` como `.env` y completar `VITE_WEB3FORMS_KEY` (para probar en local).
-- [ ] En GitHub → Settings → Secrets and variables → Actions → **Variables**: crear `VITE_FORM_ENDPOINT` (`https://api.web3forms.com/submit`) y `VITE_WEB3FORMS_KEY`.
+- [x] Access key de Web3Forms cargada en `.env.production` (y en `.env` para desarrollo).
 - [ ] Mandar un mensaje de prueba desde el sitio publicado.
 
 **Contenido**
