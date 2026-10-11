@@ -10,7 +10,7 @@ export default function Contacto() {
     <section
       id="contacto"
       aria-labelledby="contacto-titulo"
-      className="mx-auto grid max-w-6xl items-start gap-14 px-6 py-20 lg:grid-cols-2 lg:py-24"
+      className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2 lg:py-24"
     >
       <Reveal className="flex flex-col gap-5">
         <SectionHeading

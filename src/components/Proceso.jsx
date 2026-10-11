@@ -6,7 +6,7 @@ import Reveal from './Reveal.jsx'
 export default function Proceso() {
   return (
     <section id="proceso" aria-labelledby="proceso-titulo" className="bg-night text-on-night">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 lg:py-24">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24">
         <Reveal>
           <SectionHeading
             id="proceso-titulo"
@@ -16,10 +16,15 @@ export default function Proceso() {
             dark
           />
         </Reveal>
-        <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="lg:grid lg:grid-cols-4">
           {proceso.map((paso, i) => (
-            <Reveal as="li" key={paso.titulo} delay={i * 100}>
-              <ProcesoPaso numero={i + 1} titulo={paso.titulo} descripcion={paso.descripcion} />
+            <Reveal as="li" key={paso.titulo} delay={i * 150}>
+              <ProcesoPaso
+                numero={i + 1}
+                titulo={paso.titulo}
+                descripcion={paso.descripcion}
+                ultimo={i === proceso.length - 1}
+              />
             </Reveal>
           ))}
         </ol>

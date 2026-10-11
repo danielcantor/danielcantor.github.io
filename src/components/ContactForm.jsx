@@ -114,7 +114,7 @@ export default function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label="Formulario de contacto"
-      className="flex flex-col gap-5 rounded-3xl border border-line bg-card p-6 sm:p-8"
+      className="flex flex-col gap-4 rounded-3xl border border-line bg-card p-5 sm:gap-5 sm:p-8"
     >
       <Campo id="contacto-nombre" label="Nombre" error={errores.nombre}>
         <input type="text" autoComplete="name" placeholder="Tu nombre" {...props('nombre')} className={`${props('nombre').className} h-12.5`} />
@@ -137,7 +137,7 @@ export default function ContactForm() {
       </Campo>
 
       <Campo id="contacto-mensaje" label="Mensaje" error={errores.mensaje}>
-        <textarea rows={5} placeholder="Contame qué necesitás" {...props('mensaje')} className={`${props('mensaje').className} resize-y py-3`} />
+        <textarea rows={4} placeholder="Contame qué necesitás" {...props('mensaje')} className={`${props('mensaje').className} resize-y py-3`} />
       </Campo>
 
       {/* Campo trampa para bots: las personas no lo ven ni lo completan. */}

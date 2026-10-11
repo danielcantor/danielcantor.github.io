@@ -37,7 +37,7 @@ export default function Servicios() {
       aria-labelledby="servicios-titulo"
       className="border-y border-line-soft bg-card"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 lg:py-24">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24">
         <Reveal>
           <SectionHeading
             id="servicios-titulo"

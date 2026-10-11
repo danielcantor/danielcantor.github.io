@@ -1,14 +1,14 @@
 export default function ServicioCard({ servicio, numero }) {
   return (
-    <article className="flex h-full flex-col gap-4.5 rounded-[22px] border border-line bg-surface p-6 sm:p-8">
+    <article className="flex h-full flex-col gap-3.5 rounded-[20px] border border-line bg-surface p-5 sm:gap-4.5 sm:rounded-[22px] sm:p-8">
       <span className="font-display text-[15px] font-extrabold text-brand-text">
         {String(numero).padStart(2, '0')}
       </span>
-      <h3 className="font-display text-[23px] leading-tight font-bold sm:text-[25px]">{servicio.titulo}</h3>
-      <p className="text-base text-muted">{servicio.descripcion}</p>
+      <h3 className="font-display text-xl leading-tight font-bold sm:text-[25px]">{servicio.titulo}</h3>
+      <p className="text-[15px] text-muted sm:text-base">{servicio.descripcion}</p>
       <div className="flex flex-col gap-2">
         <h4 className="text-sm font-semibold">Qué incluye</h4>
-        <ul className="flex list-disc flex-col gap-1 pl-5 text-[15px] text-ink">
+        <ul className="flex list-disc flex-col gap-0.5 pl-5 text-sm text-ink sm:gap-1 sm:text-[15px]">
           {servicio.incluye.map((item) => (
             <li key={item}>{item}</li>
           ))}

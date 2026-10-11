@@ -159,6 +159,27 @@
     opacity: 0;
     transform: translateY(18px);
   }
+
+  /* Línea de tiempo del proceso: la línea se dibuja después de que aparece el paso. */
+  .js [data-reveal] .tl-line {
+    transition: transform 700ms ease-out calc(var(--reveal-delay, 0ms) + 350ms);
+  }
+
+  .tl-line-y {
+    transform-origin: top;
+  }
+
+  .tl-line-x {
+    transform-origin: left;
+  }
+
+  .js [data-reveal]:not([data-visible]) .tl-line-y {
+    transform: scaleY(0);
+  }
+
+  .js [data-reveal]:not([data-visible]) .tl-line-x {
+    transform: scaleX(0);
+  }
 }
 
 @layer base {
@@ -175,8 +196,14 @@
 
   body {
     @apply bg-surface font-sans text-ink antialiased;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.6;
+  }
+
+  @media (min-width: 40rem) {
+    body {
+      font-size: 17px;
+    }
   }
 
   :focus-visible {

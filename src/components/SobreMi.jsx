@@ -8,7 +8,7 @@ export default function SobreMi() {
     <section
       id="sobre-mi"
       aria-labelledby="sobre-mi-titulo"
-      className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-20 md:grid-cols-[2fr_3fr] lg:py-24"
+      className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 sm:gap-14 sm:py-20 md:grid-cols-[2fr_3fr] lg:py-24"
     >
       <Reveal>
         <img
@@ -18,23 +18,23 @@ export default function SobreMi() {
           height={foto.height}
           loading="lazy"
           decoding="async"
-          className="mx-auto aspect-[4/5] w-full max-w-[440px] rounded-[28px] object-cover"
+          className="mx-auto aspect-[4/5] w-full max-w-[220px] rounded-3xl object-cover sm:max-w-[440px] sm:rounded-[28px]"
         />
       </Reveal>
-      <Reveal delay={100} className="flex flex-col gap-5">
+      <Reveal delay={100} className="flex flex-col gap-4 sm:gap-5">
         <SectionHeading
           id="sobre-mi-titulo"
           eyebrow="Sobre mí"
           title="Consultor SEO y desarrollador web en Buenos Aires"
         />
         {sobreMi.parrafos.map((p) => (
-          <p key={p} className="text-muted">{p}</p>
+          <p key={p} className="text-[15px] text-muted sm:text-base">{p}</p>
         ))}
         <div className="flex flex-col gap-3">
           <h3 className="text-base font-semibold">Herramientas con las que trabajo</h3>
-          <ul className="flex flex-wrap gap-2.5">
+          <ul className="flex flex-wrap gap-2 sm:gap-2.5">
             {sobreMi.herramientas.map((h) => (
-              <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3.5 py-2 text-sm font-medium">
+              <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3 py-1.5 text-[13px] font-medium sm:px-3.5 sm:py-2 sm:text-sm">
                 {h}
               </li>
             ))}

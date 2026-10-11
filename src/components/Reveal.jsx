@@ -9,7 +9,7 @@ export default function Reveal({ as: Tag = 'div', delay = 0, className = '', chi
       ref={ref}
       data-reveal=""
       data-visible={inView ? '' : undefined}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={delay ? { transitionDelay: `${delay}ms`, '--reveal-delay': `${delay}ms` } : undefined}
       className={className}
       {...props}
     >

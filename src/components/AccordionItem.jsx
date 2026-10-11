@@ -12,7 +12,7 @@ export default function AccordionItem({ id, pregunta, respuesta, abierto, onTogg
           aria-expanded={abierto}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex min-h-16 w-full items-center justify-between gap-4 py-4.5 text-left text-lg font-semibold text-ink"
+          className="flex min-h-14 w-full items-center justify-between gap-4 py-3.5 text-left text-base font-semibold text-ink sm:min-h-16 sm:py-4.5 sm:text-lg"
         >
           {pregunta}
           <span
@@ -23,7 +23,7 @@ export default function AccordionItem({ id, pregunta, respuesta, abierto, onTogg
           </span>
         </button>
       </h3>
-      <div id={panelId} role="region" aria-labelledby={botonId} hidden={!abierto} className="pr-12 pb-5.5 text-muted">
+      <div id={panelId} role="region" aria-labelledby={botonId} hidden={!abierto} className="pr-10 pb-4.5 text-[15px] text-muted sm:pr-12 sm:pb-5.5 sm:text-base">
         {respuesta}
       </div>
     </div>

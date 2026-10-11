@@ -15,10 +15,10 @@ export default function Footer() {
 
   return (
     <footer className="bg-night text-night-text">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 pt-16 pb-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div className="flex flex-col gap-4">
-            <img src={logo} alt="Daniel Cantor" width="534" height="255" loading="lazy" className="h-16 w-auto self-start" />
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pt-12 pb-8 sm:gap-10 sm:pt-16">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="col-span-2 flex flex-col gap-3 sm:gap-4 lg:col-span-1">
+            <img src={logo} alt="Daniel Cantor" width="534" height="255" loading="lazy" className="h-12 w-auto self-start sm:h-16" />
             <p className="max-w-xs text-[15px]">
               Diseño web, asesoría e-commerce y consultoría SEO en {site.city}.
             </p>
@@ -33,7 +33,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <div className="flex flex-col gap-2 text-[15px]">
+          <div className="flex flex-col gap-2 text-[15px] max-sm:order-last max-sm:col-span-2">
             <h2 className="mb-1 font-semibold text-on-night">Contacto</h2>
             <a
               href={`mailto:${site.email}`}

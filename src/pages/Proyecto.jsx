@@ -166,7 +166,7 @@ export default function Proyecto() {
           </div>
         </section>
 
-        <div className="mx-auto grid max-w-6xl items-start gap-14 px-6 py-20 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2">
           <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4">
             <p className="text-[15px] font-semibold text-brand-text">El desafío</p>
             <h2 id="desafio" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
@@ -196,7 +196,7 @@ export default function Proyecto() {
 
         {(trabajo.antesDespues || trabajo.galeria.length > 0) && (
           <section aria-labelledby="antes-despues" className="bg-night text-on-night">
-            <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20">
+            <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:py-20">
               <div className="flex flex-col gap-2.5">
                 <p className="text-[15px] font-semibold text-[#f2a774]">
                   {trabajo.antesDespues ? 'Antes y después' : 'Galería'}
@@ -249,7 +249,7 @@ export default function Proyecto() {
           </section>
         )}
 
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:grid-cols-2">
           {trabajo.testimonio && (
             <figure className="flex flex-col gap-5 rounded-3xl border border-line bg-card p-8 sm:p-10">
               <blockquote className="font-display text-[22px] leading-snug font-semibold">
