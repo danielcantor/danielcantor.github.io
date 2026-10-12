@@ -123,7 +123,7 @@ export default function Proyecto() {
 
           <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_1fr]">
             <div className="flex flex-col gap-4.5">
-              <span className="self-start rounded-full bg-brand-soft px-3.5 py-1.5 text-sm font-semibold text-brand-text">
+              <span className="kicker">
                 {trabajo.tipo}
               </span>
               <h1 className="font-display text-[clamp(2.1rem,4.6vw,3.6rem)] leading-[1.08] font-extrabold tracking-[-0.025em]">
@@ -170,7 +170,7 @@ export default function Proyecto() {
         <div className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2">
           <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4 lg:sticky lg:top-28">
             <p className="text-[15px] font-semibold text-brand-text">El desafío</p>
-            <h2 id="desafio" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
+            <h2 id="desafio" className="bar-under font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
               {trabajo.desafio.titulo}
             </h2>
             {trabajo.desafio.parrafos.map((p) => (
@@ -200,10 +200,10 @@ export default function Proyecto() {
           <section aria-labelledby="antes-despues" className="bg-night text-on-night">
             <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:py-20">
               <div className="flex flex-col gap-2.5">
-                <p className="text-[15px] font-semibold text-[#f2a774]">
+                <p className="kicker text-night-text">
                   {trabajo.antesDespues ? 'Antes y después' : 'Galería'}
                 </p>
-                <h2 id="antes-despues" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] font-extrabold tracking-[-0.02em]">
+                <h2 id="antes-despues" className="bar-under font-display text-[clamp(1.75rem,3vw,2.4rem)] font-extrabold tracking-[-0.02em]">
                   Así quedó el proyecto
                 </h2>
               </div>
@@ -266,7 +266,7 @@ export default function Proyecto() {
             </figure>
           )}
           <section aria-labelledby="herramientas" className="flex flex-col gap-4">
-            <h2 id="herramientas" className="font-display text-2xl font-bold">Herramientas usadas</h2>
+            <h2 id="herramientas" className="bar-under font-display text-2xl font-bold">Herramientas usadas</h2>
             <ul className="flex flex-wrap gap-2.5">
               {trabajo.herramientas.map((h) => (
                 <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3.5 py-2 text-sm font-medium">
@@ -294,7 +294,7 @@ export default function Proyecto() {
             <a
               href="/#contacto"
               onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'proyecto', proyecto: trabajo.slug })}
-              className="inline-flex h-13.5 items-center rounded-full bg-accent px-6.5 font-semibold text-on-accent no-underline hover:bg-[#d9722a]"
+              className="btn btn-light btn-bar h-13.5 px-6.5"
             >
               Pedí tu diagnóstico
             </a>

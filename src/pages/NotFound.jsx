@@ -10,7 +10,7 @@ export default function NotFound() {
         noindex
       />
       <section className="mx-auto flex max-w-3xl flex-col items-start gap-6 px-6 py-32">
-        <p className="font-display text-sm font-bold text-brand-text">Error 404</p>
+        <p className="kicker">Error 404</p>
         <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
           Esta página no existe
         </h1>
@@ -19,7 +19,7 @@ export default function NotFound() {
         </p>
         <Link
           to="/"
-          className="inline-flex h-13 items-center rounded-full bg-brand px-6 font-semibold text-on-night hover:bg-brand-dark"
+          className="btn btn-primary btn-bar h-13 px-6"
         >
           Volver al inicio
         </Link>

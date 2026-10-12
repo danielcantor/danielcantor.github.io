@@ -8,7 +8,7 @@ export default function Hero() {
       className="mx-auto grid max-w-6xl items-center gap-10 px-6 pt-10 pb-14 sm:gap-14 sm:pt-16 sm:pb-20 lg:grid-cols-2 lg:pt-24 lg:pb-26"
     >
       <div className="flex flex-col gap-5 sm:gap-7">
-        <p className="self-start rounded-full bg-brand-soft px-3 py-1 text-[13px] font-semibold text-brand-text sm:px-3.5 sm:py-1.5 sm:text-sm">
+        <p className="kicker">
           Diseño web Buenos Aires<span className="hidden sm:inline"> · Pymes y emprendimientos</span>
         </p>
         <h1 className="font-display text-[clamp(2.1rem,5.4vw,4.25rem)] leading-[1.06] font-extrabold tracking-[-0.025em]">
@@ -22,14 +22,14 @@ export default function Hero() {
           <a
             href="#contacto"
             onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'hero' })}
-            className="inline-flex h-12 items-center rounded-full bg-accent px-5.5 sm:h-13.5 sm:px-6.5 font-semibold text-on-accent no-underline transition-colors hover:bg-[#d9722a]"
+            className="btn btn-primary btn-bar h-12 px-5.5 sm:h-13.5 sm:px-6.5"
           >
             Pedí tu diagnóstico gratis
           </a>
           <a
             href="#trabajos"
             onClick={() => trackEvent('cta_click', { cta: 'ver_trabajos', ubicacion: 'hero' })}
-            className="inline-flex h-12 items-center rounded-full border-2 border-ink px-5.5 sm:h-13.5 sm:px-6.5 font-semibold text-ink no-underline transition-colors hover:bg-ink hover:text-surface"
+            className="btn btn-outline h-12 px-5.5 sm:h-13.5 sm:px-6.5"
           >
             Ver trabajos
           </a>
