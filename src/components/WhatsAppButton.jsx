@@ -26,7 +26,7 @@ export default function WhatsAppButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className={`inline-flex items-center justify-center rounded-full bg-wa font-semibold text-white no-underline transition-colors hover:bg-[#186540] ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-lg bg-wa font-semibold text-white no-underline transition-colors hover:bg-[#186540] ${sizes[size]} ${className}`}
     >
       <WhatsAppIcon size={size === 'sm' ? 18 : 20} />
       {children}

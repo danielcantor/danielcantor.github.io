@@ -146,7 +146,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={estado === 'enviando'}
-        className="h-13.5 rounded-full bg-brand font-semibold text-on-night transition-colors hover:bg-brand-dark disabled:cursor-wait disabled:opacity-70"
+        className="btn btn-primary btn-bar h-13.5 disabled:cursor-wait disabled:opacity-70"
       >
         {estado === 'enviando' ? 'Enviando…' : 'Enviar consulta'}
       </button>

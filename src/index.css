@@ -9,7 +9,7 @@
  */
 @theme {
   --font-display: 'Montserrat Variable', system-ui, sans-serif;
-  --font-sans: 'Instrument Sans Variable', system-ui, sans-serif;
+  --font-sans: 'Montserrat Variable', system-ui, sans-serif;
 
   --color-brand: #1e3a8a;
   --color-brand-dark: #172e6e;
@@ -47,21 +47,21 @@
 
     --color-brand: #1e3a8a;
     --color-brand-dark: #2a4aa6;
-    --color-brand-soft: #1a2754;
-    --color-brand-text: #a3b8ff;
-    --color-ink: #e8ecf5;
-    --color-muted: #aab4cc;
-    --color-subtle: #8f99b3;
-    --color-surface: #0b1226;
-    --color-card: #131c38;
-    --color-field: #0b1226;
-    --color-line: #26314f;
-    --color-line-soft: #1c2643;
-    --color-line-strong: #3a4870;
+    --color-brand-soft: #1a2a63;
+    --color-brand-text: #8fa6f0;
+    --color-ink: #f5f7fb;
+    --color-muted: #aab4d4;
+    --color-subtle: #8f9ac0;
+    --color-surface: #0b1431;
+    --color-card: #132050;
+    --color-field: #0b1431;
+    --color-line: #2a3b6e;
+    --color-line-soft: #1e2d5c;
+    --color-line-strong: #3d5090;
     --color-accent-soft: #3b2716;
     --color-accent-ink: #f7b98c;
-    --color-night: #060b1a;
-    --color-night-line: #1f2b4f;
+    --color-night: #070e24;
+    --color-night-line: #22336a;
     --color-night-text: #b5bfda;
     --color-danger: #ff8a80;
     --color-success-bg: #0f2e1f;
@@ -200,15 +200,112 @@
     line-height: 1.6;
   }
 
-  @media (min-width: 40rem) {
-    body {
-      font-size: 17px;
-    }
-  }
-
   :focus-visible {
     outline: 3px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 6px;
+  }
+}
+
+/*
+ * Recursos del brandbook: la barra naranja inclinada es el único gesto gráfico.
+ * El naranja es solo gráfico: el texto va siempre en tinta o azul marca.
+ */
+@layer components {
+  /* Antetítulo: 12-13 px, SemiBold, mayúsculas espaciadas. */
+  .kicker {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 40rem) {
+    .kicker {
+      font-size: 13px;
+    }
+  }
+
+  /* Subrayado de título con la barra. */
+  .bar-under {
+    position: relative;
+    padding-bottom: 0.45em;
+  }
+
+  .bar-under::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-accent);
+  }
+
+  /* Botones: radio de 8 px y la barra como cierre de etiqueta. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background-color 150ms,
+      color 150ms;
+  }
+
+  .btn-bar::after {
+    content: '';
+    flex: none;
+    width: 4px;
+    height: 18px;
+    border-radius: 1px;
+    background: var(--color-accent);
+    transform: skewX(-16deg);
+  }
+
+  .btn-primary {
+    background: #1e3a8a;
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #172e6e;
+  }
+
+  /* En oscuro, el azul marca se pierde sobre el fondo: se aclara manteniendo texto blanco. */
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      background: #2f52c4;
+    }
+
+    .btn-primary:hover {
+      background: #3b60d6;
+    }
+  }
+
+  /* Sobre fondos azules o tinta. */
+  .btn-light {
+    background: #f5f7fb;
+    color: #0f1b3d;
+  }
+
+  .btn-light:hover {
+    background: #ffffff;
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-ink);
+    color: var(--color-surface);
   }
 }
