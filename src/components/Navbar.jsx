@@ -28,7 +28,7 @@ export default function Navbar() {
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-[15px] font-medium">
+          <ul className="flex items-center gap-5 text-[15px] font-medium whitespace-nowrap xl:gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-ink no-underline hover:text-brand-text">
