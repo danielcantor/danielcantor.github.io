@@ -1,7 +1,7 @@
 import { site, whatsappUrl } from '../config/site.js'
 import { navLinks } from '../data/navegacion.js'
 import { trackEvent } from '../lib/analytics.js'
-import logo from '../assets/img/logo-apilado-claro.svg'
+import logo from '../assets/img/isologo-negativo.svg'
 
 const redes = [
   ['LinkedIn', site.social.linkedin],
@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pt-12 pb-8 sm:gap-10 sm:pt-16">
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 flex flex-col gap-3 sm:gap-4 lg:col-span-1">
-            <img src={logo} alt="Daniel Cantor" width="543" height="231" loading="lazy" className="h-12 w-auto self-start sm:h-16" />
+            <img src={logo} alt="Daniel Cantor" width="654" height="74" loading="lazy" className="h-8 w-auto self-start sm:h-9" />
             <p className="max-w-xs text-[15px]">
               Diseño web, asesoría e-commerce y consultoría SEO en {site.city}.
             </p>
