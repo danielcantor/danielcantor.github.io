@@ -2,11 +2,12 @@ import { site, whatsappUrl } from '../config/site.js'
 import { navLinks } from '../data/navegacion.js'
 import { trackEvent } from '../lib/analytics.js'
 import logo from '../assets/img/isologo-negativo.svg'
+import { GitHubIcon, WhatsAppIcon } from './icons.jsx'
 
 const redes = [
   ['LinkedIn', site.social.linkedin],
   ['Instagram', site.social.instagram],
-  ['GitHub', site.social.github],
+  ['GitHub', site.social.github, GitHubIcon],
 ].filter(([, url]) => url)
 
 export default function Footer() {
@@ -15,7 +16,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-night text-night-text">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pt-12 pb-8 sm:gap-10 sm:pt-16">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pt-12 pb-28 sm:gap-10 sm:pt-16 lg:pb-8">
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 flex flex-col gap-3 sm:gap-4 lg:col-span-1">
             <img src={logo} alt="Daniel Cantor" width="654" height="74" loading="lazy" className="h-8 w-auto self-start sm:h-9" />
@@ -47,8 +48,9 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('click_whatsapp', { ubicacion: 'footer' })}
-              className={linkClass}
+              className={`${linkClass} inline-flex items-center gap-2`}
             >
+              <WhatsAppIcon size={18} />
               WhatsApp {site.phoneDisplay}
               <span className="sr-only"> (se abre en una pestaña nueva)</span>
             </a>
@@ -58,8 +60,9 @@ export default function Footer() {
           {redes.length > 0 && (
             <div className="flex flex-col gap-2 text-[15px]">
               <h2 className="mb-1 font-semibold text-on-night">Redes</h2>
-              {redes.map(([nombre, url]) => (
-                <a key={nombre} href={url} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              {redes.map(([nombre, url, Icono]) => (
+                <a key={nombre} href={url} target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-2`}>
+                  {Icono && <Icono size={18} />}
                   {nombre}
                   <span className="sr-only"> (se abre en una pestaña nueva)</span>
                 </a>

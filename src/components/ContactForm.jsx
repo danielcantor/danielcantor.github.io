@@ -114,6 +114,8 @@ export default function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label="Formulario de contacto"
+      // Clarity no graba lo que la persona escribe en el formulario.
+      data-clarity-mask="true"
       className="flex flex-col gap-4 rounded-3xl border border-line bg-card p-5 sm:gap-5 sm:p-8"
     >
       <Campo id="contacto-nombre" label="Nombre" error={errores.nombre}>

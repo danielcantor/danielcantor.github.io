@@ -2,6 +2,7 @@ import { Outlet } from 'react-router'
 import Navbar from './Navbar.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 import Footer from './Footer.jsx'
+import MobileCtaBar from './MobileCtaBar.jsx'
 
 export default function Layout() {
   return (
@@ -18,6 +19,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <MobileCtaBar />
     </>
   )
 }
