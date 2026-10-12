@@ -4,17 +4,25 @@ import { trackEvent } from '../lib/analytics.js'
 import WhatsAppButton from './WhatsAppButton.jsx'
 
 // Barra fija con las dos acciones principales, solo en mobile.
-// Se esconde mientras la sección de contacto está en pantalla: ahí ya están el formulario y WhatsApp.
+// Se esconde mientras se ve algún elemento marcado con data-oculta-barra-cta
+// (los botones del hero y la sección de contacto), donde ya están esas mismas acciones.
 export default function MobileCtaBar() {
   const { pathname } = useLocation()
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    const contacto = document.getElementById('contacto')
+    const targets = document.querySelectorAll('[data-oculta-barra-cta]')
     setHidden(false)
-    if (!contacto || !('IntersectionObserver' in window)) return
-    const observer = new IntersectionObserver(([entry]) => setHidden(entry.isIntersecting))
-    observer.observe(contacto)
+    if (!targets.length || !('IntersectionObserver' in window)) return
+    const visibles = new Set()
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibles.add(entry.target)
+        else visibles.delete(entry.target)
+      }
+      setHidden(visibles.size > 0)
+    })
+    targets.forEach((target) => observer.observe(target))
     return () => observer.disconnect()
   }, [pathname])
 

@@ -18,7 +18,8 @@ export default function Hero() {
           Creación de sitios web para pymes, asesoría e-commerce y posicionamiento web. Te acompaño
           desde la idea hasta que tu negocio aparece en Google.
         </p>
-        <div className="flex flex-wrap gap-3.5">
+        {/* Mientras estos botones se ven, la barra fija de mobile sería redundante. */}
+        <div data-oculta-barra-cta className="flex flex-wrap gap-3.5">
           <a
             href="#contacto"
             onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'hero' })}

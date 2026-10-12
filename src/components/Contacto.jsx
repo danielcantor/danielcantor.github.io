@@ -9,6 +9,7 @@ export default function Contacto() {
   return (
     <section
       id="contacto"
+      data-oculta-barra-cta
       aria-labelledby="contacto-titulo"
       className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2 lg:py-24"
     >
