@@ -4,8 +4,8 @@ import { navLinks } from '../data/navegacion.js'
 import MobileMenu from './MobileMenu.jsx'
 import WhatsAppButton from './WhatsAppButton.jsx'
 import { MenuIcon } from './icons.jsx'
-import logo from '../assets/img/logo-horizontal.webp'
-import logoClaro from '../assets/img/logo-horizontal-claro.webp'
+import logo from '../assets/img/logo-horizontal.svg'
+import logoClaro from '../assets/img/logo-horizontal-claro.svg'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -24,7 +24,7 @@ export default function Navbar() {
         <Link to="/" aria-label="Daniel Cantor, ir al inicio" className="inline-flex shrink-0 items-center">
           <picture>
             <source srcSet={logoClaro} media="(prefers-color-scheme: dark)" />
-            <img src={logo} alt="" width="791" height="104" className="h-7 w-auto" />
+            <img src={logo} alt="" width="920" height="96" className="h-5 w-auto" />
           </picture>
         </Link>
 
