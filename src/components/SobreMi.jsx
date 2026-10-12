@@ -30,6 +30,10 @@ export default function SobreMi() {
         {sobreMi.parrafos.map((p) => (
           <p key={p} className="text-[15px] text-muted sm:text-base">{p}</p>
         ))}
+        {/* Firma decorativa: el nombre ya está en el texto. */}
+        <p aria-hidden="true" className="-mt-1 font-script text-[36px] leading-none font-bold text-brand-text sm:text-[42px]">
+          Daniel
+        </p>
         <div className="flex flex-col gap-3">
           <h3 className="text-base font-semibold">Herramientas con las que trabajo</h3>
           <ul className="flex flex-wrap gap-2 sm:gap-2.5">

@@ -34,6 +34,9 @@ export default function Hero() {
             Ver trabajos
           </a>
         </div>
+        <p className="-mt-2 -rotate-2 self-start font-script text-[22px] leading-none font-bold text-brand-text sm:-mt-3 sm:text-[26px]">
+          Sin compromiso, te respondo en 24 h
+        </p>
       </div>
 
       <HeroAnimation />

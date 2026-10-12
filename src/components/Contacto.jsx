@@ -19,6 +19,9 @@ export default function Contacto() {
           title="Contame de tu proyecto"
           intro="Respondo en menos de 24 horas hábiles. Si preferís algo más rápido, escribime por WhatsApp y lo charlamos."
         />
+        <p className="font-script text-[26px] leading-tight font-bold text-brand-text sm:text-[30px]">
+          Te respondo yo, sin intermediarios.
+        </p>
         <WhatsAppButton ubicacion="contacto" className="self-start" />
         <p className="text-[15px] text-muted">
           También podés escribirme a{' '}

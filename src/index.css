@@ -10,6 +10,8 @@
 @theme {
   --font-display: 'Montserrat Variable', system-ui, sans-serif;
   --font-sans: 'Montserrat Variable', system-ui, sans-serif;
+  /* Secundaria: solo frases cortas de acompañamiento, desde 18 px y en peso 700. */
+  --font-script: 'Dancing Script', cursive;
 
   --color-brand: #1e3a8a;
   --color-brand-dark: light-dark(#172e6e, #2a4aa6);
