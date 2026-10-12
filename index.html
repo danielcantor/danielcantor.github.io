@@ -6,7 +6,22 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#F5F7FB" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0B1431" media="(prefers-color-scheme: dark)" />
-    <script>document.documentElement.classList.add('js')</script>
+    <script>
+      // Antes de pintar: marca que hay JS y aplica el tema elegido con el botón (ver src/lib/theme.js).
+      ;(function () {
+        var html = document.documentElement
+        html.classList.add('js')
+        try {
+          var tema = localStorage.getItem('tema')
+          if (tema !== 'light' && tema !== 'dark') return
+          html.dataset.theme = tema
+          var color = tema === 'dark' ? '#0B1431' : '#F5F7FB'
+          document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+            meta.content = color
+          })
+        } catch (e) {}
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

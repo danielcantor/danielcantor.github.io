@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /*
- * Colores por función, no por tono: cada uno se redefine en el modo oscuro.
+ * Colores por función, no por tono: cada uno lleva su valor claro y oscuro con light-dark().
  *  surface  fondo de la página        card     tarjetas y secciones blancas
  *  field    fondo de los campos        ink      texto principal
  *  night    secciones oscuras          on-night texto sobre night y brand
@@ -12,62 +12,60 @@
   --font-sans: 'Montserrat Variable', system-ui, sans-serif;
 
   --color-brand: #1e3a8a;
-  --color-brand-dark: #172e6e;
-  --color-brand-soft: #e4eaf7;
-  --color-brand-text: #1e3a8a;
-  --color-ink: #0f1b3d;
-  --color-muted: #424b63;
-  --color-subtle: #5a6378;
-  --color-surface: #f5f7fb;
-  --color-card: #ffffff;
-  --color-field: #ffffff;
-  --color-line: #dde2ee;
-  --color-line-soft: #e7ebf3;
-  --color-line-strong: #c8d0e2;
+  --color-brand-dark: light-dark(#172e6e, #2a4aa6);
+  --color-brand-soft: light-dark(#e4eaf7, #1a2a63);
+  --color-brand-text: light-dark(#1e3a8a, #8fa6f0);
+  --color-ink: light-dark(#0f1b3d, #f5f7fb);
+  --color-muted: light-dark(#424b63, #aab4d4);
+  --color-subtle: light-dark(#5a6378, #8f9ac0);
+  --color-surface: light-dark(#f5f7fb, #0b1431);
+  --color-card: light-dark(#ffffff, #132050);
+  --color-field: light-dark(#ffffff, #0b1431);
+  --color-line: light-dark(#dde2ee, #2a3b6e);
+  --color-line-soft: light-dark(#e7ebf3, #1e2d5c);
+  --color-line-strong: light-dark(#c8d0e2, #3d5090);
   --color-accent: #e8833a;
-  --color-accent-soft: #fce9dc;
-  --color-accent-ink: #7a3410;
+  --color-accent-soft: light-dark(#fce9dc, #3b2716);
+  --color-accent-ink: light-dark(#7a3410, #f7b98c);
   --color-on-accent: #0f1b3d;
   --color-wa: #1f7a4d;
-  --color-night: #0f1b3d;
+  --color-night: light-dark(#0f1b3d, #070e24);
   --color-on-night: #f5f7fb;
-  --color-night-line: #2b3a6b;
-  --color-night-text: #c3cce6;
-  --color-danger: #b3261e;
-  --color-success-bg: #e3f3ea;
-  --color-success-text: #14532d;
-  --color-error-bg: #fdecea;
-  --color-error-text: #8c1d18;
+  --color-night-line: light-dark(#2b3a6b, #22336a);
+  --color-night-text: light-dark(#c3cce6, #b5bfda);
+  --color-danger: light-dark(#b3261e, #ff8a80);
+  --color-success-bg: light-dark(#e3f3ea, #0f2e1f);
+  --color-success-text: light-dark(#14532d, #86efac);
+  --color-error-bg: light-dark(#fdecea, #3a1414);
+  --color-error-text: light-dark(#8c1d18, #fca5a5);
 }
 
-/* Modo oscuro: sigue el tema elegido en el sistema operativo de cada persona. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
+/*
+ * Modo oscuro: por defecto sigue el tema del sistema operativo. Si la persona eligió
+ * uno con el botón del header, index.html lo fija en <html data-theme="..."> antes de pintar.
+ */
+:root {
+  color-scheme: light dark;
+}
 
-    --color-brand: #1e3a8a;
-    --color-brand-dark: #2a4aa6;
-    --color-brand-soft: #1a2a63;
-    --color-brand-text: #8fa6f0;
-    --color-ink: #f5f7fb;
-    --color-muted: #aab4d4;
-    --color-subtle: #8f9ac0;
-    --color-surface: #0b1431;
-    --color-card: #132050;
-    --color-field: #0b1431;
-    --color-line: #2a3b6e;
-    --color-line-soft: #1e2d5c;
-    --color-line-strong: #3d5090;
-    --color-accent-soft: #3b2716;
-    --color-accent-ink: #f7b98c;
-    --color-night: #070e24;
-    --color-night-line: #22336a;
-    --color-night-text: #b5bfda;
-    --color-danger: #ff8a80;
-    --color-success-bg: #0f2e1f;
-    --color-success-text: #86efac;
-    --color-error-bg: #3a1414;
-    --color-error-text: #fca5a5;
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* La variante dark: de Tailwind respeta la misma lógica. */
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']), :root:not([data-theme='light']) *) {
+      @slot;
+    }
   }
 }
 
@@ -269,24 +267,14 @@
     transform: skewX(-16deg);
   }
 
+  /* En oscuro, el azul marca se pierde sobre el fondo: se aclara manteniendo texto blanco. */
   .btn-primary {
-    background: #1e3a8a;
+    background: light-dark(#1e3a8a, #2f52c4);
     color: #ffffff;
   }
 
   .btn-primary:hover {
-    background: #172e6e;
-  }
-
-  /* En oscuro, el azul marca se pierde sobre el fondo: se aclara manteniendo texto blanco. */
-  @media (prefers-color-scheme: dark) {
-    .btn-primary {
-      background: #2f52c4;
-    }
-
-    .btn-primary:hover {
-      background: #3b60d6;
-    }
+    background: light-dark(#172e6e, #3b60d6);
   }
 
   /* Sobre fondos azules o tinta. */

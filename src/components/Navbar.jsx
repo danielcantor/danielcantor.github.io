@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { navLinks } from '../data/navegacion.js'
 import MobileMenu from './MobileMenu.jsx'
 import WhatsAppButton from './WhatsAppButton.jsx'
+import ThemeToggle from './ThemeToggle.jsx'
 import { MenuIcon } from './icons.jsx'
 import logo from '../assets/img/isologo.svg'
 import logoNegativo from '../assets/img/isologo-negativo.svg'
@@ -22,10 +23,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
       <div className="mx-auto flex h-19 max-w-6xl items-center justify-between gap-6 px-6">
         <Link to="/" aria-label="Daniel Cantor, ir al inicio" className="inline-flex shrink-0 items-center">
-          <picture>
-            <source srcSet={logoNegativo} media="(prefers-color-scheme: dark)" />
-            <img src={logo} alt="" width="654" height="74" className="h-7 w-auto" />
-          </picture>
+          <img src={logo} alt="" width="654" height="74" className="h-7 w-auto dark:hidden" />
+          <img src={logoNegativo} alt="" width="654" height="74" className="hidden h-7 w-auto dark:block" />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
@@ -41,6 +40,7 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <div className="hidden lg:block">
             <WhatsAppButton ubicacion="header" size="sm">WhatsApp</WhatsAppButton>
           </div>
