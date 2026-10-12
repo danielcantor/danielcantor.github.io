@@ -278,6 +278,17 @@
     background: #172e6e;
   }
 
+  /* En oscuro, el azul marca se pierde sobre el fondo: se aclara manteniendo texto blanco. */
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      background: #2f52c4;
+    }
+
+    .btn-primary:hover {
+      background: #3b60d6;
+    }
+  }
+
   /* Sobre fondos azules o tinta. */
   .btn-light {
     background: #f5f7fb;
