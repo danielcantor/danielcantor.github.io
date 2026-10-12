@@ -21,10 +21,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex h-19 max-w-6xl items-center justify-between gap-6 px-6">
-        <Link to="/" aria-label="Daniel Cantor, ir al inicio" className="inline-flex shrink-0 items-center">
-          <img src={logo} alt="" width="654" height="74" className="h-7 w-auto dark:hidden" />
-          <img src={logoNegativo} alt="" width="654" height="74" className="hidden h-7 w-auto dark:block" />
+      <div className="mx-auto flex h-19 max-w-6xl items-center justify-between gap-3 px-5 sm:gap-6 sm:px-6">
+        <Link to="/" aria-label="Daniel Cantor, ir al inicio" className="inline-flex min-w-0 shrink items-center">
+          <img src={logo} alt="" width="654" height="74" className="h-auto w-[208px] max-w-full sm:h-7 sm:w-auto dark:hidden" />
+          <img src={logoNegativo} alt="" width="654" height="74" className="hidden h-auto w-[208px] max-w-full sm:h-7 sm:w-auto dark:block" />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
@@ -39,7 +39,7 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <div className="hidden lg:block">
             <WhatsAppButton ubicacion="header" size="sm">WhatsApp</WhatsAppButton>
