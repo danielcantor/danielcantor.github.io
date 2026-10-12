@@ -3,7 +3,7 @@ import useDialog from '../hooks/useDialog.js'
 import { navLinks } from '../data/navegacion.js'
 import WhatsAppButton from './WhatsAppButton.jsx'
 import { CloseIcon } from './icons.jsx'
-import logoClaro from '../assets/img/logo-horizontal-claro.webp'
+import logoClaro from '../assets/img/logo-horizontal-claro.svg'
 
 export default function MobileMenu({ open, onClose }) {
   const panelRef = useDialog(open, onClose)
@@ -26,7 +26,7 @@ export default function MobileMenu({ open, onClose }) {
         className="relative flex h-full w-[86%] max-w-[340px] flex-col overflow-y-auto bg-brand px-6 pt-4 pb-7 dark:border-l dark:border-line dark:bg-card text-on-night motion-safe:animate-[slide-in_280ms_ease-out]"
       >
         <div className="mb-4 flex h-13 items-center justify-between">
-          <img src={logoClaro} alt="Daniel Cantor" width="791" height="104" className="h-6 w-auto" />
+          <img src={logoClaro} alt="Daniel Cantor" width="920" height="96" className="h-4.5 w-auto" />
           <button
             type="button"
             onClick={onClose}
