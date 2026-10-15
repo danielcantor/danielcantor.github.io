@@ -26,7 +26,7 @@ const campoBase =
 function Campo({ id, label, error, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-[15px] font-semibold">
+      <label htmlFor={id} className="text-[0.9375rem] font-semibold">
         {label} <span aria-hidden="true">*</span>
       </label>
       {children}
@@ -155,12 +155,12 @@ export default function ContactForm() {
 
       <div role="status" aria-live="polite">
         {estado === 'enviado' && (
-          <p className="rounded-xl bg-success-bg px-4 py-3 text-[15px] font-medium text-success-text">
+          <p className="rounded-xl bg-success-bg px-4 py-3 text-[0.9375rem] font-medium text-success-text">
             ¡Gracias! Recibí tu mensaje y te respondo en menos de 24 horas hábiles.
           </p>
         )}
         {estado === 'error' && (
-          <p className="rounded-xl bg-error-bg px-4 py-3 text-[15px] font-medium text-error-text">
+          <p className="rounded-xl bg-error-bg px-4 py-3 text-[0.9375rem] font-medium text-error-text">
             No se pudo enviar el mensaje. Probá de nuevo en unos minutos o escribime por WhatsApp.
           </p>
         )}

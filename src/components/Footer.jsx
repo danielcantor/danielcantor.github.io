@@ -16,16 +16,16 @@ export default function Footer() {
 
   return (
     <footer className="bg-night text-night-text">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 pt-12 pb-28 sm:gap-10 sm:pt-16 lg:pb-8">
+      <div className="mx-auto flex max-w-page flex-col gap-8 px-6 pt-12 pb-28 sm:gap-10 sm:pt-16 lg:pb-8">
         <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="col-span-2 flex flex-col gap-3 sm:gap-4 lg:col-span-1">
             <img src={logo} alt="Daniel Cantor" width="654" height="74" loading="lazy" className="h-8 w-auto self-start sm:h-9" />
-            <p className="max-w-xs text-[15px]">
+            <p className="max-w-xs text-[0.9375rem]">
               Diseño web, asesoría e-commerce y consultoría SEO en {site.city}.
             </p>
           </div>
 
-          <nav aria-label="Secciones" className="flex flex-col gap-2 text-[15px]">
+          <nav aria-label="Secciones" className="flex flex-col gap-2 text-[0.9375rem]">
             <h2 className="mb-1 font-semibold text-on-night">Secciones</h2>
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} className={linkClass}>
@@ -34,7 +34,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <div className="flex flex-col gap-2 text-[15px] max-sm:order-last max-sm:col-span-2">
+          <div className="flex flex-col gap-2 text-[0.9375rem] max-sm:order-last max-sm:col-span-2">
             <h2 className="mb-1 font-semibold text-on-night">Contacto</h2>
             <a
               href={`mailto:${site.email}`}
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {redes.length > 0 && (
-            <div className="flex flex-col gap-2 text-[15px]">
+            <div className="flex flex-col gap-2 text-[0.9375rem]">
               <h2 className="mb-1 font-semibold text-on-night">Redes</h2>
               <div className="flex gap-4">
                 {redes.map(([nombre, url, Icono]) => (

@@ -43,7 +43,7 @@ export default function MobileMenu({ open, onClose }) {
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="block py-3.5 text-[19px] font-semibold text-on-night no-underline hover:text-white"
+                  className="block py-3.5 text-[1.1875rem] font-semibold text-on-night no-underline hover:text-white"
                 >
                   {link.label}
                 </a>

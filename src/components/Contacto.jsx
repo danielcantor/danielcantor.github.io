@@ -11,7 +11,7 @@ export default function Contacto() {
       id="contacto"
       data-oculta-barra-cta
       aria-labelledby="contacto-titulo"
-      className="mx-auto grid max-w-6xl items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2 lg:py-24"
+      className="mx-auto grid max-w-page items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2 lg:py-24"
     >
       <Reveal className="flex flex-col gap-5">
         <SectionHeading
@@ -20,11 +20,11 @@ export default function Contacto() {
           title="Contame de tu proyecto"
           intro="Respondo en menos de 24 horas hábiles. Si preferís algo más rápido, escribime por WhatsApp y lo charlamos."
         />
-        <p className="font-script text-[26px] leading-tight font-bold text-brand-text sm:text-[30px]">
+        <p className="font-script text-[1.625rem] leading-tight font-bold text-brand-text sm:text-[1.875rem]">
           Te respondo yo, sin intermediarios.
         </p>
         <WhatsAppButton ubicacion="contacto" className="self-start" />
-        <p className="text-[15px] text-muted">
+        <p className="text-[0.9375rem] text-muted">
           También podés escribirme a{' '}
           <a
             href={`mailto:${site.email}`}

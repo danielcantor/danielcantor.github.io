@@ -28,7 +28,7 @@ export default function ProcesoPaso({ numero, titulo, descripcion, ultimo = fals
           <span className="sr-only">Paso {numero}: </span>
           {titulo}
         </h3>
-        <p className={`text-[15px] ${oscuro ? 'text-night-text' : 'text-muted'}`}>{descripcion}</p>
+        <p className={`text-[0.9375rem] ${oscuro ? 'text-night-text' : 'text-muted'}`}>{descripcion}</p>
       </div>
     </div>
   )

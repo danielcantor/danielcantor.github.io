@@ -41,7 +41,7 @@ export default function Trabajos() {
     <section
       id="trabajos"
       aria-labelledby="trabajos-titulo"
-      className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24"
+      className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24"
     >
       <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <SectionHeading

@@ -6,7 +6,7 @@ import Reveal from './Reveal.jsx'
 export default function Proceso() {
   return (
     <section id="proceso" aria-labelledby="proceso-titulo" className="bg-night text-on-night">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24">
+      <div className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24">
         <Reveal>
           <SectionHeading
             id="proceso-titulo"

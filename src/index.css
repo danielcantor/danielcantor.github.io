@@ -40,6 +40,27 @@
   --color-success-text: light-dark(#14532d, #86efac);
   --color-error-bg: light-dark(#fdecea, #3a1414);
   --color-error-text: light-dark(#8c1d18, #fca5a5);
+
+  /* Ancho del contenido (max-w-page): crece en pantallas grandes para no dejar tanto aire a los costados. */
+  --container-page: 72rem;
+}
+
+/*
+ * Pantallas grandes: sube el rem de la raíz (tipografía y espaciados crecen juntos) y el ancho
+ * del contenido. El ancho se expresa en rem ya escalado: 79 × 17 ≈ 1344 px y 82 × 18 ≈ 1476 px.
+ */
+@media (min-width: 90rem) {
+  :root {
+    font-size: 106.25%;
+    --container-page: 79rem;
+  }
+}
+
+@media (min-width: 110rem) {
+  :root {
+    font-size: 112.5%;
+    --container-page: 82rem;
+  }
 }
 
 /*
@@ -196,7 +217,7 @@
 
   body {
     @apply bg-surface font-sans text-ink antialiased;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
   }
 
@@ -212,9 +233,9 @@
  * El naranja es solo gráfico: el texto va siempre en tinta o azul marca.
  */
 @layer components {
-  /* Antetítulo: 12-13 px, SemiBold, mayúsculas espaciadas. */
+  /* Antetítulo: 12-13 px (en rem, para que escale), SemiBold, mayúsculas espaciadas. */
   .kicker {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0.12em;
@@ -224,7 +245,7 @@
 
   @media (min-width: 40rem) {
     .kicker {
-      font-size: 13px;
+      font-size: 0.8125rem;
     }
   }
 

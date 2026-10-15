@@ -9,7 +9,7 @@ export default function SectionHeading({ id, eyebrow, title, intro, dark = false
       >
         {title}
       </h2>
-      {intro && <p className={`text-[15px] sm:text-base ${dark ? 'text-night-text' : 'text-muted'}`}>{intro}</p>}
+      {intro && <p className={`text-[0.9375rem] sm:text-base ${dark ? 'text-night-text' : 'text-muted'}`}>{intro}</p>}
     </div>
   )
 }

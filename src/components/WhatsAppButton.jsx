@@ -3,7 +3,7 @@ import { trackEvent } from '../lib/analytics.js'
 import { WhatsAppIcon } from './icons.jsx'
 
 const sizes = {
-  sm: 'h-11 gap-2 px-[18px] text-[15px]',
+  sm: 'h-11 gap-2 px-[18px] text-[0.9375rem]',
   md: 'h-13 gap-2.5 px-6',
 }
 

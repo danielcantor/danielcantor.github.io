@@ -23,7 +23,7 @@ export default function AccordionItem({ id, pregunta, respuesta, abierto, onTogg
           </span>
         </button>
       </h3>
-      <div id={panelId} role="region" aria-labelledby={botonId} hidden={!abierto} className="pr-10 pb-4.5 text-[15px] text-muted sm:pr-12 sm:pb-5.5 sm:text-base">
+      <div id={panelId} role="region" aria-labelledby={botonId} hidden={!abierto} className="pr-10 pb-4.5 text-[0.9375rem] text-muted sm:pr-12 sm:pb-5.5 sm:text-base">
         {respuesta}
       </div>
     </div>
