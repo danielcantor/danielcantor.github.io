@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { trabajoPath } from '../data/trabajos.js'
 import { trackEvent } from '../lib/analytics.js'
 
-// En mobile van de a dos por fila: tipografía y espaciados más chicos hasta `sm`.
+// En mobile la tarjeta es angosta (carrusel): tipografía y espaciados más chicos hasta `sm`.
 export default function TrabajoCard({ trabajo }) {
   return (
     <Link

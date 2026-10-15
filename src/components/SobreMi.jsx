@@ -3,25 +3,13 @@ import SectionHeading from './SectionHeading.jsx'
 import Reveal from './Reveal.jsx'
 
 export default function SobreMi() {
-  const { foto } = sobreMi
   return (
     <section
       id="sobre-mi"
       aria-labelledby="sobre-mi-titulo"
-      className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 sm:gap-14 sm:py-20 md:grid-cols-[2fr_3fr] lg:py-24"
+      className="mx-auto max-w-3xl px-6 py-14 sm:py-20 lg:py-24"
     >
-      <Reveal>
-        <img
-          src={foto.src}
-          alt={foto.alt}
-          width={foto.width}
-          height={foto.height}
-          loading="lazy"
-          decoding="async"
-          className="mx-auto aspect-[4/5] w-full max-w-[220px] rounded-3xl object-cover sm:max-w-[440px] sm:rounded-[28px]"
-        />
-      </Reveal>
-      <Reveal delay={100} className="flex flex-col gap-4 sm:gap-5">
+      <Reveal className="flex flex-col gap-4 sm:gap-5">
         <SectionHeading
           id="sobre-mi-titulo"
           eyebrow="Sobre mí"

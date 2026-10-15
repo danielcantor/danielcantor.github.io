@@ -2,11 +2,11 @@ import { site, whatsappUrl } from '../config/site.js'
 import { navLinks } from '../data/navegacion.js'
 import { trackEvent } from '../lib/analytics.js'
 import logo from '../assets/img/isologo-negativo.svg'
-import { GitHubIcon, WhatsAppIcon } from './icons.jsx'
+import { GitHubIcon, LinkedInIcon, MailIcon, MapPinIcon, WhatsAppIcon } from './icons.jsx'
 
+// Solo íconos: los redes sin logo cargado no se muestran.
 const redes = [
-  ['LinkedIn', site.social.linkedin],
-  ['Instagram', site.social.instagram],
+  ['LinkedIn', site.social.linkedin, LinkedInIcon],
   ['GitHub', site.social.github, GitHubIcon],
 ].filter(([, url]) => url)
 
@@ -39,8 +39,9 @@ export default function Footer() {
             <a
               href={`mailto:${site.email}`}
               onClick={() => trackEvent('click_email', { ubicacion: 'footer' })}
-              className={`${linkClass} break-all`}
+              className={`${linkClass} inline-flex items-start gap-2 break-all`}
             >
+              <MailIcon size={18} className="mt-[3px] shrink-0" />
               {site.email}
             </a>
             <a
@@ -50,23 +51,28 @@ export default function Footer() {
               onClick={() => trackEvent('click_whatsapp', { ubicacion: 'footer' })}
               className={`${linkClass} inline-flex items-center gap-2`}
             >
-              <WhatsAppIcon size={18} />
-              WhatsApp {site.phoneDisplay}
+              <WhatsAppIcon size={18} className="shrink-0" />
+              <span className="sr-only">WhatsApp </span>
+              {site.phoneDisplay}
               <span className="sr-only"> (se abre en una pestaña nueva)</span>
             </a>
-            <span>{site.city}, Argentina</span>
+            <span className="inline-flex items-center gap-2">
+              <MapPinIcon size={18} className="shrink-0" />
+              {site.city}, Argentina
+            </span>
           </div>
 
           {redes.length > 0 && (
             <div className="flex flex-col gap-2 text-[15px]">
               <h2 className="mb-1 font-semibold text-on-night">Redes</h2>
-              {redes.map(([nombre, url, Icono]) => (
-                <a key={nombre} href={url} target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-2`}>
-                  {Icono && <Icono size={18} />}
-                  {nombre}
-                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
-                </a>
-              ))}
+              <div className="flex gap-4">
+                {redes.map(([nombre, url, Icono]) => (
+                  <a key={nombre} href={url} target="_blank" rel="noopener noreferrer" className="text-night-text hover:text-white">
+                    <Icono size={24} />
+                    <span className="sr-only">{nombre} (se abre en una pestaña nueva)</span>
+                  </a>
+                ))}
+              </div>
             </div>
           )}
         </div>
