@@ -70,7 +70,7 @@ export default function HeroAnimation() {
                   </div>
                 </div>
               ))}
-              <span className="hero-in hero-caret ml-4.5 h-2.5 w-0.5 bg-[#f5f7fb] sm:h-3" style={d(3300)} />
+              <span className="hero-caret ml-4.5 h-2.5 w-0.5 bg-[#f5f7fb] sm:h-3" style={d(3300)} />
             </div>
 
             {/* Sitio que se arma */}

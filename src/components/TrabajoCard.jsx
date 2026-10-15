@@ -2,6 +2,14 @@ import { Link } from 'react-router'
 import { trabajoPath } from '../data/trabajos.js'
 import { trackEvent } from '../lib/analytics.js'
 
+// Versiones de la imagen generadas por `npm run images` (ancho 400 y 600, además de la de 800).
+function cardSrcSet(src) {
+  return [400, 600].map((w) => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).concat(`${src} 800w`).join(', ')
+}
+
+// Ancho de la tarjeta en el carrusel de Trabajos.jsx: 78 % en mobile, 2 columnas desde sm, 3 desde lg.
+const CARD_SIZES = '(min-width: 1024px) 24rem, (min-width: 640px) calc(50vw - 3rem), calc(78vw - 2.5rem)'
+
 // En mobile la tarjeta es angosta (carrusel): tipografía y espaciados más chicos hasta `sm`.
 export default function TrabajoCard({ trabajo }) {
   return (
@@ -13,6 +21,8 @@ export default function TrabajoCard({ trabajo }) {
       <div className="relative overflow-hidden">
         <img
           src={trabajo.imagen.src}
+          srcSet={cardSrcSet(trabajo.imagen.src)}
+          sizes={CARD_SIZES}
           alt={trabajo.imagen.alt}
           width={trabajo.imagen.width}
           height={trabajo.imagen.height}

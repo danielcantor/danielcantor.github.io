@@ -15,6 +15,15 @@ function loadScript(src) {
   document.head.appendChild(script)
 }
 
+// Los scripts de terceros (~215 KB) se piden recién con la página cargada y el navegador libre,
+// para que no compitan con el contenido. Mientras tanto, las llamadas quedan en cola.
+function whenIdle(callback) {
+  const idle = () =>
+    'requestIdleCallback' in window ? requestIdleCallback(callback, { timeout: 3000 }) : setTimeout(callback, 1500)
+  if (document.readyState === 'complete') idle()
+  else window.addEventListener('load', idle, { once: true })
+}
+
 export function initAnalytics() {
   if (started || typeof window === 'undefined') return
   started = true
@@ -28,7 +37,7 @@ export function initAnalytics() {
     // Las vistas de página se mandan a mano (ver trackPageView), porque la navegación
     // entre páginas no recarga el sitio.
     window.gtag('config', GA_ID, { send_page_view: false })
-    loadScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`)
+    whenIdle(() => loadScript(`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`))
   }
 
   if (clarityEnabled) {
@@ -38,7 +47,7 @@ export function initAnalytics() {
       function clarity() {
         ;(window.clarity.q = window.clarity.q || []).push(arguments)
       }
-    loadScript(`https://www.clarity.ms/tag/${CLARITY_ID}`)
+    whenIdle(() => loadScript(`https://www.clarity.ms/tag/${CLARITY_ID}`))
   }
 }
 

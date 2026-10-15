@@ -11,6 +11,9 @@ const root = process.cwd()
 const srcDir = path.join(root, 'assets-src')
 const outDir = path.join(root, 'public', 'img')
 const MAX_WIDTH = 1600
+// Las tarjetas (*-card) se muestran chicas: además se generan versiones angostas para el srcset
+// (ver TrabajoCard.jsx): mi-cliente-card-400.webp y mi-cliente-card-600.webp.
+const CARD_WIDTHS = [400, 600]
 const EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.tif', '.tiff'])
 
 async function* walk(dir) {
@@ -41,5 +44,13 @@ for await (const file of walk(srcDir)) {
   const kb = (info.size / 1024).toFixed(0)
   console.log(`  ${relative}  →  public/img/${relative.replace(/\.[^.]+$/, '.webp')}  (${info.width}×${info.height}, ${kb} KB)`)
   count++
+
+  if (/-card$/.test(path.parse(file).name)) {
+    for (const width of CARD_WIDTHS) {
+      const variant = dest.replace(/\.webp$/, `-${width}.webp`)
+      await sharp(file).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 80 }).toFile(variant)
+      console.log(`    + ${path.basename(variant)}`)
+    }
+  }
 }
 console.log(`${count} imagen(es) optimizada(s). Usá el ancho y alto que figuran arriba en width/height.`)
