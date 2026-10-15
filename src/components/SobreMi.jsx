@@ -7,9 +7,9 @@ export default function SobreMi() {
     <section
       id="sobre-mi"
       aria-labelledby="sobre-mi-titulo"
-      className="mx-auto max-w-3xl px-6 py-14 sm:py-20 lg:py-24"
+      className="mx-auto max-w-page px-6 py-14 sm:py-20 lg:py-24"
     >
-      <Reveal className="flex flex-col gap-4 sm:gap-5">
+      <Reveal className="flex max-w-3xl flex-col gap-4 sm:gap-5">
         <SectionHeading
           id="sobre-mi-titulo"
           eyebrow="Sobre mí"

@@ -19,7 +19,7 @@ export default function FAQ() {
 
   return (
     <section id="faq" aria-labelledby="faq-titulo" className="border-y border-line-soft bg-card">
-      <div className="mx-auto flex max-w-[54rem] flex-col gap-8 px-6 py-14 sm:gap-10 sm:py-20 lg:py-24">
+      <div className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-10 sm:py-20 lg:py-24">
         <Reveal>
           <SectionHeading
             id="faq-titulo"
