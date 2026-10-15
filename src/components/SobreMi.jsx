@@ -1,13 +1,14 @@
 import { sobreMi } from '../data/sobreMi.js'
 import SectionHeading from './SectionHeading.jsx'
 import Reveal from './Reveal.jsx'
+import SobreMiAnimation from './SobreMiAnimation.jsx'
 
 export default function SobreMi() {
   return (
     <section
       id="sobre-mi"
       aria-labelledby="sobre-mi-titulo"
-      className="mx-auto max-w-page px-6 py-14 sm:py-20 lg:py-24"
+      className="mx-auto grid max-w-page items-center gap-14 px-6 py-14 sm:py-20 lg:grid-cols-2 lg:py-24"
     >
       <Reveal className="flex max-w-3xl flex-col gap-4 sm:gap-5">
         <SectionHeading
@@ -32,6 +33,10 @@ export default function SobreMi() {
             ))}
           </ul>
         </div>
+      </Reveal>
+      {/* Solo en escritorio: en mobile alargaría la página sin sumar información. */}
+      <Reveal delay={150} className="hidden lg:block">
+        <SobreMiAnimation />
       </Reveal>
     </section>
   )

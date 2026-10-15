@@ -168,6 +168,77 @@
   }
 }
 
+/*
+ * Escena de "Sobre mí" (SobreMiAnimation.jsx): se escribe la búsqueda, el negocio sube
+ * del 3.º al 1.º puesto y aparece la charla. Queda en pausa hasta que la sección entra
+ * en pantalla. Cada fila de resultado mide 3.5rem + 0.5rem de separación.
+ */
+@keyframes about-type {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 14rem;
+  }
+}
+
+@keyframes about-climb {
+  from {
+    transform: translateY(8rem);
+  }
+}
+
+@keyframes about-drop {
+  from {
+    transform: translateY(-4rem);
+  }
+}
+
+@keyframes about-typing {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+}
+
+.about-typing {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-type {
+    animation: about-type 1100ms steps(21) var(--d, 0ms) both;
+  }
+
+  .about-caret {
+    animation: hero-caret 1s steps(1) var(--d, 0ms) infinite;
+  }
+
+  .about-climb {
+    animation: about-climb 900ms cubic-bezier(0.5, 0, 0.2, 1) var(--d, 0ms) both;
+  }
+
+  .about-drop {
+    animation: about-drop 900ms cubic-bezier(0.5, 0, 0.2, 1) var(--d, 0ms) both;
+  }
+
+  .about-in {
+    animation: hero-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+  }
+
+  .about-typing {
+    animation: about-typing 1000ms ease-in-out var(--d, 0ms) both;
+  }
+
+  .js [data-reveal]:not([data-visible]) :is(.about-type, .about-climb, .about-drop, .about-in, .about-typing) {
+    animation-play-state: paused;
+  }
+}
+
 /* Animación de entrada: solo se oculta si hay JavaScript y el usuario no pidió reducir movimiento. */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
