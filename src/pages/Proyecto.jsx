@@ -61,6 +61,17 @@ function Ficha({ trabajo }) {
           ))}
         </dd>
       </div>
+      {trabajo.agencia && (
+        <div className="col-span-2">
+          <dt className="text-[0.8125rem] text-subtle">Contratado a través de</dt>
+          <dd className="font-semibold">
+            <a href={trabajo.agencia.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
+              {trabajo.agencia.nombre} <ArrowUpRightIcon size={16} />
+              <span className="sr-only"> (se abre en una pestaña nueva)</span>
+            </a>
+          </dd>
+        </div>
+      )}
       {trabajo.url && (
         <div className="col-span-2">
           <a

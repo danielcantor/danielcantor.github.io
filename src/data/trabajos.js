@@ -22,6 +22,7 @@ export const trabajos = [
     duracion: 'En curso',
     servicios: ['Creación de sitios web', 'Asesoría e-commerce'],
     url: 'https://patovalentin.com.ar/',
+    agencia: { nombre: 'Dizconnect', url: 'https://dizconnect.solutions/' }, // Proyecto hecho bajo contrato con la agencia.
     imagen: {
       src: '/img/trabajos/escuela-pato-valentin-card.webp',
       alt: 'Landing rediseñada de la clase gratuita Mares que enamoran',
@@ -91,6 +92,80 @@ export const trabajos = [
     testimonio: null,
     herramientas: ['WordPress', 'Elementor V4 (editor atómico)', 'Elementor Pro', 'WooCommerce', 'Brevo'],
     cta: '¿Tus landings son largas y no queda claro qué comprar?',
+  },
+  {
+    slug: 'calculadora-cuotas-mercado-pago',
+    titulo: 'Calculadora de cuotas Mercado Pago',
+    tipo: 'Plugin a medida para WooCommerce',
+    resultado: 'Cuotas visibles de la ficha al pago',
+    titular: 'Calculadora de cuotas Mercado Pago: el precio en cuotas, claro antes de pagar',
+    resumen:
+      'Un plugin de WordPress para Maxtecno que muestra cuánto sale cada plan de cuotas en la ficha de producto, deja elegirlo en el checkout y le pasa a Mercado Pago el total correcto.',
+    cliente: 'Maxtecno',
+    rubro: 'Tecnología · Tienda online',
+    anio: '2025',
+    duracion: '2 semanas',
+    servicios: ['Asesoría e-commerce'],
+    url: 'https://maxtecno.com.ar/',
+    agencia: { nombre: 'Dizconnect', url: 'https://dizconnect.solutions/' }, // Proyecto hecho bajo contrato con la agencia.
+    imagen: {
+      src: '/img/trabajos/calculadora-cuotas-mercado-pago-card.webp',
+      alt: 'Ficha de producto de Maxtecno con la mejor opción de cuotas y el panel con todos los planes de Mercado Pago',
+      width: 800,
+      height: 600,
+    },
+    portada: {
+      src: '/img/trabajos/calculadora-cuotas-mercado-pago-portada.webp',
+      alt: 'Ficha de una PC en Maxtecno con el precio, 3 cuotas sin interés y el panel Cuotas disponibles con los planes de 1 a 18 cuotas',
+      width: 1600,
+      height: 700,
+    },
+    metricasTitulo: 'El plugin en números',
+    metricas: [
+      { to: 4, label: 'lugares donde se ven las cuotas: ficha, shortcode, carrito y checkout' },
+      { to: 1, label: 'clic para traer las tasas vigentes desde la API de Mercado Pago' },
+      { to: 11, label: 'clases separadas por responsabilidad, a partir de un script único' },
+      { to: 0, label: 'cuentas a mano: el recargo se suma solo al total del pedido' },
+    ],
+    desafio: {
+      titulo: 'Cuotas con interés que el cliente descubría recién al pagar',
+      parrafos: [
+        'Maxtecno vende tecnología, un rubro donde muchas compras se pagan en cuotas con Mercado Pago. Pero la tienda solo mostraba el precio de contado: el valor de cada cuota y el recargo aparecían recién en la pantalla de Mercado Pago, cuando el cliente ya estaba por pagar.',
+        'Las tasas cambian seguido y se cargaban a mano. Toda la lógica vivía en un único script difícil de mantener, y el plan elegido no quedaba registrado en el pedido.',
+      ],
+    },
+    pasos: [
+      {
+        titulo: 'Cuotas a la vista en la ficha de producto',
+        descripcion:
+          'Debajo del precio se destaca la mejor opción, como 3 cuotas sin interés, y un botón abre un panel con todos los planes, el valor de cada cuota y el precio en efectivo. También como shortcode, para usarlo en cualquier página.',
+      },
+      {
+        titulo: 'Selector de cuotas en el checkout',
+        descripcion:
+          'Al elegir Mercado Pago aparece un selector con el valor de cada cuota y el total final. Al cambiar de plan, el resumen del pedido se actualiza sin recargar la página.',
+      },
+      {
+        titulo: 'Recargo y preferencia de pago correctos',
+        descripcion:
+          'El recargo del plan elegido se suma al carrito como un cargo más, y la preferencia que llega a Mercado Pago ya trae el total y la cantidad de cuotas.',
+      },
+      {
+        titulo: 'Panel de tasas conectado a la API',
+        descripcion:
+          'Un panel en el escritorio de WordPress para editar las tasas, traer las vigentes desde la API de Mercado Pago con un botón y simular cualquier monto.',
+      },
+      {
+        titulo: 'Código ordenado y plan guardado en el pedido',
+        descripcion:
+          'El script original pasó a un plugin modular, separado en administración, lógica y vista. El plan de cuotas queda guardado en cada pedido para consultarlo desde el panel.',
+      },
+    ],
+    antesDespues: null,
+    galeria: [],
+    testimonio: null,
+    herramientas: ['WordPress', 'WooCommerce', 'PHP', 'jQuery', 'API de Mercado Pago'],
+    cta: '¿Tu tienda necesita una función que ningún plugin resuelve?',
   },
   {
     slug: 'almacen-natural',
