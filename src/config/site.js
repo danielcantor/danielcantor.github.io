@@ -15,7 +15,7 @@ export const site = {
   defaultImage: '/img/og-image.jpg',
   social: {
     // TODO: completar con los perfiles reales.
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/danielcantor19/',
     instagram: '',
     github: 'https://github.com/danielcantor',
   },
