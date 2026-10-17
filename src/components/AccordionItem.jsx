@@ -19,7 +19,9 @@ export default function AccordionItem({ id, pregunta, respuesta, abierto, onTogg
             aria-hidden="true"
             className={`inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-xl font-normal transition-transform motion-reduce:transition-none ${abierto ? 'rotate-45 border-accent bg-accent text-on-accent' : ''}`}
           >
-            +
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              <path d="M7 1v12M1 7h12" />
+            </svg>
           </span>
         </button>
       </h3>

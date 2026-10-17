@@ -12,6 +12,9 @@ export const site = {
   defaultDescription:
     'Diseño web en Buenos Aires: creación de sitios web para pymes, asesoría e-commerce y consultoría SEO para mejorar tu posicionamiento web.',
   defaultImage: '/img/og-image.jpg',
+  defaultImageAlt: 'Daniel Cantor: diseño web, e-commerce y SEO para pymes en Buenos Aires',
+  defaultImageWidth: 1200,
+  defaultImageHeight: 630,
   social: {
     // TODO: completar con los perfiles reales.
     linkedin: 'https://www.linkedin.com/in/danielcantor19/',

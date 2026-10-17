@@ -6,7 +6,7 @@ import Proceso from '../components/Proceso.jsx'
 import SobreMi from '../components/SobreMi.jsx'
 import FAQ from '../components/FAQ.jsx'
 import Contacto from '../components/Contacto.jsx'
-import { professionalService } from '../data/schema.js'
+import { sitio, persona, professionalService, faqPage } from '../data/schema.js'
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <Seo
         title="Diseño web en Buenos Aires para pymes"
         path="/"
-        jsonLd={[professionalService]}
+        jsonLd={[sitio, persona, professionalService, faqPage]}
       />
       <Hero />
       <Trabajos />

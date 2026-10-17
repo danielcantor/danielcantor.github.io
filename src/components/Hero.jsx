@@ -5,8 +5,8 @@ export default function Hero() {
     <section id="inicio" className="mx-auto flex max-w-page flex-col gap-10 px-4 pt-8 pb-10 sm:gap-14 sm:px-6 sm:pt-14 sm:pb-14 lg:px-10 lg:pt-18">
       <h1 className="hero-titulo max-w-[74rem] text-[clamp(2.75rem,7.6vw,6.5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance">
         <span className="hero-texto">
-          Sitios y tiendas online para pymes que quieren vender <span className="serif">de verdad</span>
-          <span className="hero-barra text-accent">/</span>
+          Sitios web y tiendas online para pymes que quieren vender <span className="serif">de verdad</span>
+          <span aria-hidden="true" className="barra hero-barra text-accent" />
         </span>
       </h1>
       <div className="hero-regla grid gap-x-6 gap-y-5 border-t border-ink pt-4 sm:pt-6 lg:grid-cols-12">

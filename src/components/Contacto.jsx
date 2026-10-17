@@ -12,7 +12,7 @@ export default function Contacto() {
           <span className="font-semibold text-night-accent">(07) </span>Contacto
         </p>
         <h2 id="contacto-titulo" className="scroll-desliza text-[clamp(4.25rem,13vw,10.5rem)] leading-[0.88] font-semibold tracking-[-0.05em]">
-          Hablemos<span className="text-accent">/</span>
+          Hablemos<span aria-hidden="true" className="barra text-accent" />
         </h2>
         <div className="grid gap-x-6 gap-y-12 border-t border-night-line pt-8 lg:grid-cols-12">
           <Reveal className="flex flex-col gap-5 lg:col-span-5">

@@ -8,6 +8,7 @@ import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import { trabajos, getTrabajo, trabajoPath } from '../data/trabajos.js'
 import { contactoHref } from '../data/navegacion.js'
 import { site, absoluteUrl } from '../config/site.js'
+import { persona, sitio } from '../data/schema.js'
 import { trackEvent } from '../lib/analytics.js'
 import NotFound from './NotFound.jsx'
 
@@ -22,8 +23,11 @@ function jsonLd(trabajo) {
       url,
       image: absoluteUrl(trabajo.portada.src),
       dateCreated: trabajo.anio,
-      creator: { '@type': 'Person', name: site.name, url: site.url },
+      inLanguage: 'es-AR',
+      creator: { '@type': 'Person', '@id': persona['@id'], name: persona.name, url: persona.url },
+      isPartOf: { '@type': 'WebSite', '@id': sitio['@id'], name: sitio.name, url: sitio.url },
       about: trabajo.servicios,
+      keywords: trabajo.herramientas.join(', '),
     },
     {
       '@context': 'https://schema.org',
@@ -48,7 +52,7 @@ function Titular({ trabajo }) {
     <>
       {conAcento ? texto.slice(0, -acento.length) : texto}
       {conAcento && <span className="serif">{acento}</span>}
-      <span className="text-accent">/</span>
+      <span aria-hidden="true" className="barra text-accent" />
     </>
   )
 }
@@ -117,6 +121,9 @@ export default function Proyecto() {
         description={trabajo.resumen}
         path={trabajoPath(trabajo.slug)}
         image={trabajo.portada.src}
+        imageAlt={trabajo.portada.alt}
+        imageWidth={trabajo.portada.width}
+        imageHeight={trabajo.portada.height}
         type="article"
         noindex={trabajo.ejemplo}
         jsonLd={jsonLd(trabajo)}

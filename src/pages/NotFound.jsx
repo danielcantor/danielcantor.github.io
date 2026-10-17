@@ -15,7 +15,7 @@ export default function NotFound() {
         </p>
         <h1 className="text-[clamp(2.75rem,7vw,6rem)] leading-[0.98] font-semibold tracking-[-0.045em]">
           Esta página <span className="serif">no existe</span>
-          <span className="text-accent">/</span>
+          <span aria-hidden="true" className="barra text-accent" />
         </h1>
         <p className="max-w-xl text-soft sm:text-lg">
           Puede que el link esté mal escrito o que la página haya cambiado de dirección.

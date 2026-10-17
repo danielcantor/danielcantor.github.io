@@ -371,6 +371,12 @@
 }
 
 @layer components {
+  /* Barra de la marca al final de un título. Va como contenido generado: así no forma parte
+     del texto que leen los buscadores y los lectores de pantalla ("Hablemos", no "Hablemos/"). */
+  .barra::after {
+    content: '/';
+  }
+
   /* Palabra en serif cursiva dentro de un título. */
   .serif {
     font-family: var(--font-serif);
