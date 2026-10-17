@@ -1,4 +1,5 @@
 import { site } from '../config/site.js'
+import { useT } from '../i18n/index.js'
 import { trackEvent } from '../lib/analytics.js'
 
 // Las redes sin perfil cargado no se muestran.
@@ -10,6 +11,7 @@ const redes = [
 
 export default function Footer() {
   const anio = new Date().getFullYear()
+  const t = useT()
 
   return (
     <footer className="border-t border-night-line bg-night text-night-text">
@@ -17,7 +19,7 @@ export default function Footer() {
         <span>
           © {anio} {site.name}
         </span>
-        <span>{site.city}, Argentina</span>
+        <span>{t.footer.ubicacion}</span>
         <a
           href={`mailto:${site.email}`}
           onClick={() => trackEvent('click_email', { ubicacion: 'footer' })}
@@ -31,7 +33,7 @@ export default function Footer() {
               <li key={nombre}>
                 <a href={url} target="_blank" rel="noopener noreferrer" className="no-underline underline-offset-4 hover:text-on-night hover:underline">
                   {nombre}
-                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                  <span className="sr-only">{t.nuevaPestana}</span>
                 </a>
               </li>
             ))}

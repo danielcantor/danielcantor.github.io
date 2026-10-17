@@ -23,5 +23,8 @@ export function render(url) {
     .map((tag) => tag.toString())
     .join('\n    ')
 
-  return { html, head }
+  // Atributos de <html> (el idioma de la página), para reemplazarlos en la plantilla.
+  const htmlAttributes = helmet.htmlAttributes.toString()
+
+  return { html, head, htmlAttributes }
 }

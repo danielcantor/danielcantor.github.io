@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { currentTheme, toggleTheme } from '../lib/theme.js'
+import { useT } from '../i18n/index.js'
 import { MoonIcon, SunIcon } from './icons.jsx'
 
 export default function ThemeToggle({ className = '' }) {
   // El tema real solo se conoce en el navegador: hasta montar, la etiqueta es genérica
   // (el HTML prerenderizado no sabe qué tema tiene cada persona).
   const [theme, setTheme] = useState(null)
+  const t = useT().tema
 
   useEffect(() => {
     setTheme(currentTheme())
@@ -15,8 +17,7 @@ export default function ThemeToggle({ className = '' }) {
     return () => media.removeEventListener('change', onChange)
   }, [])
 
-  const label =
-    theme === 'dark' ? 'Cambiar a modo claro' : theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar entre modo claro y oscuro'
+  const label = theme === 'dark' ? t.aClaro : theme === 'light' ? t.aOscuro : t.alternar
 
   // El ícono lo decide el CSS, así se ve bien desde el primer pintado: sol en oscuro, luna en claro.
   return (

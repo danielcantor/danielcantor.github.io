@@ -41,8 +41,9 @@ const { render, prerenderRoutes } = await import(
 )
 
 for (const route of prerenderRoutes) {
-  const { html, head } = render(route.path)
+  const { html, head, htmlAttributes } = render(route.path)
   const page = template
+    .replace(/<html[^>]*>/, htmlAttributes ? `<html ${htmlAttributes}>` : '$&')
     .replace('<!--app-head-->', head)
     .replace('<!--app-html-->', html)
 
@@ -52,18 +53,24 @@ for (const route of prerenderRoutes) {
   console.log(`  prerender  ${route.path}  →  dist/${route.file}`)
 }
 
-// sitemap.xml con las rutas indexables (los proyectos de ejemplo quedan afuera).
+// sitemap.xml con las rutas indexables (los proyectos de ejemplo quedan afuera),
+// cada una con sus versiones en otros idiomas (hreflang).
 const { site } = await import(pathToFileURL(path.join(root, 'src', 'config', 'site.js')).href)
 const lastmod = new Date().toISOString().slice(0, 10)
 const urls = prerenderRoutes
   .filter((route) => route.sitemap)
-  .map(
-    (route) =>
-      `  <url>\n    <loc>${new URL(route.path, site.url)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${route.priority}</priority>\n  </url>`,
-  )
+  .map((route) => {
+    const alternates = Object.entries(route.alternates ?? {})
+      .map(([lang, p]) => `\n    <xhtml:link rel="alternate" hreflang="${lang}" href="${new URL(p, site.url)}"/>`)
+      .join('')
+    const xDefault = route.alternates
+      ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${new URL(route.alternates.es, site.url)}"/>`
+      : ''
+    return `  <url>\n    <loc>${new URL(route.path, site.url)}</loc>${alternates}${xDefault}\n    <lastmod>${lastmod}</lastmod>\n    <priority>${route.priority}</priority>\n  </url>`
+  })
 await fs.writeFile(
   path.join(distDir, 'sitemap.xml'),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`,
 )
 console.log(`  sitemap    ${urls.length} URL(s)  →  dist/sitemap.xml`)
 

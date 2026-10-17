@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { trabajoPath } from '../data/trabajos.js'
+import { trabajoPath } from '../i18n/paths.js'
 import { trackEvent } from '../lib/analytics.js'
 import CountUp from './CountUp.jsx'
 
@@ -9,7 +9,7 @@ function cardSrcSet(src) {
 }
 
 // Detalle de un caso en la home: la captura, el problema que resolvió y dos números.
-export default function TrabajoPieza({ trabajo }) {
+export default function TrabajoPieza({ trabajo, lang, verCompleto }) {
   const metricas = trabajo.metricas.slice(0, 2)
 
   return (
@@ -45,11 +45,11 @@ export default function TrabajoPieza({ trabajo }) {
           ))}
         </dl>
         <Link
-          to={trabajoPath(trabajo.slug)}
+          to={trabajoPath(trabajo.slug, lang)}
           onClick={() => trackEvent('select_content', { content_type: 'trabajo', content_id: trabajo.slug })}
           className="inline-flex min-h-11 items-center self-start font-semibold text-accent-text underline-offset-4 hover:underline"
         >
-          Ver el caso completo <span aria-hidden="true">&nbsp;→</span>
+          {verCompleto} <span aria-hidden="true">&nbsp;→</span>
         </Link>
       </div>
     </article>
