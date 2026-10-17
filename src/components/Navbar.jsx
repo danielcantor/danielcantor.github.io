@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { navLinks } from '../data/navegacion.js'
+import { navLinks, contactoHref } from '../data/navegacion.js'
+import { trackEvent } from '../lib/analytics.js'
 import MobileMenu from './MobileMenu.jsx'
-import WhatsAppButton from './WhatsAppButton.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
-import { MenuIcon } from './icons.jsx'
 import logo from '../assets/img/isologo.svg'
 import logoNegativo from '../assets/img/isologo-negativo.svg'
 
@@ -20,39 +19,43 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex h-19 max-w-page items-center justify-between gap-3 px-5 sm:gap-6 sm:px-6">
+    <header className="sticky top-0 z-40 bg-surface/92 backdrop-blur">
+      <div className="mx-auto flex h-18 max-w-page items-center justify-between gap-4 px-4 sm:px-6 lg:px-10">
         <Link to="/" aria-label="Daniel Cantor, ir al inicio" className="inline-flex min-w-0 shrink items-center">
-          <img src={logo} alt="" width="654" height="74" className="h-auto w-[208px] max-w-full sm:h-7 sm:w-auto dark:hidden" />
-          <img src={logoNegativo} alt="" width="654" height="74" className="hidden h-auto w-[208px] max-w-full sm:h-7 sm:w-auto dark:block" />
+          <img src={logo} alt="" width="654" height="74" className="h-[18px] w-auto sm:h-[22px] dark:hidden" />
+          <img src={logoNegativo} alt="" width="654" height="74" className="hidden h-[18px] w-auto sm:h-[22px] dark:block" />
         </Link>
 
-        <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-5 text-[0.9375rem] font-medium whitespace-nowrap xl:gap-7">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-ink no-underline hover:text-brand-text">
-                  {link.short ?? link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <p className="hidden text-sm text-muted xl:block">Estudio de diseño y desarrollo web — Buenos Aires</p>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <ThemeToggle />
-          <div className="hidden lg:block">
-            <WhatsAppButton ubicacion="header" size="sm">WhatsApp</WhatsAppButton>
-          </div>
+          <nav aria-label="Principal" className="hidden lg:block">
+            <ul className="flex items-center gap-6 text-sm font-medium whitespace-nowrap">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="no-underline underline-offset-4 hover:underline">
+                    {link.short ?? link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ThemeToggle className="lg:ml-3" />
+          <a
+            href={contactoHref}
+            onClick={() => trackEvent('cta_click', { cta: 'hablemos', ubicacion: 'header' })}
+            className="btn btn-outline hidden h-11 px-[18px] text-sm lg:inline-flex"
+          >
+            Hablemos <span aria-hidden="true">↗</span>
+          </a>
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            aria-label="Abrir menú"
             aria-expanded={menuOpen}
             aria-controls="menu-mobile"
-            className="inline-flex size-11 items-center justify-center rounded-[10px] border border-line-strong bg-card text-ink lg:hidden"
+            className="btn btn-outline h-11 px-4 text-sm lg:hidden"
           >
-            <MenuIcon size={22} />
+            Menú
           </button>
         </div>
       </div>

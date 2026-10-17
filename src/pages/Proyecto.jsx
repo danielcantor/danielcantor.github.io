@@ -2,10 +2,11 @@ import { Link, useParams } from 'react-router'
 import Seo from '../components/Seo.jsx'
 import CountUp from '../components/CountUp.jsx'
 import Reveal from '../components/Reveal.jsx'
+import SectionHeading from '../components/SectionHeading.jsx'
 import ProcesoPaso from '../components/ProcesoPaso.jsx'
 import WhatsAppButton from '../components/WhatsAppButton.jsx'
-import { ArrowUpRightIcon } from '../components/icons.jsx'
 import { trabajos, getTrabajo, trabajoPath } from '../data/trabajos.js'
+import { contactoHref } from '../data/navegacion.js'
 import { site, absoluteUrl } from '../config/site.js'
 import { trackEvent } from '../lib/analytics.js'
 import NotFound from './NotFound.jsx'
@@ -36,58 +37,67 @@ function jsonLd(trabajo) {
   ]
 }
 
+// El titular sin el nombre del cliente (ya está en las migas y la ficha), con el final en serif.
+function Titular({ trabajo }) {
+  const prefijo = `${trabajo.titulo}:`
+  let texto = trabajo.titular.startsWith(prefijo) ? trabajo.titular.slice(prefijo.length).trim() : trabajo.titular
+  texto = texto.charAt(0).toUpperCase() + texto.slice(1)
+  const acento = trabajo.titularAcento
+  const conAcento = acento && texto.endsWith(acento)
+  return (
+    <>
+      {conAcento ? texto.slice(0, -acento.length) : texto}
+      {conAcento && <span className="serif">{acento}</span>}
+      <span className="text-accent">/</span>
+    </>
+  )
+}
+
+const linkExterno = 'font-semibold text-accent-text underline-offset-4 hover:underline'
+
 function Ficha({ trabajo }) {
   const datos = [
     ['Cliente', trabajo.cliente],
     ['Rubro', trabajo.rubro],
-    ['Año', trabajo.anio],
-    ['Duración', trabajo.duracion],
+    ['Año · duración', `${trabajo.anio} · ${trabajo.duracion}`],
+    ['Servicios', trabajo.servicios.join(' · ')],
   ]
   return (
-    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 rounded-[20px] border border-line bg-card p-6 text-[0.9375rem]">
+    <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-ink pt-4 text-[0.9375rem] lg:grid-cols-6">
       {datos.map(([dt, dd]) => (
-        <div key={dt}>
-          <dt className="text-[0.8125rem] text-subtle">{dt}</dt>
-          <dd className="font-semibold">{dd}</dd>
+        <div key={dt} className="flex flex-col gap-1">
+          <dt className="text-[0.8125rem] text-muted">{dt}</dt>
+          <dd>{dd}</dd>
         </div>
       ))}
-      <div className="col-span-2">
-        <dt className="text-[0.8125rem] text-subtle">Servicios</dt>
-        <dd className="mt-1.5 flex flex-wrap gap-2">
-          {trabajo.servicios.map((s) => (
-            <span key={s} className="rounded-full border border-line bg-surface px-3 py-1 text-[0.8125rem] font-semibold">
-              {s}
-            </span>
-          ))}
-        </dd>
-      </div>
       {trabajo.agencia && (
-        <div className="col-span-2">
-          <dt className="text-[0.8125rem] text-subtle">Contratado a través de</dt>
-          <dd className="font-semibold">
-            <a href={trabajo.agencia.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
-              {trabajo.agencia.nombre} <ArrowUpRightIcon size={16} />
+        <div className="flex flex-col gap-1">
+          <dt className="text-[0.8125rem] text-muted">Junto a</dt>
+          <dd>
+            <a href={trabajo.agencia.url} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+              {trabajo.agencia.nombre}
+              <span className="sr-only"> (se abre en una pestaña nueva)</span>
+            </a>{' '}
+            (agencia)
+          </dd>
+        </div>
+      )}
+      {trabajo.url && (
+        <div className="flex flex-col gap-1">
+          <dt className="text-[0.8125rem] text-muted">Sitio</dt>
+          <dd>
+            <a href={trabajo.url} target="_blank" rel="noopener noreferrer" className={linkExterno}>
+              {trabajo.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')} ↗
               <span className="sr-only"> (se abre en una pestaña nueva)</span>
             </a>
           </dd>
         </div>
       )}
-      {trabajo.url && (
-        <div className="col-span-2">
-          <a
-            href={trabajo.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-semibold"
-          >
-            Ver sitio en vivo <ArrowUpRightIcon size={16} />
-            <span className="sr-only"> (se abre en una pestaña nueva)</span>
-          </a>
-        </div>
-      )}
     </dl>
   )
 }
+
+const seccion = 'mx-auto max-w-page px-4 pt-24 sm:px-6 sm:pt-32 lg:px-10'
 
 export default function Proyecto() {
   const { slug } = useParams()
@@ -95,8 +105,10 @@ export default function Proyecto() {
   if (!trabajo) return <NotFound />
 
   const index = trabajos.indexOf(trabajo)
-  const anterior = trabajos[(index - 1 + trabajos.length) % trabajos.length]
   const siguiente = trabajos[(index + 1) % trabajos.length]
+  // Las secciones se numeran en el orden en que aparecen: algunas dependen de los datos del caso.
+  let numero = 0
+  const n = () => String(++numero).padStart(2, '0')
 
   return (
     <>
@@ -111,130 +123,112 @@ export default function Proyecto() {
       />
 
       {trabajo.ejemplo && (
-        <div role="note" className="border-b border-accent/40 bg-accent-soft text-accent-ink">
-          <p className="mx-auto max-w-page px-6 py-2.5 text-sm font-medium">
+        <div role="note" className="bg-accent text-on-accent">
+          <p className="mx-auto max-w-page px-4 py-2.5 text-sm font-medium sm:px-6 lg:px-10">
             Proyecto de ejemplo: los datos y resultados son ilustrativos.
           </p>
         </div>
       )}
 
       <article>
-        <header className="mx-auto flex max-w-page flex-col gap-8 px-6 pt-10 pb-14">
-          <nav aria-label="Migas de pan" className="text-sm text-subtle">
-            <ol className="flex flex-wrap gap-2">
+        <header className="mx-auto flex max-w-page flex-col gap-8 px-4 pt-6 pb-10 sm:gap-10 sm:px-6 sm:pt-10 lg:px-10">
+          <nav aria-label="Migas de pan" className="text-sm text-muted">
+            <ol className="flex flex-wrap gap-1.5">
               <li>
-                <Link to="/" className="text-muted">Inicio</Link> <span aria-hidden="true">/</span>
+                <Link to="/" className="underline-offset-4 hover:underline">Inicio</Link> <span aria-hidden="true">/</span>
               </li>
               <li>
-                <a href="/#trabajos" className="text-muted">Trabajos</a> <span aria-hidden="true">/</span>
+                <a href="/#trabajos" className="underline-offset-4 hover:underline">Trabajos</a> <span aria-hidden="true">/</span>
               </li>
               <li aria-current="page" className="font-semibold text-ink">{trabajo.titulo}</li>
             </ol>
           </nav>
 
-          <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_1fr]">
-            <div className="flex flex-col gap-4.5">
-              <span className="kicker">
+          <div className="grid gap-x-6 gap-y-5 lg:grid-cols-12 lg:items-end">
+            <div className="flex flex-col gap-4 lg:col-span-8 sm:gap-5">
+              <p className="text-sm text-muted">
+                <span className="font-semibold text-accent-text">(Caso {String(index + 1).padStart(2, '0')}) </span>
                 {trabajo.tipo}
-              </span>
-              <h1 className="font-display text-[clamp(2.1rem,4.6vw,3.6rem)] leading-[1.08] font-extrabold tracking-[-0.025em]">
-                {trabajo.titular}
+              </p>
+              <h1 className="text-[clamp(2.5rem,6.2vw,5.5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance">
+                <Titular trabajo={trabajo} />
               </h1>
-              <p className="max-w-xl text-[1.1875rem] text-muted">{trabajo.resumen}</p>
             </div>
-            <Ficha trabajo={trabajo} />
+            <p className="text-soft sm:text-lg lg:col-span-4">{trabajo.resumen}</p>
           </div>
 
-          <img
-            src={trabajo.portada.src}
-            alt={trabajo.portada.alt}
-            width={trabajo.portada.width}
-            height={trabajo.portada.height}
-            fetchpriority="high"
-            className="aspect-[16/7] w-full rounded-[28px] object-cover"
-          />
+          <Ficha trabajo={trabajo} />
         </header>
 
-        <section aria-labelledby="resultados" className="border-y border-line-soft bg-card">
-          <div className="mx-auto flex max-w-page flex-col gap-6 px-6 py-14">
-            <h2 id="resultados" className="font-display text-[1.375rem] font-bold">
-              {trabajo.metricasTitulo}
-            </h2>
-            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-page px-4 sm:px-6 lg:px-10">
+          <div className="overflow-hidden rounded-md bg-panel px-4 pt-5 sm:px-14 sm:pt-12 lg:px-20 lg:pt-16">
+            <img
+              src={trabajo.portada.src}
+              alt={trabajo.portada.alt}
+              width={trabajo.portada.width}
+              height={trabajo.portada.height}
+              fetchpriority="high"
+              className="aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] sm:aspect-[16/7]"
+            />
+          </div>
+        </div>
+
+        <section aria-labelledby="resultados" className={seccion}>
+          <SectionHeading numero={n()} eyebrow={trabajo.metricasTitulo}>
+            <h2 id="resultados" className="sr-only">{trabajo.metricasTitulo}</h2>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-6 sm:gap-6 lg:grid-cols-4">
               {trabajo.metricas.map((m) => (
-                <li key={m.label} className="flex flex-col gap-1 rounded-[18px] bg-surface p-6">
-                  <CountUp
-                    to={m.to}
-                    from={m.from}
-                    decimals={m.decimals}
-                    suffix={m.suffix}
-                    sign={m.sign}
-                    className="font-display text-[2.75rem] leading-tight font-extrabold text-brand-text"
-                  />
-                  <span className="text-[0.9375rem] text-muted">{m.label}</span>
+                <li key={m.label} className="flex flex-col gap-2 border-t border-line pt-3.5">
+                  <p className="text-[clamp(2.75rem,5vw,4rem)] leading-none font-semibold tracking-[-0.04em]">
+                    {m.from != null && (
+                      <>
+                        <s className="serif text-muted decoration-2">{m.from}</s>{' '}
+                        <span className="sr-only">pasó a </span>
+                      </>
+                    )}
+                    <CountUp to={m.to} decimals={m.decimals} suffix={m.suffix} sign={m.sign} />
+                  </p>
+                  <span className="text-sm text-soft sm:text-[0.9375rem]">{m.label}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </SectionHeading>
         </section>
 
-        <div className="mx-auto grid max-w-page items-start gap-10 px-6 py-14 sm:gap-14 sm:py-20 lg:grid-cols-2">
-          <Reveal as="section" aria-labelledby="desafio" className="flex flex-col gap-4 lg:sticky lg:top-28">
-            <p className="text-[0.9375rem] font-semibold text-brand-text">El desafío</p>
-            <h2 id="desafio" className="bar-under font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
-              {trabajo.desafio.titulo}
-            </h2>
-            {trabajo.desafio.parrafos.map((p) => (
-              <p key={p} className="text-muted">{p}</p>
-            ))}
-          </Reveal>
-          <section aria-labelledby="que-hicimos" className="flex flex-col gap-4">
-            <h2 id="que-hicimos" className="text-[0.9375rem] font-semibold text-brand-text">Qué hicimos</h2>
-            <ol>
-              {trabajo.pasos.map((paso, i) => (
-                <Reveal as="li" key={paso.titulo} delay={100 + i * 150}>
-                  <ProcesoPaso
-                    numero={i + 1}
-                    titulo={paso.titulo}
-                    descripcion={paso.descripcion}
-                    ultimo={i === trabajo.pasos.length - 1}
-                    tono="claro"
-                    horizontal={false}
-                  />
-                </Reveal>
+        <Reveal as="section" aria-labelledby="desafio" className={seccion}>
+          <SectionHeading id="desafio" numero={n()} eyebrow="El desafío" title={trabajo.desafio.titulo}>
+            <div className="mt-2 grid gap-6 text-soft sm:text-lg md:grid-cols-2 md:gap-8">
+              {trabajo.desafio.parrafos.map((p) => (
+                <p key={p}>{p}</p>
               ))}
-            </ol>
-          </section>
-        </div>
+            </div>
+          </SectionHeading>
+        </Reveal>
 
         {(trabajo.antesDespues || trabajo.galeria.length > 0) && (
-          <section aria-labelledby="antes-despues" className="bg-night text-on-night">
-            <div className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:py-20">
-              <div className="flex flex-col gap-2.5">
-                <p className="kicker text-night-text">
-                  {trabajo.antesDespues ? 'Antes y después' : 'Galería'}
-                </p>
-                <h2 id="antes-despues" className="bar-under font-display text-[clamp(1.75rem,3vw,2.4rem)] font-extrabold tracking-[-0.02em]">
-                  Así quedó el proyecto
-                </h2>
-              </div>
+          <section aria-labelledby="antes-despues" className={seccion}>
+            <SectionHeading numero={n()} eyebrow={trabajo.antesDespues ? 'Antes y después' : 'Galería'}>
+              <h2 id="antes-despues" className="sr-only">Así quedó el proyecto</h2>
               {trabajo.antesDespues && (
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-8 md:grid-cols-2 md:gap-6">
                   {['antes', 'despues'].map((k) => {
                     const img = trabajo.antesDespues[k]
+                    const despues = k === 'despues'
                     return (
-                      <figure key={k} className="flex flex-col gap-2.5">
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          width="1200"
-                          height="900"
-                          loading="lazy"
-                          decoding="async"
-                          className="aspect-[4/3] w-full rounded-[18px] object-cover"
-                        />
-                        <figcaption className="text-sm text-night-text">
-                          <strong className="text-on-night">{k === 'antes' ? 'Antes:' : 'Después:'}</strong> {img.caption}
+                      <figure key={k} className="flex flex-col gap-3">
+                        <div className={`overflow-hidden rounded-md px-3.5 pt-3.5 sm:px-6 sm:pt-6 ${despues ? 'bg-inverse' : 'bg-panel'}`}>
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            width="1200"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                            className={`aspect-[4/3] w-full rounded-t object-cover object-top ${despues ? '' : 'grayscale-50 dark:brightness-85'}`}
+                          />
+                        </div>
+                        <figcaption className="text-sm text-soft sm:text-[0.9375rem]">
+                          <strong className={despues ? 'text-accent-text' : 'text-ink'}>{despues ? 'Después —' : 'Antes —'}</strong> {img.caption}
                         </figcaption>
                       </figure>
                     )
@@ -252,89 +246,129 @@ export default function Proyecto() {
                         height="600"
                         loading="lazy"
                         decoding="async"
-                        className="aspect-[4/3] w-full rounded-[14px] object-cover"
+                        className="aspect-[4/3] w-full rounded-md object-cover"
                       />
                     </li>
                   ))}
                 </ul>
               )}
-            </div>
+            </SectionHeading>
           </section>
         )}
 
-        <div className="mx-auto grid max-w-page items-center gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:grid-cols-2">
-          {trabajo.testimonio && (
-            <figure className="flex flex-col gap-5 rounded-3xl border border-line bg-card p-8 sm:p-10">
-              <blockquote className="font-display text-[1.375rem] leading-snug font-semibold">
-                “{trabajo.testimonio.texto}”
-              </blockquote>
-              <figcaption className="flex flex-col">
-                <span className="font-semibold">{trabajo.testimonio.nombre}</span>
-                <span className="text-sm text-subtle">
-                  {trabajo.testimonio.cargo}, {trabajo.cliente}
-                </span>
-              </figcaption>
-            </figure>
-          )}
-          <section aria-labelledby="herramientas" className="flex flex-col gap-4">
-            <h2 id="herramientas" className="bar-under font-display text-2xl font-bold">Herramientas usadas</h2>
-            <ul className="flex flex-wrap gap-2.5">
-              {trabajo.herramientas.map((h) => (
-                <li key={h} className="rounded-[10px] border border-line-strong bg-card px-3.5 py-2 text-sm font-medium">
+        <section aria-labelledby="que-hicimos" className={seccion}>
+          <SectionHeading
+            id="que-hicimos"
+            numero={n()}
+            eyebrow="Qué hicimos"
+            title={
+              <>
+                {trabajo.pasos.length} pasos, <span className="serif">del problema a la entrega</span>
+              </>
+            }
+          >
+            <ol className="filas mt-4">
+              {trabajo.pasos.map((paso, i) => (
+                <Reveal as="li" key={paso.titulo} delay={i * 80}>
+                  <ProcesoPaso numero={i + 1} titulo={paso.titulo} descripcion={paso.descripcion} variante="fila" />
+                </Reveal>
+              ))}
+            </ol>
+          </SectionHeading>
+        </section>
+
+        {trabajo.testimonio && (
+          <section aria-label="Testimonio" className={seccion}>
+            <SectionHeading numero={n()} eyebrow="Lo que dice el cliente">
+              <figure className="flex flex-col gap-5">
+                <blockquote className="serif text-[clamp(1.75rem,3.4vw,2.75rem)] leading-[1.15]">“{trabajo.testimonio.texto}”</blockquote>
+                <figcaption className="text-[0.9375rem]">
+                  <span className="font-semibold">{trabajo.testimonio.nombre}</span>
+                  <span className="text-muted">
+                    {' '}
+                    — {trabajo.testimonio.cargo}, {trabajo.cliente}
+                  </span>
+                </figcaption>
+              </figure>
+            </SectionHeading>
+          </section>
+        )}
+
+        <section aria-labelledby="herramientas" className={`${seccion} pb-24 sm:pb-32`}>
+          <SectionHeading numero={n()} eyebrow="Herramientas">
+            <h2 id="herramientas" className="sr-only">Herramientas usadas</h2>
+            <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[1.1875rem] leading-snug tracking-[-0.01em] sm:text-[1.625rem]">
+              {trabajo.herramientas.map((h, i) => (
+                <li key={h}>
+                  {i > 0 && (
+                    <span aria-hidden="true" className="mr-3 text-accent-text">
+                      /
+                    </span>
+                  )}
                   {h}
                 </li>
               ))}
             </ul>
-            <p className="text-[0.9375rem] text-muted">
-              Los resultados dependen del punto de partida de cada negocio. En el diagnóstico inicial te digo qué se
-              puede esperar en tu caso.
+            <p className="text-sm text-muted">
+              Los resultados dependen del punto de partida de cada negocio. En el diagnóstico gratis te digo qué se puede
+              esperar en tu caso.
             </p>
-          </section>
-        </div>
+          </SectionHeading>
+        </section>
       </article>
 
-      <section aria-labelledby="cta" data-oculta-barra-cta className="mx-auto max-w-page px-6 pb-20">
-        <div className="flex flex-wrap items-center justify-between gap-7 rounded-[28px] bg-brand px-8 py-12 text-on-night sm:px-12 sm:py-14">
-          <div className="flex max-w-xl flex-col gap-2.5">
-            <h2 id="cta" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
+      <section aria-labelledby="cta" data-oculta-barra-cta className="bg-night text-on-night">
+        <div className="mx-auto grid max-w-page gap-x-6 gap-y-8 px-4 py-16 sm:px-6 sm:py-22 lg:grid-cols-12 lg:items-end lg:px-10">
+          <div className="flex flex-col gap-4 lg:col-span-8">
+            <p className="text-sm text-night-text">
+              <span className="font-semibold text-night-accent">({n()}) </span>¿Te pasa algo parecido?
+            </p>
+            <h2 id="cta" className="text-[clamp(2.125rem,5vw,4rem)] leading-none font-semibold tracking-[-0.04em] text-balance">
               {trabajo.cta}
             </h2>
-            <p className="text-night-text">Contame tu caso: en el diagnóstico gratis te digo por dónde empezar.</p>
+            <p className="text-night-text sm:text-lg">Contame tu caso: en el diagnóstico gratis te digo por dónde empezar.</p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col items-start gap-2 lg:col-span-4">
             <a
-              href="/#contacto"
+              href={contactoHref}
               onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'proyecto', proyecto: trabajo.slug })}
-              className="btn btn-light btn-bar h-13.5 px-6.5"
+              className="btn btn-accent h-14 w-full justify-between px-6.5 sm:w-auto sm:justify-center"
             >
-              Pedí tu diagnóstico gratis
+              Pedí tu diagnóstico gratis <span aria-hidden="true">→</span>
             </a>
-            <WhatsAppButton ubicacion="proyecto" message={`Hola Daniel, vi el caso de ${trabajo.titulo} y quiero consultarte por`}>
+            <WhatsAppButton
+              ubicacion="proyecto"
+              variante="link"
+              message={`Hola Daniel, vi el caso de ${trabajo.titulo} y quiero consultarte por`}
+            >
               WhatsApp
             </WhatsAppButton>
           </div>
         </div>
       </section>
 
-      <nav aria-label="Otros proyectos" className="mx-auto grid max-w-page gap-5 px-6 pb-20 sm:grid-cols-2">
-        {[
-          [anterior === siguiente ? 'Ver otro proyecto' : '← Proyecto anterior', anterior, 'items-start text-left'],
-          ['Proyecto siguiente →', siguiente, 'items-end text-right'],
-        ]
-          // Con dos proyectos, anterior y siguiente son el mismo: se muestra una sola vez.
-          .filter(([, t], i) => i === 0 || t !== anterior)
-          .map(([label, t, align]) => (
+      {siguiente !== trabajo && (
+        <nav aria-label="Otros proyectos" className="mx-auto max-w-page px-4 py-10 sm:px-6 sm:py-14 lg:px-10">
           <Link
-            key={label}
-            to={trabajoPath(t.slug)}
-            className={`flex flex-col gap-1 rounded-[18px] border border-line bg-card p-6 text-ink no-underline hover:border-brand ${align}`}
+            to={trabajoPath(siguiente.slug)}
+            className="group grid grid-cols-[6rem_1fr] items-center gap-x-4 no-underline lg:grid-cols-12 lg:gap-x-6"
           >
-            <span className="text-sm text-subtle">{label}</span>
-            <span className="font-display text-xl font-bold">{t.titulo}</span>
-            <span className="text-sm font-semibold text-brand-text">{t.tipo}</span>
+            <span className="col-start-2 row-start-1 self-end text-sm text-muted lg:col-span-3 lg:col-start-1 lg:self-center">Siguiente caso</span>
+            <span className="col-start-2 row-start-2 text-[clamp(1.875rem,5vw,4.5rem)] leading-none font-semibold tracking-[-0.045em] group-hover:underline group-hover:decoration-2 group-hover:underline-offset-8 lg:col-span-6 lg:col-start-4 lg:row-start-1">
+              {siguiente.titulo} <span className="text-accent-text">→</span>
+            </span>
+            <img
+              src={siguiente.imagen.src}
+              alt=""
+              width={siguiente.imagen.width}
+              height={siguiente.imagen.height}
+              loading="lazy"
+              decoding="async"
+              className="col-start-1 row-span-2 row-start-1 aspect-[4/3] w-full rounded object-cover lg:col-span-3 lg:col-start-10 lg:row-span-1"
+            />
           </Link>
-        ))}
-      </nav>
+        </nav>
+      )}
     </>
   )
 }
