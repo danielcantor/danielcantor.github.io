@@ -15,23 +15,25 @@ export default function TrabajoPieza({ trabajo }) {
   return (
     <article className="grid gap-x-6 gap-y-6 lg:grid-cols-12">
       <figure className="flex flex-col gap-3 lg:col-span-7">
-        <img
-          src={trabajo.imagen.src}
-          srcSet={cardSrcSet(trabajo.imagen.src)}
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          alt={trabajo.imagen.alt}
-          width={trabajo.imagen.width}
-          height={trabajo.imagen.height}
-          loading="lazy"
-          decoding="async"
-          className="aspect-[4/3] w-full rounded-md object-cover"
-        />
+        <div className="overflow-hidden rounded-md">
+          <img
+            src={trabajo.imagen.src}
+            srcSet={cardSrcSet(trabajo.imagen.src)}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            alt={trabajo.imagen.alt}
+            width={trabajo.imagen.width}
+            height={trabajo.imagen.height}
+            loading="lazy"
+            decoding="async"
+            className="scroll-parallax aspect-[4/3] w-full object-cover"
+          />
+        </div>
         <figcaption className="text-sm text-muted">
           {trabajo.titulo} — {trabajo.resultado}
         </figcaption>
       </figure>
       <div className="flex flex-col justify-end gap-6 lg:col-span-5 lg:pb-9">
-        <h3 className="serif text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1]">{trabajo.desafio.titulo}</h3>
+        <h3 className="sube serif text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1]">{trabajo.desafio.titulo}</h3>
         <dl className="grid grid-cols-2 gap-6 border-t border-ink pt-4">
           {metricas.map((m) => (
             <div key={m.label} className="flex flex-col-reverse">

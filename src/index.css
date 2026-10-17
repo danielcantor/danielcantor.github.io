@@ -111,6 +111,231 @@
   }
 }
 
+/*
+ * Animaciones de scroll. Solo mueven transform, opacity o clip-path, y las atadas al scroll
+ * las resuelve el navegador fuera del hilo principal: así no traban el scroll en mobile.
+ */
+@keyframes sube {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes traza-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes traza-y {
+  from {
+    transform: scaleY(0) skewX(-14deg);
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes acerca {
+  from {
+    transform: scale(0.88);
+  }
+}
+
+@keyframes parallax {
+  from {
+    transform: translateY(-6%) scale(1.12);
+  }
+  to {
+    transform: translateY(6%) scale(1.12);
+  }
+}
+
+@keyframes junta-d {
+  from {
+    transform: translateX(-28%);
+  }
+}
+
+@keyframes junta-c {
+  from {
+    transform: translateX(28%);
+  }
+}
+
+@keyframes endereza {
+  from {
+    transform: rotate(-35deg) scaleY(0.4);
+  }
+}
+
+@keyframes desliza {
+  from {
+    transform: translateX(18%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: la barra se dibuja y la regla se extiende. */
+  .hero-barra {
+    display: inline-block;
+    transform-origin: bottom;
+    animation: traza-y 500ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+  }
+
+  .hero-regla {
+    position: relative;
+    border-top-color: transparent;
+  }
+
+  .hero-regla::before {
+    content: '';
+    position: absolute;
+    inset: -1px 0 auto;
+    height: 1px;
+    background: var(--color-ink);
+    transform-origin: left;
+    animation: traza-x 1100ms cubic-bezier(0.65, 0, 0.35, 1) 350ms both;
+  }
+
+  /*
+   * Solo en escritorio el titular sube desde una máscara y el texto de abajo aparece después.
+   * En mobile el titular es el elemento que PageSpeed mide como LCP: si arrancara oculto, el puntaje bajaría.
+   */
+  @media (min-width: 64rem) {
+    .hero-titulo {
+      overflow: clip;
+      overflow-clip-margin: 0.2em;
+    }
+
+    .hero-titulo > .hero-texto {
+      display: block;
+      animation: sube 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-barra {
+      animation-delay: 650ms;
+    }
+
+    .hero-regla > * {
+      animation: aparece 700ms ease-out both;
+      animation-delay: calc(700ms + var(--i, 0) * 110ms);
+    }
+  }
+
+  /* Menú mobile: el fondo aparece y cada ítem sube con su línea dibujándose, uno tras otro. */
+  .menu-mobile {
+    animation: fade-in 220ms ease-out both;
+  }
+
+  .menu-item {
+    animation: aparece 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(100ms + var(--i, 0) * 55ms);
+  }
+
+  .filas > .menu-item::before,
+  .filas > .menu-item:last-child::after {
+    animation: traza-x 700ms cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation-delay: calc(120ms + var(--i, 0) * 55ms);
+  }
+
+  /* Títulos de sección: suben desde una máscara cuando su bloque entra en pantalla. */
+  .js [data-reveal] .sube {
+    /* Margen negativo: así la máscara no recorta descendentes ni la cursiva de la serif. */
+    clip-path: inset(-0.3em -0.5em -0.35em -0.5em);
+    transition:
+      clip-path 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms,
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+  }
+
+  .js [data-reveal]:not([data-visible]) .sube {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.4em);
+  }
+
+  /* Listas con reglas: cada línea se dibuja de izquierda a derecha, una tras otra. */
+  .js [data-reveal] .filas > *::before,
+  .js .filas > [data-reveal]::before {
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(200ms + var(--fila, 0) * 90ms);
+  }
+
+  .js [data-reveal] .filas > :last-child::after,
+  .js .filas > [data-reveal]:last-child::after {
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(290ms + var(--fila, 0) * 90ms);
+  }
+
+  .js [data-reveal]:not([data-visible]) .filas > *::before,
+  .js [data-reveal]:not([data-visible]) .filas > :last-child::after,
+  .js .filas > [data-reveal]:not([data-visible])::before,
+  .js .filas > [data-reveal]:not([data-visible]):last-child::after {
+    transform: scaleX(0);
+  }
+
+  .filas > :nth-child(2) { --fila: 1; }
+  .filas > :nth-child(3) { --fila: 2; }
+  .filas > :nth-child(4) { --fila: 3; }
+  .filas > :nth-child(5) { --fila: 4; }
+  .filas > :nth-child(6) { --fila: 5; }
+  .filas > :nth-child(n + 7) { --fila: 6; }
+
+  /* Animaciones atadas al scroll: solo donde el navegador las soporta; en el resto, todo queda quieto. */
+  @supports (animation-timeline: view()) {
+    /* La captura destacada se agranda dentro de su panel al acercarse. */
+    .scroll-acerca {
+      transform-origin: center bottom;
+      animation: acerca linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    /* Parallax suave dentro de un contenedor que recorta. */
+    .scroll-parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    /* Monograma: la D y la C se juntan y la barra se endereza. */
+    .scroll-junta {
+      view-timeline: --monograma block;
+    }
+
+    .scroll-junta .letra-d,
+    .scroll-junta .letra-c,
+    .scroll-junta .letra-barra {
+      display: inline-block;
+      animation: linear both;
+      animation-timeline: --monograma;
+      animation-range: entry 10% cover 50%;
+    }
+
+    .scroll-junta .letra-d {
+      animation-name: junta-d;
+    }
+
+    .scroll-junta .letra-c {
+      animation-name: junta-c;
+    }
+
+    .scroll-junta .letra-barra {
+      animation-name: endereza;
+    }
+
+    /* "Hablemos/" entra deslizándose desde la derecha. */
+    .scroll-desliza {
+      animation: desliza linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -189,12 +414,24 @@
     color: var(--color-surface);
   }
 
-  /* Línea fina entre filas de una lista (índice de trabajos, servicios, preguntas). */
+  /* Línea fina entre filas de una lista (índice de trabajos, servicios, preguntas).
+     Va en pseudo-elementos para poder dibujarla al entrar en pantalla. */
   .filas > * {
-    border-top: 1px solid var(--color-line);
+    position: relative;
   }
 
-  .filas > :last-child {
-    border-bottom: 1px solid var(--color-line);
+  .filas > *::before,
+  .filas > :last-child::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--color-line);
+    transform-origin: left;
+    pointer-events: none;
+  }
+
+  .filas > :last-child::after {
+    inset: auto 0 0;
   }
 }

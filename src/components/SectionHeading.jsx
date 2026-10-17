@@ -9,7 +9,7 @@ export default function SectionHeading({ id, numero, eyebrow, title, intro, dark
       </p>
       <div className="flex min-w-0 flex-col gap-4 lg:col-span-9">
         {title && (
-          <h2 id={id} className="text-[clamp(2rem,4.2vw,3.375rem)] leading-[1.02] font-semibold tracking-[-0.035em] text-balance">
+          <h2 id={id} className="sube text-[clamp(2rem,4.2vw,3.375rem)] leading-[1.02] font-semibold tracking-[-0.035em] text-balance">
             {title}
           </h2>
         )}

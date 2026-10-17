@@ -168,7 +168,7 @@ export default function Proyecto() {
               width={trabajo.portada.width}
               height={trabajo.portada.height}
               fetchpriority="high"
-              className="aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] sm:aspect-[16/7]"
+              className="scroll-acerca aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] sm:aspect-[16/7]"
             />
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function Trabajos() {
             width={destacado.portada.width}
             height={destacado.portada.height}
             decoding="async"
-            className="aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] transition-transform duration-500 sm:aspect-[16/7] motion-safe:group-hover:-translate-y-1.5"
+            className="scroll-acerca aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] sm:aspect-[16/7]"
           />
         </div>
         <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-0.5 pt-3.5 text-[0.9375rem] lg:grid-cols-12">

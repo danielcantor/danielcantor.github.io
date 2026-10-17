@@ -6,12 +6,12 @@ import { trackEvent } from '../lib/analytics.js'
 
 export default function Contacto() {
   return (
-    <section id="contacto" data-oculta-barra-cta aria-labelledby="contacto-titulo" className="bg-night text-on-night">
+    <section id="contacto" data-oculta-barra-cta aria-labelledby="contacto-titulo" className="overflow-x-clip bg-night text-on-night">
       <div className="mx-auto flex max-w-page flex-col gap-8 px-4 py-20 sm:gap-12 sm:px-6 sm:py-24 lg:px-10">
         <p className="text-sm text-night-text">
           <span className="font-semibold text-night-accent">(07) </span>Contacto
         </p>
-        <h2 id="contacto-titulo" className="text-[clamp(4.25rem,13vw,10.5rem)] leading-[0.88] font-semibold tracking-[-0.05em]">
+        <h2 id="contacto-titulo" className="scroll-desliza text-[clamp(4.25rem,13vw,10.5rem)] leading-[0.88] font-semibold tracking-[-0.05em]">
           Hablemos<span className="text-accent">/</span>
         </h2>
         <div className="grid gap-x-6 gap-y-12 border-t border-night-line pt-8 lg:grid-cols-12">

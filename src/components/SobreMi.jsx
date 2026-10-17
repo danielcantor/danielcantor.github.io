@@ -9,11 +9,13 @@ function Monograma() {
     <div
       role="img"
       aria-label={`Monograma D/C: estudio independiente desde ${sobreMi.desde}, en ${site.city}`}
-      className="flex aspect-[4/3] flex-col justify-between rounded-md bg-inverse p-5 text-on-inverse sm:aspect-[4/5] sm:p-7"
+      className="scroll-junta flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-md bg-inverse p-5 text-on-inverse sm:aspect-[4/5] sm:p-7"
     >
       <p className="text-[0.8125rem] text-inverse-muted">Estudio independiente · desde {sobreMi.desde}</p>
       <p className="text-[clamp(6.5rem,13vw,10rem)] leading-[0.8] font-bold tracking-[-0.06em]">
-        D<span className="text-inverse-accent">/</span>C
+        <span className="letra-d">D</span>
+        <span className="letra-barra text-inverse-accent">/</span>
+        <span className="letra-c">C</span>
       </p>
       <p className="serif text-xl leading-tight sm:text-[1.625rem]">{site.city}, para todo el país</p>
     </div>
@@ -32,7 +34,7 @@ export default function SobreMi() {
               <Monograma />
             </div>
             <div className="flex flex-col gap-5 md:col-span-5">
-              <h2 id="estudio-titulo" className="text-[clamp(1.75rem,3vw,2.375rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance">
+              <h2 id="estudio-titulo" className="sube text-[clamp(1.75rem,3vw,2.375rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance">
                 Un estudio de una persona. Hablás directo con <span className="serif">quien diseña y programa</span> tu sitio.
               </h2>
               {sobreMi.parrafos.map((p) => (
