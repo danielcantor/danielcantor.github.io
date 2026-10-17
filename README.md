@@ -53,8 +53,8 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 - [x] Mensaje de prueba enviado desde el sitio publicado.
 
 **Contenido**
-- [ ] Reemplazar los 4 trabajos de ejemplo por casos reales (y sacar `ejemplo: true`).
-- [ ] Imágenes reales: `perfil.webp` y las de `public/img/trabajos/`.
+- [x] Sacar los trabajos de ejemplo (quedan solo casos reales).
+- [ ] Imagen real: `perfil.webp`.
 - [ ] Resultados de la animación del hero (`src/components/HeroAnimation.jsx`).
 - [ ] Años de experiencia, texto y herramientas en `src/data/sobreMi.js`.
 - [ ] Links de LinkedIn e Instagram en `src/config/site.js`.

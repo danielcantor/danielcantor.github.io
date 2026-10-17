@@ -50,7 +50,8 @@ export default function Trabajos() {
           title="Proyectos de creación de sitios web y optimización de tiendas online"
           intro="Algunos casos de pymes y emprendimientos con los que trabajé. Entrá a cada uno para ver qué se hizo y qué resultados tuvo."
         />
-        <div className="flex shrink-0 gap-2">
+        {/* Sin nada para deslizar (pocas tarjetas en desktop), las flechas sobran. */}
+        <div className={`shrink-0 gap-2 ${puedeAtras || puedeAdelante ? 'flex' : 'hidden'}`}>
           <button type="button" onClick={() => mover(-1)} disabled={!puedeAtras} aria-controls="trabajos-carrusel" aria-label="Trabajo anterior" className={flechaClase}>
             <ChevronLeftIcon className="size-5" />
           </button>

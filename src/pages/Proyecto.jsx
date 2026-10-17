@@ -318,9 +318,12 @@ export default function Proyecto() {
 
       <nav aria-label="Otros proyectos" className="mx-auto grid max-w-page gap-5 px-6 pb-20 sm:grid-cols-2">
         {[
-          ['← Proyecto anterior', anterior, 'items-start text-left'],
+          [anterior === siguiente ? 'Ver otro proyecto' : '← Proyecto anterior', anterior, 'items-start text-left'],
           ['Proyecto siguiente →', siguiente, 'items-end text-right'],
-        ].map(([label, t, align]) => (
+        ]
+          // Con dos proyectos, anterior y siguiente son el mismo: se muestra una sola vez.
+          .filter(([, t], i) => i === 0 || t !== anterior)
+          .map(([label, t, align]) => (
           <Link
             key={label}
             to={trabajoPath(t.slug)}
