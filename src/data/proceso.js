@@ -1,7 +1,7 @@
 export const proceso = [
   {
-    titulo: 'Diagnóstico',
-    descripcion: 'Charlamos sobre tu negocio, tus objetivos y lo que hoy no está funcionando en tu sitio o tienda online.',
+    titulo: 'Diagnóstico gratis',
+    descripcion: 'Charlamos sobre tu negocio y reviso tu sitio o tienda. Te llevás una lista clara de lo que hoy te está haciendo perder clientes, contrates o no.',
   },
   {
     titulo: 'Propuesta',

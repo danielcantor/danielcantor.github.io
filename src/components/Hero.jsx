@@ -1,46 +1,34 @@
-import HeroAnimation from './HeroAnimation.jsx'
 import { trackEvent } from '../lib/analytics.js'
 
 export default function Hero() {
   return (
-    <section
-      id="inicio"
-      className="mx-auto grid max-w-page items-center gap-10 px-6 pt-10 pb-14 sm:gap-14 sm:pt-16 sm:pb-20 lg:grid-cols-2 lg:pt-24 lg:pb-26"
-    >
-      <div className="flex flex-col gap-5 sm:gap-7">
-        <p className="kicker">
-          Diseño web Buenos Aires<span className="hidden sm:inline"> · Pymes y emprendimientos</span>
+    <section id="inicio" className="mx-auto flex max-w-page flex-col gap-10 px-4 pt-8 pb-10 sm:gap-14 sm:px-6 sm:pt-14 sm:pb-14 lg:px-10 lg:pt-18">
+      <h1 className="hero-titulo max-w-[74rem] text-[clamp(2.75rem,7.6vw,6.5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance">
+        <span className="hero-texto">
+          Sitios web y tiendas online para pymes que quieren vender <span className="serif">de verdad</span>
+          <span aria-hidden="true" className="barra hero-barra text-accent" />
+        </span>
+      </h1>
+      <div className="hero-regla grid gap-x-6 gap-y-5 border-t border-ink pt-4 sm:pt-6 lg:grid-cols-12">
+        <p className="text-sm text-muted lg:col-span-3">
+          <span className="font-semibold text-accent-text">(01) </span>El estudio
         </p>
-        <h1 className="font-display text-[clamp(2.1rem,5.4vw,4.25rem)] leading-[1.06] font-extrabold tracking-[-0.025em]">
-          Sitios web y tiendas online que <span className="text-brand-text">venden de verdad</span>.
-        </h1>
-        <p className="max-w-[34rem] text-[1.0625rem] text-muted sm:text-[1.1875rem]">
-          Creación de sitios web para pymes, asesoría e-commerce y posicionamiento web. Te acompaño
-          desde la idea hasta que tu negocio aparece en Google.
+        <p style={{ '--i': 1 }} className="text-[1.0625rem] leading-[1.45] sm:text-xl lg:col-span-5">
+          Diseño, desarrollo y SEO para pymes que hoy reciben visitas pero pocas consultas. Del diagnóstico a que tus
+          clientes te encuentren en Google.
         </p>
-        {/* Mientras estos botones se ven, la barra fija de mobile sería redundante. */}
-        <div data-oculta-barra-cta className="flex flex-wrap gap-3.5">
+        {/* Mientras este botón se ve, la barra fija de mobile sería redundante. */}
+        <div data-oculta-barra-cta style={{ '--i': 2 }} className="flex flex-col items-start gap-3 lg:col-span-4">
           <a
             href="#contacto"
             onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'hero' })}
-            className="btn btn-primary btn-bar h-12 px-5.5 sm:h-13.5 sm:px-6.5"
+            className="btn btn-accent h-14 w-full justify-between px-6.5 sm:w-auto sm:justify-center"
           >
-            Pedí tu diagnóstico gratis
+            Pedí tu diagnóstico gratis <span aria-hidden="true">→</span>
           </a>
-          <a
-            href="#trabajos"
-            onClick={() => trackEvent('cta_click', { cta: 'ver_trabajos', ubicacion: 'hero' })}
-            className="btn btn-outline h-12 px-5.5 sm:h-13.5 sm:px-6.5"
-          >
-            Ver trabajos
-          </a>
+          <p className="text-sm text-muted">Sin compromiso · respuesta en 24 h hábiles</p>
         </div>
-        <p className="-mt-2 -rotate-2 self-start font-script text-[1.375rem] leading-none font-bold text-brand-text sm:-mt-3 sm:text-[1.625rem]">
-          Sin compromiso, te respondo en 24 h
-        </p>
       </div>
-
-      <HeroAnimation />
     </section>
   )
 }

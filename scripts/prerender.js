@@ -11,7 +11,8 @@ const ssrDir = path.join(root, 'dist-ssr')
 const template = await inlineCriticalAssets(await fs.readFile(path.join(distDir, 'index.html'), 'utf-8'))
 
 // En mobile, la hoja de estilos externa bloquea el primer pintado (y el CSS es chico):
-// la metemos en el HTML. Además precargamos las dos fuentes que usa el primer pantallazo,
+// la metemos en el HTML. Además precargamos las dos fuentes que usa el primer pantallazo
+// (la sans del texto y la serif cursiva del acento del titular),
 // para que lleguen junto con el JS y el texto no "salte" al cambiar de fuente.
 async function inlineCriticalAssets(html) {
   const assetsDir = path.join(distDir, 'assets')
@@ -22,7 +23,7 @@ async function inlineCriticalAssets(html) {
     return `<style>${css.replace(/<\/style/gi, '<\\/style')}</style>`
   })
 
-  const fonts = [/^montserrat-latin-wght-normal-.*\.woff2$/, /^dancing-script-latin-700-normal-.*\.woff2$/]
+  const fonts = [/^schibsted-grotesk-latin-wght-normal-.*\.woff2$/, /^instrument-serif-latin-400-italic-.*\.woff2$/]
   const preloads = fonts
     .map((pattern) => files.find((file) => pattern.test(file)))
     .filter(Boolean)

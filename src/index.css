@@ -2,64 +2,57 @@
 
 /*
  * Colores por función, no por tono: cada uno lleva su valor claro y oscuro con light-dark().
- *  surface  fondo de la página        card     tarjetas y secciones blancas
- *  field    fondo de los campos        ink      texto principal
- *  night    secciones oscuras          on-night texto sobre night y brand
- *  brand    relleno de marca           brand-text  texto/links de marca
+ *  surface  fondo de la página          panel    fondo de capturas y bloques de apoyo
+ *  ink      texto principal y reglas    soft     párrafos secundarios
+ *  muted    etiquetas y datos chicos    line     reglas entre filas
+ *  night    sección de contacto y CTA   on-night texto sobre night
+ *  inverse  bloque invertido (monograma, "después")
+ *  accent   naranja de marca (rellenos) accent-text naranja legible como texto
  */
 @theme {
-  --font-display: 'Montserrat Variable', system-ui, sans-serif;
-  --font-sans: 'Montserrat Variable', system-ui, sans-serif;
-  /* Secundaria: solo frases cortas de acompañamiento, desde 18 px y en peso 700. */
-  --font-script: 'Dancing Script', cursive;
+  --font-sans: 'Schibsted Grotesk Variable', system-ui, sans-serif;
+  /* Acento editorial: solo palabras sueltas dentro de títulos, en cursiva. */
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
+  --color-surface: light-dark(#f4f3ef, #0a1024);
+  --color-panel: light-dark(#e6e3da, #151c36);
+  --color-card: light-dark(#ffffff, #131b38);
+  --color-ink: light-dark(#0f1b3d, #eeece6);
+  --color-soft: light-dark(#3f475e, #c5cad8);
+  --color-muted: light-dark(#575f75, #a3abc2);
+  --color-line: light-dark(#0f1b3d, #3a4260);
   --color-brand: #1e3a8a;
-  --color-brand-dark: light-dark(#172e6e, #2a4aa6);
-  --color-brand-soft: light-dark(#e4eaf7, #1a2a63);
-  --color-brand-text: light-dark(#1e3a8a, #8fa6f0);
-  --color-ink: light-dark(#0f1b3d, #f5f7fb);
-  --color-muted: light-dark(#424b63, #aab4d4);
-  --color-subtle: light-dark(#5a6378, #8f9ac0);
-  --color-surface: light-dark(#f5f7fb, #0b1431);
-  --color-card: light-dark(#ffffff, #132050);
-  --color-field: light-dark(#ffffff, #0b1431);
-  --color-line: light-dark(#dde2ee, #2a3b6e);
-  --color-line-soft: light-dark(#e7ebf3, #1e2d5c);
-  --color-line-strong: light-dark(#c8d0e2, #3d5090);
   --color-accent: #e8833a;
-  --color-accent-soft: light-dark(#fce9dc, #3b2716);
-  --color-accent-ink: light-dark(#7a3410, #f7b98c);
-  --color-on-accent: #0f1b3d;
+  --color-accent-text: light-dark(#a9471a, #f2a65a);
+  --color-on-accent: light-dark(#0f1b3d, #0a1024);
+  --color-inverse: light-dark(#0f1b3d, #eeece6);
+  --color-on-inverse: light-dark(#f4f3ef, #0a1024);
+  --color-inverse-muted: light-dark(#c3cce6, #4a5168);
+  --color-inverse-accent: light-dark(#e8833a, #c85a1e);
+  --color-night: light-dark(#0f1b3d, #131b38);
+  --color-on-night: light-dark(#f4f3ef, #eeece6);
+  --color-night-text: light-dark(#c3cce6, #a3abc2);
+  --color-night-line: light-dark(#3d5090, #3a4260);
+  --color-night-field: light-dark(#8fa6f0, #7c86a8);
+  --color-night-accent: #f2a65a;
+  --color-night-danger: light-dark(#ffb4a8, #ff8a80);
   --color-wa: #1f7a4d;
-  --color-night: light-dark(#0f1b3d, #070e24);
-  --color-on-night: #f5f7fb;
-  --color-night-line: light-dark(#2b3a6b, #22336a);
-  --color-night-text: light-dark(#c3cce6, #b5bfda);
-  --color-danger: light-dark(#b3261e, #ff8a80);
   --color-success-bg: light-dark(#e3f3ea, #0f2e1f);
   --color-success-text: light-dark(#14532d, #86efac);
   --color-error-bg: light-dark(#fdecea, #3a1414);
   --color-error-text: light-dark(#8c1d18, #fca5a5);
 
   /* Ancho del contenido (max-w-page): crece en pantallas grandes para no dejar tanto aire a los costados. */
-  --container-page: 72rem;
+  --container-page: 82.5rem;
 }
 
 /*
  * Pantallas grandes: sube el rem de la raíz (tipografía y espaciados crecen juntos) y el ancho
- * del contenido. El ancho se expresa en rem ya escalado: 79 × 17 ≈ 1344 px y 82 × 18 ≈ 1476 px.
+ * del contenido.
  */
-@media (min-width: 90rem) {
-  :root {
-    font-size: 106.25%;
-    --container-page: 79rem;
-  }
-}
-
 @media (min-width: 110rem) {
   :root {
-    font-size: 112.5%;
-    --container-page: 82rem;
+    font-size: 106.25%;
   }
 }
 
@@ -104,146 +97,6 @@
   }
 }
 
-/*
- * Animación del hero (HeroAnimation.jsx). Cada elemento define su arranque con --d.
- * Con "reducir movimiento" activado, todo queda directamente en su estado final.
- */
-@keyframes hero-grow {
-  from {
-    transform: scaleX(0);
-  }
-}
-
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.97);
-  }
-}
-
-@keyframes hero-scene {
-  0%,
-  93% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* Arranca oculto (con fill backwards no se ve antes de su --d) y titila cada medio segundo. */
-@keyframes hero-caret {
-  0%,
-  49.9% {
-    opacity: 0;
-  }
-  50%,
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes hero-gauge {
-  from {
-    stroke-dashoffset: 94.25;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-scene {
-    animation: hero-scene 10s linear both;
-  }
-
-  .hero-grow {
-    transform-origin: left center;
-    animation: hero-grow 450ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
-  }
-
-  .hero-in {
-    animation: hero-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
-  }
-
-  /* Una sola animación de opacidad: así el navegador la resuelve en el compositor. */
-  .hero-caret {
-    animation: hero-caret 1s steps(1) var(--d, 0ms) infinite backwards;
-  }
-
-  .hero-gauge {
-    animation: hero-gauge 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
-  }
-}
-
-/*
- * Escena de "Sobre mí" (SobreMiAnimation.jsx): se escribe la búsqueda, el negocio sube
- * del 3.º al 1.º puesto y aparece la charla. Queda en pausa hasta que la sección entra
- * en pantalla. Cada fila de resultado mide 3.5rem + 0.5rem de separación.
- */
-@keyframes about-type {
-  from {
-    max-width: 0;
-  }
-  to {
-    max-width: 14rem;
-  }
-}
-
-@keyframes about-climb {
-  from {
-    transform: translateY(8rem);
-  }
-}
-
-@keyframes about-drop {
-  from {
-    transform: translateY(-4rem);
-  }
-}
-
-@keyframes about-typing {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: 1;
-  }
-}
-
-.about-typing {
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .about-type {
-    animation: about-type 1100ms steps(21) var(--d, 0ms) both;
-  }
-
-  .about-caret {
-    animation: hero-caret 1s steps(1) var(--d, 0ms) infinite;
-  }
-
-  .about-climb {
-    animation: about-climb 900ms cubic-bezier(0.5, 0, 0.2, 1) var(--d, 0ms) both;
-  }
-
-  .about-drop {
-    animation: about-drop 900ms cubic-bezier(0.5, 0, 0.2, 1) var(--d, 0ms) both;
-  }
-
-  .about-in {
-    animation: hero-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
-  }
-
-  .about-typing {
-    animation: about-typing 1000ms ease-in-out var(--d, 0ms) both;
-  }
-
-  .js [data-reveal]:not([data-visible]) :is(.about-type, .about-climb, .about-drop, .about-in, .about-typing) {
-    animation-play-state: paused;
-  }
-}
-
 /* Animación de entrada: solo se oculta si hay JavaScript y el usuario no pidió reducir movimiento. */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
@@ -256,26 +109,230 @@
     opacity: 0;
     transform: translateY(18px);
   }
+}
 
-  /* Línea de tiempo del proceso: la línea se dibuja después de que aparece el paso. */
-  .js [data-reveal] .tl-line {
-    transition: transform 700ms ease-out calc(var(--reveal-delay, 0ms) + 350ms);
+/*
+ * Animaciones de scroll. Solo mueven transform, opacity o clip-path, y las atadas al scroll
+ * las resuelve el navegador fuera del hilo principal: así no traban el scroll en mobile.
+ */
+@keyframes sube {
+  from {
+    transform: translateY(105%);
   }
+}
 
-  .tl-line-y {
-    transform-origin: top;
-  }
-
-  .tl-line-x {
-    transform-origin: left;
-  }
-
-  .js [data-reveal]:not([data-visible]) .tl-line-y {
-    transform: scaleY(0);
-  }
-
-  .js [data-reveal]:not([data-visible]) .tl-line-x {
+@keyframes traza-x {
+  from {
     transform: scaleX(0);
+  }
+}
+
+@keyframes traza-y {
+  from {
+    transform: scaleY(0) skewX(-14deg);
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes acerca {
+  from {
+    transform: scale(0.88);
+  }
+}
+
+@keyframes parallax {
+  from {
+    transform: translateY(-6%) scale(1.12);
+  }
+  to {
+    transform: translateY(6%) scale(1.12);
+  }
+}
+
+@keyframes junta-d {
+  from {
+    transform: translateX(-28%);
+  }
+}
+
+@keyframes junta-c {
+  from {
+    transform: translateX(28%);
+  }
+}
+
+@keyframes endereza {
+  from {
+    transform: rotate(-35deg) scaleY(0.4);
+  }
+}
+
+@keyframes desliza {
+  from {
+    transform: translateX(18%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: la barra se dibuja y la regla se extiende. */
+  .hero-barra {
+    display: inline-block;
+    transform-origin: bottom;
+    animation: traza-y 500ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+  }
+
+  .hero-regla {
+    position: relative;
+    border-top-color: transparent;
+  }
+
+  .hero-regla::before {
+    content: '';
+    position: absolute;
+    inset: -1px 0 auto;
+    height: 1px;
+    background: var(--color-ink);
+    transform-origin: left;
+    animation: traza-x 1100ms cubic-bezier(0.65, 0, 0.35, 1) 350ms both;
+  }
+
+  /*
+   * Solo en escritorio el titular sube desde una máscara y el texto de abajo aparece después.
+   * En mobile el titular es el elemento que PageSpeed mide como LCP: si arrancara oculto, el puntaje bajaría.
+   */
+  @media (min-width: 64rem) {
+    .hero-titulo {
+      overflow: clip;
+      overflow-clip-margin: 0.2em;
+    }
+
+    .hero-titulo > .hero-texto {
+      display: block;
+      animation: sube 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-barra {
+      animation-delay: 650ms;
+    }
+
+    .hero-regla > * {
+      animation: aparece 700ms ease-out both;
+      animation-delay: calc(700ms + var(--i, 0) * 110ms);
+    }
+  }
+
+  /* Menú mobile: el fondo aparece y cada ítem sube con su línea dibujándose, uno tras otro. */
+  .menu-mobile {
+    animation: fade-in 220ms ease-out both;
+  }
+
+  .menu-item {
+    animation: aparece 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(100ms + var(--i, 0) * 55ms);
+  }
+
+  .filas > .menu-item::before,
+  .filas > .menu-item:last-child::after {
+    animation: traza-x 700ms cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation-delay: calc(120ms + var(--i, 0) * 55ms);
+  }
+
+  /* Títulos de sección: suben desde una máscara cuando su bloque entra en pantalla. */
+  .js [data-reveal] .sube {
+    /* Margen negativo: así la máscara no recorta descendentes ni la cursiva de la serif. */
+    clip-path: inset(-0.3em -0.5em -0.35em -0.5em);
+    transition:
+      clip-path 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms,
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+  }
+
+  .js [data-reveal]:not([data-visible]) .sube {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.4em);
+  }
+
+  /* Listas con reglas: cada línea se dibuja de izquierda a derecha, una tras otra. */
+  .js [data-reveal] .filas > *::before,
+  .js .filas > [data-reveal]::before {
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(200ms + var(--fila, 0) * 90ms);
+  }
+
+  .js [data-reveal] .filas > :last-child::after,
+  .js .filas > [data-reveal]:last-child::after {
+    transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(290ms + var(--fila, 0) * 90ms);
+  }
+
+  .js [data-reveal]:not([data-visible]) .filas > *::before,
+  .js [data-reveal]:not([data-visible]) .filas > :last-child::after,
+  .js .filas > [data-reveal]:not([data-visible])::before,
+  .js .filas > [data-reveal]:not([data-visible]):last-child::after {
+    transform: scaleX(0);
+  }
+
+  .filas > :nth-child(2) { --fila: 1; }
+  .filas > :nth-child(3) { --fila: 2; }
+  .filas > :nth-child(4) { --fila: 3; }
+  .filas > :nth-child(5) { --fila: 4; }
+  .filas > :nth-child(6) { --fila: 5; }
+  .filas > :nth-child(n + 7) { --fila: 6; }
+
+  /* Animaciones atadas al scroll: solo donde el navegador las soporta; en el resto, todo queda quieto. */
+  @supports (animation-timeline: view()) {
+    /* La captura destacada se agranda dentro de su panel al acercarse. */
+    .scroll-acerca {
+      transform-origin: center bottom;
+      animation: acerca linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    /* Parallax suave dentro de un contenedor que recorta. */
+    .scroll-parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    /* Monograma: la D y la C se juntan y la barra se endereza. */
+    .scroll-junta {
+      view-timeline: --monograma block;
+    }
+
+    .scroll-junta .letra-d,
+    .scroll-junta .letra-c,
+    .scroll-junta .letra-barra {
+      display: inline-block;
+      animation: linear both;
+      animation-timeline: --monograma;
+      animation-range: entry 10% cover 50%;
+    }
+
+    .scroll-junta .letra-d {
+      animation-name: junta-d;
+    }
+
+    .scroll-junta .letra-c {
+      animation-name: junta-c;
+    }
+
+    .scroll-junta .letra-barra {
+      animation-name: endereza;
+    }
+
+    /* "Hablemos/" entra deslizándose desde la derecha. */
+    .scroll-desliza {
+      animation: desliza linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
   }
 }
 
@@ -293,8 +350,12 @@
 
   body {
     @apply bg-surface font-sans text-ink antialiased;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  a {
+    color: inherit;
   }
 
   :focus-visible {
@@ -302,97 +363,81 @@
     outline-offset: 3px;
     border-radius: 6px;
   }
+
+  ::placeholder {
+    color: var(--color-muted);
+    opacity: 1;
+  }
 }
 
-/*
- * Recursos del brandbook: la barra naranja inclinada es el único gesto gráfico.
- * El naranja es solo gráfico: el texto va siempre en tinta o azul marca.
- */
 @layer components {
-  /* Antetítulo: 12-13 px (en rem, para que escale), SemiBold, mayúsculas espaciadas. */
-  .kicker {
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-muted);
+  /* Barra de la marca al final de un título. Va como contenido generado: así no forma parte
+     del texto que leen los buscadores y los lectores de pantalla ("Hablemos", no "Hablemos/"). */
+  .barra::after {
+    content: '/';
   }
 
-  @media (min-width: 40rem) {
-    .kicker {
-      font-size: 0.8125rem;
-    }
+  /* Palabra en serif cursiva dentro de un título. */
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
-  /* Subrayado de título con la barra. */
-  .bar-under {
-    position: relative;
-    padding-bottom: 0.45em;
-  }
-
-  .bar-under::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 44px;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--color-accent);
-  }
-
-  /* Botones: radio de 8 px y la barra como cierre de etiqueta. */
+  /* Botones: píldoras. */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    border-radius: 8px;
+    gap: 10px;
+    border-radius: 999px;
     font-weight: 600;
     text-decoration: none;
     transition:
       background-color 150ms,
-      color 150ms;
+      color 150ms,
+      border-color 150ms;
   }
 
-  .btn-bar::after {
-    content: '';
-    flex: none;
-    width: 4px;
-    height: 18px;
-    border-radius: 1px;
+  .btn-accent {
     background: var(--color-accent);
-    transform: skewX(-16deg);
+    color: var(--color-on-accent);
+    font-weight: 700;
   }
 
-  /* En oscuro, el azul marca se pierde sobre el fondo: se aclara manteniendo texto blanco. */
-  .btn-primary {
-    background: light-dark(#1e3a8a, #2f52c4);
-    color: #ffffff;
-  }
-
-  .btn-primary:hover {
-    background: light-dark(#172e6e, #3b60d6);
-  }
-
-  /* Sobre fondos azules o tinta. */
-  .btn-light {
-    background: #f5f7fb;
-    color: #0f1b3d;
-  }
-
-  .btn-light:hover {
-    background: #ffffff;
+  .btn-accent:hover {
+    background: #f09451;
   }
 
   .btn-outline {
-    border: 2px solid var(--color-ink);
-    color: var(--color-ink);
+    border: 1px solid currentColor;
   }
 
   .btn-outline:hover {
     background: var(--color-ink);
+    border-color: var(--color-ink);
     color: var(--color-surface);
+  }
+
+  /* Línea fina entre filas de una lista (índice de trabajos, servicios, preguntas).
+     Va en pseudo-elementos para poder dibujarla al entrar en pantalla. */
+  .filas > * {
+    position: relative;
+  }
+
+  .filas > *::before,
+  .filas > :last-child::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--color-line);
+    transform-origin: left;
+    pointer-events: none;
+  }
+
+  .filas > :last-child::after {
+    inset: auto 0 0;
   }
 }

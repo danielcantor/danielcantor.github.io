@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#F5F7FB" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0B1431" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F4F3EF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A1024" media="(prefers-color-scheme: dark)" />
     <script>
       // Antes de pintar: marca que hay JS y aplica el tema elegido con el botón (ver src/lib/theme.js).
       ;(function () {
@@ -15,7 +15,7 @@
           var tema = localStorage.getItem('tema')
           if (tema !== 'light' && tema !== 'dark') return
           html.dataset.theme = tema
-          var color = tema === 'dark' ? '#0B1431' : '#F5F7FB'
+          var color = tema === 'dark' ? '#0A1024' : '#F4F3EF'
           document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
             meta.content = color
           })

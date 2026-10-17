@@ -1,7 +1,7 @@
 // Tema claro/oscuro. Sin elección guardada, la página sigue al sistema operativo.
 // El script inline de index.html aplica la elección guardada antes de pintar.
 const KEY = 'tema'
-const THEME_COLORS = { light: '#F5F7FB', dark: '#0B1431' }
+const THEME_COLORS = { light: '#F4F3EF', dark: '#0A1024' }
 const darkQuery = () => window.matchMedia('(prefers-color-scheme: dark)')
 
 export function currentTheme() {

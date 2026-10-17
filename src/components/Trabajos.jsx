@@ -1,82 +1,67 @@
-import { useEffect, useRef, useState } from 'react'
-import { trabajos } from '../data/trabajos.js'
+import { Link } from 'react-router'
+import { trabajos, trabajoPath } from '../data/trabajos.js'
+import { trackEvent } from '../lib/analytics.js'
 import SectionHeading from './SectionHeading.jsx'
-import TrabajoCard from './TrabajoCard.jsx'
+import TrabajoFila from './TrabajoFila.jsx'
+import TrabajoPieza from './TrabajoPieza.jsx'
 import Reveal from './Reveal.jsx'
-import { ChevronLeftIcon, ChevronRightIcon } from './icons.jsx'
 
-const flechaClase =
-  'grid size-11 place-items-center rounded-full border border-line-strong bg-card text-ink transition-colors hover:bg-brand-soft disabled:cursor-default disabled:opacity-40 disabled:hover:bg-card'
-
-// Carrusel con scroll-snap nativo: se desliza con el dedo, el trackpad o las flechas.
-// En mobile se ve una tarjeta y asoma la siguiente; en desktop, tres.
+// Arriba, el primer caso a sangre; después el índice de todos y una pieza de detalle por cada uno de los demás.
 export default function Trabajos() {
-  const pistaRef = useRef(null)
-  const [puedeAtras, setPuedeAtras] = useState(false)
-  const [puedeAdelante, setPuedeAdelante] = useState(true)
-
-  useEffect(() => {
-    const pista = pistaRef.current
-    const actualizar = () => {
-      setPuedeAtras(pista.scrollLeft > 4)
-      setPuedeAdelante(pista.scrollLeft + pista.clientWidth < pista.scrollWidth - 4)
-    }
-    actualizar()
-    pista.addEventListener('scroll', actualizar, { passive: true })
-    window.addEventListener('resize', actualizar)
-    return () => {
-      pista.removeEventListener('scroll', actualizar)
-      window.removeEventListener('resize', actualizar)
-    }
-  }, [])
-
-  const mover = (direccion) => {
-    const pista = pistaRef.current
-    const tarjeta = pista.querySelector('li')
-    const paso = tarjeta ? tarjeta.offsetWidth + parseFloat(getComputedStyle(pista).columnGap || 0) : pista.clientWidth
-    pista.scrollBy({ left: direccion * paso, behavior: 'smooth' })
-  }
+  const [destacado, ...resto] = trabajos
 
   return (
-    <section
-      id="trabajos"
-      aria-labelledby="trabajos-titulo"
-      className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24"
-    >
-      <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <section id="trabajos" aria-labelledby="trabajos-titulo" className="mx-auto flex max-w-page flex-col px-4 sm:px-6 lg:px-10">
+      <Link
+        to={trabajoPath(destacado.slug)}
+        onClick={() => trackEvent('select_content', { content_type: 'trabajo', content_id: destacado.slug })}
+        className="group block no-underline"
+      >
+        <div className="overflow-hidden rounded-md bg-panel px-4 pt-5 sm:px-12 sm:pt-12 lg:px-18 lg:pt-14">
+          <img
+            src={destacado.portada.src}
+            alt={destacado.portada.alt}
+            width={destacado.portada.width}
+            height={destacado.portada.height}
+            decoding="async"
+            className="scroll-acerca aspect-[4/3] w-full rounded-t-md object-cover object-top shadow-[0_30px_60px_-30px_rgba(15,27,61,0.45)] sm:aspect-[16/7]"
+          />
+        </div>
+        <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-0.5 pt-3.5 text-[0.9375rem] lg:grid-cols-12">
+          <p className="font-semibold lg:col-span-4">{destacado.titulo}</p>
+          <p className="text-muted max-lg:order-last max-lg:col-span-2 lg:col-span-4">{destacado.tipo}</p>
+          <p className="text-muted max-lg:hidden lg:col-span-2">{destacado.anio}</p>
+          <p className="text-right font-semibold text-accent-text group-hover:underline lg:col-span-2">Ver caso ↗</p>
+        </div>
+      </Link>
+
+      <Reveal className="pt-20 sm:pt-28">
         <SectionHeading
           id="trabajos-titulo"
-          eyebrow="Trabajos"
-          title="Proyectos de creación de sitios web y optimización de tiendas online"
-          intro="Algunos casos de pymes y emprendimientos con los que trabajé. Entrá a cada uno para ver qué se hizo y qué resultados tuvo."
-        />
-        {/* Sin nada para deslizar (pocas tarjetas en desktop), las flechas sobran. */}
-        <div className={`shrink-0 gap-2 ${puedeAtras || puedeAdelante ? 'flex' : 'hidden'}`}>
-          <button type="button" onClick={() => mover(-1)} disabled={!puedeAtras} aria-controls="trabajos-carrusel" aria-label="Trabajo anterior" className={flechaClase}>
-            <ChevronLeftIcon className="size-5" />
-          </button>
-          <button type="button" onClick={() => mover(1)} disabled={!puedeAdelante} aria-controls="trabajos-carrusel" aria-label="Trabajo siguiente" className={flechaClase}>
-            <ChevronRightIcon className="size-5" />
-          </button>
-        </div>
-      </Reveal>
-      <Reveal>
-        <ul
-          id="trabajos-carrusel"
-          ref={pistaRef}
-          aria-label="Trabajos"
-          className="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto overscroll-x-contain px-6 pb-2 [scrollbar-width:none] sm:gap-6 [&::-webkit-scrollbar]:hidden"
+          numero="02"
+          eyebrow="Trabajo seleccionado"
+          title={
+            <>
+              Problemas reales, <span className="serif">resueltos</span>
+            </>
+          }
+          intro="Casos de creación de sitios web y optimización de tiendas online. En cada uno te cuento qué estaba fallando, qué cambiamos y cómo quedó."
         >
-          {trabajos.map((trabajo) => (
-            <li
-              key={trabajo.slug}
-              className="shrink-0 basis-[78%] snap-start sm:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
-            >
-              <TrabajoCard trabajo={trabajo} />
-            </li>
-          ))}
-        </ul>
+          <ol className="filas mt-4">
+            {trabajos.map((trabajo, i) => (
+              <li key={trabajo.slug}>
+                <TrabajoFila trabajo={trabajo} numero={i + 1} />
+              </li>
+            ))}
+          </ol>
+        </SectionHeading>
       </Reveal>
+
+      {resto.map((trabajo) => (
+        <Reveal key={trabajo.slug} className="pt-14 sm:pt-16">
+          <TrabajoPieza trabajo={trabajo} />
+        </Reveal>
+      ))}
     </section>
   )
 }

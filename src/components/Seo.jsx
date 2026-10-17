@@ -7,6 +7,9 @@ export default function Seo({
   description = site.defaultDescription,
   path = '/',
   image = site.defaultImage,
+  imageAlt = site.defaultImageAlt,
+  imageWidth = site.defaultImageWidth,
+  imageHeight = site.defaultImageHeight,
   type = 'website',
   noindex = false,
   jsonLd = [],
@@ -28,7 +31,14 @@ export default function Seo({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={imageUrl} />
+      {imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+      {imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+      <meta property="og:image:alt" content={imageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={imageAlt} />
 
       {jsonLd.map((data, i) => (
         <script key={i} type="application/ld+json">
