@@ -14,7 +14,7 @@ export default function SobreMi() {
         <SectionHeading
           id="sobre-mi-titulo"
           eyebrow="Sobre mí"
-          title="Consultor SEO y desarrollador web en Buenos Aires"
+          title="Hablás directo con quien hace tu sitio"
         />
         {sobreMi.parrafos.map((p) => (
           <p key={p} className="text-[0.9375rem] text-muted sm:text-base">{p}</p>

@@ -16,9 +16,9 @@ export default function Contacto() {
       <Reveal className="flex flex-col gap-5">
         <SectionHeading
           id="contacto-titulo"
-          eyebrow="Contacto"
-          title="Contame de tu proyecto"
-          intro="Respondo en menos de 24 horas hábiles. Si preferís algo más rápido, escribime por WhatsApp y lo charlamos."
+          eyebrow="Diagnóstico gratis"
+          title="Pedí tu diagnóstico gratis"
+          intro="Contame qué te pasa con tu sitio o tienda y te digo qué está frenando tus ventas. Te respondo en menos de 24 horas hábiles; si preferís algo más rápido, escribime por WhatsApp."
         />
         <p className="font-script text-[1.625rem] leading-tight font-bold text-brand-text sm:text-[1.875rem]">
           Te respondo yo, sin intermediarios.

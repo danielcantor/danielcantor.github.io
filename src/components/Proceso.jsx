@@ -11,8 +11,8 @@ export default function Proceso() {
           <SectionHeading
             id="proceso-titulo"
             eyebrow="Proceso"
-            title="Cómo trabajo, paso a paso"
-            intro="Un proceso simple y transparente, para que sepas en todo momento en qué etapa está tu proyecto."
+            title="Del diagnóstico gratis a tu sitio funcionando"
+            intro="Cuatro pasos, presupuesto cerrado y avances cada semana: siempre sabés en qué etapa está tu proyecto y cuánto vas a pagar."
             dark
           />
         </Reveal>

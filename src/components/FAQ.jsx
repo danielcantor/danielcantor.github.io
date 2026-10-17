@@ -24,7 +24,7 @@ export default function FAQ() {
           <SectionHeading
             id="faq-titulo"
             eyebrow="Preguntas frecuentes"
-            title="Lo que más me preguntan sobre diseño web y posicionamiento web"
+            title="Lo que querés saber antes de contratar"
           />
         </Reveal>
         <Reveal className="border-t border-line">

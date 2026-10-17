@@ -293,13 +293,13 @@ export default function Proyecto() {
         </div>
       </article>
 
-      <section aria-labelledby="cta" className="mx-auto max-w-page px-6 pb-20">
+      <section aria-labelledby="cta" data-oculta-barra-cta className="mx-auto max-w-page px-6 pb-20">
         <div className="flex flex-wrap items-center justify-between gap-7 rounded-[28px] bg-brand px-8 py-12 text-on-night sm:px-12 sm:py-14">
           <div className="flex max-w-xl flex-col gap-2.5">
             <h2 id="cta" className="font-display text-[clamp(1.75rem,3vw,2.4rem)] leading-tight font-extrabold tracking-[-0.02em]">
               {trabajo.cta}
             </h2>
-            <p className="text-night-text">Contame tu caso y te propongo por dónde empezar.</p>
+            <p className="text-night-text">Contame tu caso: en el diagnóstico gratis te digo por dónde empezar.</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <a
@@ -307,7 +307,7 @@ export default function Proyecto() {
               onClick={() => trackEvent('cta_click', { cta: 'diagnostico', ubicacion: 'proyecto', proyecto: trabajo.slug })}
               className="btn btn-light btn-bar h-13.5 px-6.5"
             >
-              Pedí tu diagnóstico
+              Pedí tu diagnóstico gratis
             </a>
             <WhatsAppButton ubicacion="proyecto" message={`Hola Daniel, vi el caso de ${trabajo.titulo} y quiero consultarte por`}>
               WhatsApp

@@ -8,7 +8,7 @@ export const faq = [
   {
     pregunta: '¿Cuánto cuesta un sitio web para una pyme?',
     respuesta:
-      'Depende del alcance. Después del diagnóstico inicial, que es gratis, te paso un presupuesto cerrado con todo lo que incluye, sin costos sorpresa.',
+      'Depende del alcance. Primero hacemos el diagnóstico, que es gratis, y después te paso un presupuesto cerrado con todo lo que incluye. El precio que acordamos es el que pagás, sin costos sorpresa.',
   },
   {
     pregunta: '¿Cuándo voy a ver resultados con el SEO?',

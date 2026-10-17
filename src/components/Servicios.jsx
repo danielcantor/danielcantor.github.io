@@ -42,8 +42,8 @@ export default function Servicios() {
           <SectionHeading
             id="servicios-titulo"
             eyebrow="Servicios"
-            title="Diseño web, e-commerce y SEO para pymes de Buenos Aires"
-            intro="Creación de sitios web para pymes, asesoría e-commerce y consultoría SEO. Se pueden contratar por separado o combinados."
+            title="Más consultas y ventas desde tu sitio"
+            intro="Diseño web, asesoría e-commerce y SEO para pymes de Buenos Aires y todo el país. Se pueden contratar por separado o combinados, según dónde estés perdiendo clientes hoy."
           />
         </Reveal>
 

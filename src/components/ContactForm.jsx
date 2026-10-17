@@ -139,7 +139,7 @@ export default function ContactForm() {
       </Campo>
 
       <Campo id="contacto-mensaje" label="Mensaje" error={errores.mensaje}>
-        <textarea rows={4} placeholder="Contame qué necesitás" {...props('mensaje')} className={`${props('mensaje').className} resize-y py-3`} />
+        <textarea rows={4} placeholder="Ej.: tengo una tienda con visitas pero casi no vende" {...props('mensaje')} className={`${props('mensaje').className} resize-y py-3`} />
       </Campo>
 
       {/* Campo trampa para bots: las personas no lo ven ni lo completan. */}
@@ -150,13 +150,13 @@ export default function ContactForm() {
         disabled={estado === 'enviando'}
         className="btn btn-primary btn-bar h-13.5 disabled:cursor-wait disabled:opacity-70"
       >
-        {estado === 'enviando' ? 'Enviando…' : 'Enviar consulta'}
+        {estado === 'enviando' ? 'Enviando…' : 'Pedir diagnóstico gratis'}
       </button>
 
       <div role="status" aria-live="polite">
         {estado === 'enviado' && (
           <p className="rounded-xl bg-success-bg px-4 py-3 text-[0.9375rem] font-medium text-success-text">
-            ¡Gracias! Recibí tu mensaje y te respondo en menos de 24 horas hábiles.
+            ¡Gracias! Recibí tu pedido y te respondo en menos de 24 horas hábiles para coordinar el diagnóstico.
           </p>
         )}
         {estado === 'error' && (

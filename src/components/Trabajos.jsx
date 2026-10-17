@@ -47,8 +47,8 @@ export default function Trabajos() {
         <SectionHeading
           id="trabajos-titulo"
           eyebrow="Trabajos"
-          title="Proyectos de creación de sitios web y optimización de tiendas online"
-          intro="Algunos casos de pymes y emprendimientos con los que trabajé. Entrá a cada uno para ver qué se hizo y qué resultados tuvo."
+          title="Problemas reales, resueltos"
+          intro="Casos de creación de sitios web y optimización de tiendas online. En cada uno te cuento qué estaba fallando, qué cambiamos y cómo quedó."
         />
         {/* Sin nada para deslizar (pocas tarjetas en desktop), las flechas sobran. */}
         <div className={`shrink-0 gap-2 ${puedeAtras || puedeAdelante ? 'flex' : 'hidden'}`}>

@@ -37,7 +37,7 @@ export default function MobileCtaBar() {
         onClick={() => trackEvent('cta_click', { cta: 'cotizar', ubicacion: 'barra_mobile' })}
         className="btn btn-primary btn-bar h-12 px-4"
       >
-        Cotizar
+        Diagnóstico
       </a>
       <WhatsAppButton ubicacion="barra_mobile" size="sm" className="h-12">
         WhatsApp

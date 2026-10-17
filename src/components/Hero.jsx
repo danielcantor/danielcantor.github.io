@@ -15,8 +15,8 @@ export default function Hero() {
           Sitios web y tiendas online que <span className="text-brand-text">venden de verdad</span>.
         </h1>
         <p className="max-w-[34rem] text-[1.0625rem] text-muted sm:text-[1.1875rem]">
-          Creación de sitios web para pymes, asesoría e-commerce y posicionamiento web. Te acompaño
-          desde la idea hasta que tu negocio aparece en Google.
+          Diseño sitios y tiendas para pymes que hoy reciben visitas pero pocas consultas. Te
+          acompaño desde la idea hasta que tus clientes te encuentran en Google.
         </p>
         {/* Mientras estos botones se ven, la barra fija de mobile sería redundante. */}
         <div data-oculta-barra-cta className="flex flex-wrap gap-3.5">
