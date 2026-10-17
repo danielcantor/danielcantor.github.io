@@ -59,7 +59,7 @@ Mientras tenga `ejemplo: true`, muestra un aviso, lleva `noindex` y no entra al 
 - [ ] Años de experiencia, texto y herramientas en `src/data/sobreMi.js`.
 - [ ] Links de LinkedIn e Instagram en `src/config/site.js`.
 - [ ] Revisar precios, tiempos y respuestas en `src/data/faq.js` y alcance en `src/data/servicios.js`.
-- [ ] (Opcional) Email propio `@danielcantor.com.ar` y logo en SVG.
+- [ ] (Opcional) Logo en SVG.
 
 **Google**
 - [ ] Google Search Console: agregar la propiedad de dominio `danielcantor.com.ar` (verificación por registro TXT en el DNS).

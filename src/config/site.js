@@ -5,11 +5,10 @@ export const site = {
   url: 'https://danielcantor.com.ar',
   locale: 'es_AR',
   city: 'Buenos Aires',
-  // TODO: reemplazar por un email @danielcantor.com.ar cuando esté configurado.
-  email: 'daniel.cantor2019@gmail.com',
-  phoneDisplay: '+54 9 11 3511-0935',
-  whatsapp: '5491135110935',
-  whatsappMessage: 'Hola Daniel, vi tu web y quiero consultarte por',
+  email: 'hola@danielcantor.com.ar',
+  phoneDisplay: '+54 9 11 7344-8378',
+  whatsapp: '5491173448378',
+  whatsappMessage: 'Hola Daniel, vi tu web y quería hacerte una consulta.',
   defaultDescription:
     'Diseño web en Buenos Aires: creación de sitios web para pymes, asesoría e-commerce y consultoría SEO para mejorar tu posicionamiento web.',
   defaultImage: '/img/og-image.jpg',
