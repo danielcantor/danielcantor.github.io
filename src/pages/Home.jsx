@@ -17,8 +17,8 @@ export default function Home() {
         jsonLd={[professionalService]}
       />
       <Hero />
-      <Servicios />
       <Trabajos />
+      <Servicios />
       <Proceso />
       <SobreMi />
       <FAQ />

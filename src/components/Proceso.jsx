@@ -5,30 +5,25 @@ import Reveal from './Reveal.jsx'
 
 export default function Proceso() {
   return (
-    <section id="proceso" aria-labelledby="proceso-titulo" className="bg-night text-on-night">
-      <div className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-12 sm:py-20 lg:py-24">
-        <Reveal>
-          <SectionHeading
-            id="proceso-titulo"
-            eyebrow="Proceso"
-            title="Cómo trabajo, paso a paso"
-            intro="Un proceso simple y transparente, para que sepas en todo momento en qué etapa está tu proyecto."
-            dark
-          />
-        </Reveal>
-        <ol className="lg:grid lg:grid-cols-4">
+    <section id="proceso" aria-labelledby="proceso-titulo" className="mx-auto max-w-page px-4 pt-24 sm:px-6 sm:pt-36 lg:px-10">
+      <SectionHeading
+        id="proceso-titulo"
+        numero="04"
+        eyebrow="Cómo trabajo"
+        title={
+          <>
+            Presupuesto cerrado, avances <span className="serif">cada semana</span>
+          </>
+        }
+      >
+        <ol className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {proceso.map((paso, i) => (
-            <Reveal as="li" key={paso.titulo} delay={i * 150}>
-              <ProcesoPaso
-                numero={i + 1}
-                titulo={paso.titulo}
-                descripcion={paso.descripcion}
-                ultimo={i === proceso.length - 1}
-              />
+            <Reveal as="li" key={paso.titulo} delay={i * 120}>
+              <ProcesoPaso numero={i + 1} titulo={paso.titulo} descripcion={paso.descripcion} />
             </Reveal>
           ))}
         </ol>
-      </div>
+      </SectionHeading>
     </section>
   )
 }

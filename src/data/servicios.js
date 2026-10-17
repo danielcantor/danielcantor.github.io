@@ -3,6 +3,7 @@ export const servicios = [
   {
     id: 'sitios-web',
     titulo: 'Creación de sitios web',
+    corto: 'Sitio web',
     descripcion:
       'Sitios rápidos, claros y pensados para convertir visitas en consultas. Diseño a medida, sin plantillas genéricas, listo para posicionar en Google.',
     incluye: [
@@ -18,6 +19,7 @@ export const servicios = [
   {
     id: 'ecommerce',
     titulo: 'Asesoría de e-commerce',
+    corto: 'E-commerce',
     descripcion:
       'Te ayudo a elegir la plataforma, ordenar el catálogo y mejorar la conversión de tu tienda online para que las visitas se transformen en ventas.',
     incluye: [
@@ -32,6 +34,7 @@ export const servicios = [
   {
     id: 'seo',
     titulo: 'Optimización SEO',
+    corto: 'SEO',
     descripcion:
       'Posicionamiento web para que te encuentren en Google cuando buscan lo que ofrecés, sin depender solo de la publicidad paga.',
     incluye: [

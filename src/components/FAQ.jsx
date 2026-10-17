@@ -18,28 +18,32 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" aria-labelledby="faq-titulo" className="border-y border-line-soft bg-card">
-      <div className="mx-auto flex max-w-page flex-col gap-8 px-6 py-14 sm:gap-10 sm:py-20 lg:py-24">
-        <Reveal>
-          <SectionHeading
-            id="faq-titulo"
-            eyebrow="Preguntas frecuentes"
-            title="Lo que más me preguntan sobre diseño web y posicionamiento web"
-          />
-        </Reveal>
-        <Reveal className="border-t border-line">
-          {faq.map((item, i) => (
-            <AccordionItem
-              key={item.pregunta}
-              id={`faq-${i}`}
-              pregunta={item.pregunta}
-              respuesta={item.respuesta}
-              abierto={abiertos.has(i)}
-              onToggle={() => toggle(i)}
-            />
-          ))}
-        </Reveal>
-      </div>
+    <section id="faq" aria-labelledby="faq-titulo" className="mx-auto max-w-page px-4 py-24 sm:px-6 sm:py-36 lg:px-10">
+      <Reveal>
+        <SectionHeading
+          id="faq-titulo"
+          numero="06"
+          eyebrow="Preguntas frecuentes"
+          title={
+            <>
+              Lo que querés saber <span className="serif">antes de contratar</span>
+            </>
+          }
+        >
+          <div className="filas mt-4">
+            {faq.map((item, i) => (
+              <AccordionItem
+                key={item.pregunta}
+                id={`faq-${i}`}
+                pregunta={item.pregunta}
+                respuesta={item.respuesta}
+                abierto={abiertos.has(i)}
+                onToggle={() => toggle(i)}
+              />
+            ))}
+          </div>
+        </SectionHeading>
+      </Reveal>
     </section>
   )
 }

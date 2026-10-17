@@ -1,35 +1,32 @@
-// Paso de una línea de tiempo: vertical en mobile, horizontal desde lg
-// (salvo con `horizontal={false}`, que la deja siempre vertical).
-// La línea que lo une con el paso siguiente se dibuja al entrar en pantalla
-// (.tl-line en index.css). `tono` define si va sobre fondo oscuro o claro.
-export default function ProcesoPaso({ numero, titulo, descripcion, ultimo = false, tono = 'oscuro', horizontal = true }) {
-  const oscuro = tono === 'oscuro'
-  const linea = oscuro ? 'bg-accent/45' : 'bg-accent/60'
-  const lg = (clases) => (horizontal ? clases : '')
+const ROMANOS = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x']
 
-  return (
-    <div className={`relative grid grid-cols-[2.75rem_1fr] gap-x-4 pb-8 ${lg('lg:flex lg:flex-col lg:gap-4 lg:pr-6 lg:pb-0')}`}>
-      {!ultimo && (
-        <>
-          <span aria-hidden="true" className={`tl-line tl-line-y absolute top-12 bottom-1 left-[1.3125rem] w-0.5 ${lg('lg:hidden')} ${linea}`} />
-          {horizontal && (
-            <span aria-hidden="true" className={`tl-line tl-line-x absolute top-[1.3125rem] right-1 left-14 hidden h-0.5 lg:block ${linea}`} />
-          )}
-        </>
-      )}
-      <span
-        aria-hidden="true"
-        className="relative z-10 inline-flex size-11 items-center justify-center rounded-full bg-accent font-display font-extrabold text-on-accent"
-      >
-        {numero}
-      </span>
-      <div className={`flex flex-col gap-1 pt-2 ${lg('lg:pt-0')}`}>
-        <h3 className="font-display text-lg font-bold sm:text-xl">
+// Paso numerado en romanos. `columna`: número, título y texto apilados (proceso de la home).
+// `fila`: número, título y texto en una misma línea desde md (pasos de cada caso).
+export default function ProcesoPaso({ numero, titulo, descripcion, variante = 'columna' }) {
+  const fila = variante === 'fila'
+  const romano = <span aria-hidden="true" className="serif text-[1.375rem] leading-none text-accent-text sm:text-2xl">{ROMANOS[numero - 1]}.</span>
+
+  if (fila) {
+    return (
+      <div className="grid grid-cols-[2.25rem_1fr] gap-x-3 gap-y-1 py-4 sm:py-5.5 md:grid-cols-[3.5rem_minmax(0,4fr)_minmax(0,6fr)] md:gap-6">
+        {romano}
+        <h3 className="text-[1.0625rem] font-semibold tracking-[-0.015em] sm:text-[1.375rem]">
           <span className="sr-only">Paso {numero}: </span>
           {titulo}
         </h3>
-        <p className={`text-[0.9375rem] ${oscuro ? 'text-night-text' : 'text-muted'}`}>{descripcion}</p>
+        <p className="col-start-2 text-[0.9375rem] text-soft md:col-auto md:text-base">{descripcion}</p>
       </div>
+    )
+  }
+
+  return (
+    <div className="flex flex-col gap-2 border-t border-line pt-3.5">
+      {romano}
+      <h3 className="font-semibold">
+        <span className="sr-only">Paso {numero}: </span>
+        {titulo}
+      </h3>
+      <p className="text-[0.9375rem] text-soft">{descripcion}</p>
     </div>
   )
 }

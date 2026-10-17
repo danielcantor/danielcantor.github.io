@@ -13,6 +13,7 @@ export const trabajos = [
     tipo: 'Rediseño de landings de venta',
     resultado: '7 landings rediseñadas',
     titular: 'Escuela Pato Valentín: landings más claras, pensadas para su público',
+    titularAcento: 'su público', // Final del titular que va en serif cursiva.
     resumen:
       'Reconstrucción de las landings de cursos y clases gratuitas de una escuela online de acuarela, con el editor atómico de Elementor y un sistema de estilos globales reutilizable.',
     cliente: 'Escuela Pato Valentín',
@@ -98,6 +99,7 @@ export const trabajos = [
     tipo: 'Plugin a medida para WooCommerce',
     resultado: 'Cuotas visibles de la ficha al pago',
     titular: 'Calculadora de cuotas Mercado Pago: el precio en cuotas, claro antes de pagar',
+    titularAcento: 'antes de pagar',
     resumen:
       'Un plugin de WordPress para Maxtecno que muestra cuánto sale cada plan de cuotas en la ficha de producto, deja elegirlo en el checkout y le pasa a Mercado Pago el total correcto.',
     cliente: 'Maxtecno',
