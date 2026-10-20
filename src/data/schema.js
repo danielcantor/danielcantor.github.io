@@ -1,5 +1,5 @@
 import { site, absoluteUrl } from '../config/site.js'
-import { homePath, sectionHref } from '../i18n/paths.js'
+import { homePath, sectionHref, servicioPath } from '../i18n/paths.js'
 import { ui } from '../i18n/ui.js'
 import { servicios } from './servicios.js'
 import { faq } from './faq.js'
@@ -69,7 +69,7 @@ export const professionalService = (lang = 'es') => ({
         '@type': 'Service',
         name: s.titulo,
         description: s.descripcion,
-        url: absoluteUrl(sectionHref(lang, 'servicios')),
+        url: absoluteUrl(servicioPath(s.slugs, lang)),
         areaServed: lang === 'en' ? 'US' : 'AR',
       },
     })),
@@ -77,14 +77,51 @@ export const professionalService = (lang = 'es') => ({
   sameAs,
 })
 
-// Preguntas frecuentes de la home, con el mismo texto que se ve en la página.
-export const faqPage = (lang = 'es') => ({
+// Preguntas frecuentes, con el mismo texto que se ve en la página (por defecto, las de la home).
+export const faqPage = (lang = 'es', preguntas = faq[lang]) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   inLanguage: ui[lang].htmlLang,
-  mainEntity: faq[lang].map((item) => ({
+  mainEntity: preguntas.map((item) => ({
     '@type': 'Question',
     name: item.pregunta,
     acceptedAnswer: { '@type': 'Answer', text: item.respuesta },
   })),
 })
+
+// Landing de un servicio: el servicio en sí (ofrecido por el negocio) y sus migas de pan.
+export const servicioSchema = (servicio, lang = 'es') => {
+  const t = ui[lang].servicio
+  const url = absoluteUrl(servicioPath(servicio.slugs, lang))
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': `${url}#servicio`,
+      name: servicio.titulo,
+      serviceType: servicio.titulo,
+      description: servicio.seoDescription,
+      url,
+      inLanguage: ui[lang].htmlLang,
+      provider: { '@id': `${site.url}/#negocio` },
+      areaServed: lang === 'en' ? { '@type': 'Country', name: 'United States' } : { '@type': 'Country', name: 'Argentina' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: t.incluye,
+        itemListElement: servicio.incluye.map((item) => ({
+          '@type': 'Offer',
+          itemOffered: { '@type': 'Service', name: item.titulo, description: item.descripcion },
+        })),
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t.inicio, item: absoluteUrl(homePath(lang)) },
+        { '@type': 'ListItem', position: 2, name: t.servicios, item: absoluteUrl(sectionHref(lang, 'servicios')) },
+        { '@type': 'ListItem', position: 3, name: servicio.titulo, item: url },
+      ],
+    },
+  ]
+}

@@ -1,4 +1,12 @@
 // Servicios que se muestran en la home y en el formulario de contacto.
+// Cada uno tiene su landing en /servicios/<slugs.es>/ y /en/services/<slugs.en>/
+// (el contenido largo de esas páginas está en src/data/landings.js).
+const slugs = {
+  'sitios-web': { es: 'diseno-web', en: 'web-design' },
+  ecommerce: { es: 'asesoria-ecommerce', en: 'ecommerce-consulting' },
+  seo: { es: 'seo', en: 'seo' },
+}
+
 const serviciosEs = [
   {
     id: 'sitios-web',
@@ -98,4 +106,6 @@ const serviciosEn = [
   },
 ]
 
-export const servicios = { es: serviciosEs, en: serviciosEn }
+const conSlugs = (lista) => lista.map((s) => ({ ...s, slugs: slugs[s.id] }))
+
+export const servicios = { es: conSlugs(serviciosEs), en: conSlugs(serviciosEn) }

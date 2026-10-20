@@ -22,7 +22,7 @@ export default function Servicios() {
         >
           <div className="filas mt-4">
             {servicios[lang].map((servicio) => (
-              <ServicioFila key={servicio.id} servicio={servicio} t={t} />
+              <ServicioFila key={servicio.id} servicio={servicio} t={t} lang={lang} />
             ))}
           </div>
         </SectionHeading>

@@ -1,5 +1,6 @@
 import { trabajos } from './data/trabajos.js'
-import { LANGS, homePath, trabajoPath } from './i18n/paths.js'
+import { servicios } from './data/servicios.js'
+import { LANGS, homePath, trabajoPath, servicioPath } from './i18n/paths.js'
 
 // "/trabajos/x/" → "trabajos/x/index.html"
 const fileFor = (path) => `${path.slice(1)}index.html`
@@ -12,6 +13,13 @@ const alternates = (pathFor) => Object.fromEntries(LANGS.map((lang) => [lang, pa
 export const prerenderRoutes = [
   ...LANGS.flatMap((lang) => [
     { path: homePath(lang), file: fileFor(homePath(lang)), sitemap: true, priority: '1.0', alternates: alternates(homePath) },
+    ...servicios[lang].map((s) => ({
+      path: servicioPath(s.slugs, lang),
+      file: fileFor(servicioPath(s.slugs, lang)),
+      sitemap: true,
+      priority: '0.9',
+      alternates: alternates((l) => servicioPath(s.slugs, l)),
+    })),
     ...trabajos.map((t) => ({
       path: trabajoPath(t.slug, lang),
       file: fileFor(trabajoPath(t.slug, lang)),

@@ -5,14 +5,16 @@ import { site } from '../config/site.js'
 import { useT } from '../i18n/index.js'
 import { trackEvent } from '../lib/analytics.js'
 
-export default function Contacto() {
+// `numero`: la etiqueta de la sección, que cambia según la página.
+// `servicio`: título del servicio que el formulario trae elegido (en las landings de servicio).
+export default function Contacto({ numero = '07', servicio }) {
   const t = useT()
 
   return (
     <section id="contacto" data-oculta-barra-cta aria-labelledby="contacto-titulo" className="overflow-x-clip bg-night text-on-night">
       <div className="mx-auto flex max-w-page flex-col gap-8 px-4 py-20 sm:gap-12 sm:px-6 sm:py-24 lg:px-10">
         <p className="text-sm text-night-text">
-          <span className="font-semibold text-night-accent">(07) </span>
+          <span className="font-semibold text-night-accent">({numero}) </span>
           {t.contacto.eyebrow}
         </p>
         <h2 id="contacto-titulo" className="scroll-desliza text-[clamp(4.25rem,13vw,10.5rem)] leading-[0.88] font-semibold tracking-[-0.05em]">
@@ -42,7 +44,7 @@ export default function Contacto() {
             </div>
           </Reveal>
           <Reveal delay={100} className="lg:col-span-6 lg:col-start-7">
-            <ContactForm />
+            <ContactForm servicioInicial={servicio} />
           </Reveal>
         </div>
       </div>

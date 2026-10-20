@@ -52,8 +52,9 @@ function Campo({ id, label, error, children }) {
   )
 }
 
-export default function ContactForm() {
-  const [valores, setValores] = useState(VACIO)
+export default function ContactForm({ servicioInicial = '' }) {
+  const inicial = { ...VACIO, servicio: servicioInicial }
+  const [valores, setValores] = useState(inicial)
   const [errores, setErrores] = useState({})
   const [estado, setEstado] = useState('inicial') // inicial | enviando | enviado | error
   const formRef = useRef(null)
@@ -107,7 +108,7 @@ export default function ContactForm() {
       if (!respuesta.ok || data.success === false) throw new Error(data.message || respuesta.statusText)
       setEstado('enviado')
       trackEvent('generate_lead', { form: 'contacto', servicio: valores.servicio, idioma: lang })
-      setValores(VACIO)
+      setValores(inicial)
     } catch (error) {
       console.error('No se pudo enviar el formulario:', error)
       setEstado('error')

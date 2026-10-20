@@ -22,7 +22,7 @@ export const trabajos = [
     rubro: 'Educación online · Arte',
     anio: '2026',
     duracion: 'En curso',
-    servicios: ['Creación de sitios web', 'Asesoría e-commerce'],
+    servicios: ['Creación de sitios web', 'Asesoría de e-commerce'],
     url: 'https://patovalentin.com.ar/',
     agencia: { nombre: 'Dizconnect', url: 'https://dizconnect.solutions/' }, // Proyecto hecho bajo contrato con la agencia.
     imagen: {
@@ -108,7 +108,7 @@ export const trabajos = [
     rubro: 'Tecnología · Tienda online',
     anio: '2025',
     duracion: '2 semanas',
-    servicios: ['Asesoría e-commerce'],
+    servicios: ['Asesoría de e-commerce'],
     url: 'https://maxtecno.com.ar/',
     agencia: { nombre: 'Dizconnect', url: 'https://dizconnect.solutions/' }, // Proyecto hecho bajo contrato con la agencia.
     imagen: {
