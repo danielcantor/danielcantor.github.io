@@ -1,12 +1,12 @@
 import { Link } from 'react-router'
-import { trabajoPath } from '../data/trabajos.js'
+import { trabajoPath } from '../i18n/paths.js'
 import { trackEvent } from '../lib/analytics.js'
 
 // Fila del índice de trabajos: número, cliente, tipo, rubro y año.
-export default function TrabajoFila({ trabajo, numero }) {
+export default function TrabajoFila({ trabajo, numero, lang }) {
   return (
     <Link
-      to={trabajoPath(trabajo.slug)}
+      to={trabajoPath(trabajo.slug, lang)}
       onClick={() => trackEvent('select_content', { content_type: 'trabajo', content_id: trabajo.slug })}
       className="group grid grid-cols-[2.25rem_1fr_auto] items-baseline gap-x-3 gap-y-0.5 py-4 no-underline md:min-h-19 md:grid-cols-[3.5rem_3fr_3fr_2fr_3.5rem] md:items-center md:gap-4 md:py-3"
     >

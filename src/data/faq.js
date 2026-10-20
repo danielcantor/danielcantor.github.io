@@ -1,5 +1,5 @@
 // TODO: revisar respuestas (sobre todo tiempos y precios) según cómo trabajás.
-export const faq = [
+const faqEs = [
   {
     pregunta: '¿Cuánto tarda en estar listo un sitio web?',
     respuesta:
@@ -31,3 +31,39 @@ export const faq = [
       'No. Estoy en Buenos Aires, pero trabajo de forma remota con pymes y emprendimientos de todo el país.',
   },
 ]
+
+// TODO: revisar respuestas (sobre todo tiempos y precios) según cómo trabajás con clientes de EE.UU.
+const faqEn = [
+  {
+    pregunta: 'How long does it take to build a website?',
+    respuesta:
+      'A business website usually takes 3 to 5 weeks, depending on the number of pages and how quickly we have the copy and images. An online store can take 4 to 8 weeks.',
+  },
+  {
+    pregunta: 'How much does a website cost?',
+    respuesta:
+      'It depends on the scope. We start with the free audit, and then I send you a fixed quote in US dollars with everything included. The price we agree on is the price you pay, with no surprise fees.',
+  },
+  {
+    pregunta: 'You are based in Argentina. How does working remotely work?',
+    respuesta:
+      'Everything happens online: we talk over email and video calls, and you follow the progress every week on a live preview link. Buenos Aires is only 1 to 2 hours ahead of New York, so we share most of your workday.',
+  },
+  {
+    pregunta: 'When will I see results from SEO?',
+    respuesta:
+      'SEO is a medium-term investment. The first changes usually show up within 2 to 4 months and keep building over time. You get a report every month showing how things are going.',
+  },
+  {
+    pregunta: 'Which platform is best for my online store?',
+    respuesta:
+      'It depends on your catalog, your sales volume and your budget. In the e-commerce consulting we compare options like Shopify and WooCommerce and choose the one that fits your business best.',
+  },
+  {
+    pregunta: 'Can I edit the site myself afterwards?',
+    respuesta:
+      'Yes. I hand over everything documented, plus a training session so you can update copy, images and products without depending on anyone.',
+  },
+]
+
+export const faq = { es: faqEs, en: faqEn }

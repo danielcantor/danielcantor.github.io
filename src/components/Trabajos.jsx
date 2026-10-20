@@ -1,6 +1,9 @@
 import { Link } from 'react-router'
-import { trabajos, trabajoPath } from '../data/trabajos.js'
+import { getTrabajos } from '../data/trabajos.js'
+import { useLang, trabajoPath } from '../i18n/index.js'
+import { ui } from '../i18n/ui.js'
 import { trackEvent } from '../lib/analytics.js'
+import Acento from './Acento.jsx'
 import SectionHeading from './SectionHeading.jsx'
 import TrabajoFila from './TrabajoFila.jsx'
 import TrabajoPieza from './TrabajoPieza.jsx'
@@ -8,12 +11,15 @@ import Reveal from './Reveal.jsx'
 
 // Arriba, el primer caso a sangre; después el índice de todos y una pieza de detalle por cada uno de los demás.
 export default function Trabajos() {
+  const lang = useLang()
+  const t = ui[lang].trabajos
+  const trabajos = getTrabajos(lang)
   const [destacado, ...resto] = trabajos
 
   return (
     <section id="trabajos" aria-labelledby="trabajos-titulo" className="mx-auto flex max-w-page flex-col px-4 sm:px-6 lg:px-10">
       <Link
-        to={trabajoPath(destacado.slug)}
+        to={trabajoPath(destacado.slug, lang)}
         onClick={() => trackEvent('select_content', { content_type: 'trabajo', content_id: destacado.slug })}
         className="group block no-underline"
       >
@@ -31,7 +37,7 @@ export default function Trabajos() {
           <p className="font-semibold lg:col-span-4">{destacado.titulo}</p>
           <p className="text-muted max-lg:order-last max-lg:col-span-2 lg:col-span-4">{destacado.tipo}</p>
           <p className="text-muted max-lg:hidden lg:col-span-2">{destacado.anio}</p>
-          <p className="text-right font-semibold text-accent-text group-hover:underline lg:col-span-2">Ver caso ↗</p>
+          <p className="text-right font-semibold text-accent-text group-hover:underline lg:col-span-2">{t.verCaso}</p>
         </div>
       </Link>
 
@@ -39,18 +45,14 @@ export default function Trabajos() {
         <SectionHeading
           id="trabajos-titulo"
           numero="02"
-          eyebrow="Trabajo seleccionado"
-          title={
-            <>
-              Problemas reales, <span className="serif">resueltos</span>
-            </>
-          }
-          intro="Casos de creación de sitios web y optimización de tiendas online. En cada uno te cuento qué estaba fallando, qué cambiamos y cómo quedó."
+          eyebrow={t.eyebrow}
+          title={<Acento partes={t.titulo} />}
+          intro={t.intro}
         >
           <ol className="filas mt-4">
             {trabajos.map((trabajo, i) => (
               <li key={trabajo.slug}>
-                <TrabajoFila trabajo={trabajo} numero={i + 1} />
+                <TrabajoFila trabajo={trabajo} numero={i + 1} lang={lang} />
               </li>
             ))}
           </ol>
@@ -59,7 +61,7 @@ export default function Trabajos() {
 
       {resto.map((trabajo) => (
         <Reveal key={trabajo.slug} className="pt-14 sm:pt-16">
-          <TrabajoPieza trabajo={trabajo} />
+          <TrabajoPieza trabajo={trabajo} lang={lang} verCompleto={t.verCompleto} />
         </Reveal>
       ))}
     </section>

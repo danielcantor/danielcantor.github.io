@@ -1,12 +1,18 @@
 import { useState } from 'react'
-import { faq } from '../data/faq.js'
+import { faq as faqPorIdioma } from '../data/faq.js'
+import { useLang } from '../i18n/index.js'
+import { ui } from '../i18n/ui.js'
 import { trackEvent } from '../lib/analytics.js'
+import Acento from './Acento.jsx'
 import SectionHeading from './SectionHeading.jsx'
 import AccordionItem from './AccordionItem.jsx'
 import Reveal from './Reveal.jsx'
 
 export default function FAQ() {
   const [abiertos, setAbiertos] = useState(() => new Set([0]))
+  const lang = useLang()
+  const t = ui[lang].faq
+  const faq = faqPorIdioma[lang]
 
   function toggle(i) {
     if (!abiertos.has(i)) trackEvent('faq_open', { pregunta: faq[i].pregunta })
@@ -23,12 +29,8 @@ export default function FAQ() {
         <SectionHeading
           id="faq-titulo"
           numero="06"
-          eyebrow="Preguntas frecuentes"
-          title={
-            <>
-              Lo que querés saber <span className="serif">antes de contratar</span>
-            </>
-          }
+          eyebrow={t.eyebrow}
+          title={<Acento partes={t.titulo} />}
         >
           <div className="filas mt-4">
             {faq.map((item, i) => (
